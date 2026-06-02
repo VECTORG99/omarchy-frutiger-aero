@@ -1,0 +1,61 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "theme": {
+    "primary": "#1299CA",
+    "secondary": "#3AB0B4",
+    "accent": "#1299CA",
+    "error": "#C85A50",
+    "warning": "#A08020",
+    "success": "#4EC85A",
+    "info": "#2A8FC4",
+
+    "text": "#1A3344",
+    "textMuted": "#4A7A88",
+
+    "background": "#EBF5F2",
+    "backgroundPanel": "#D8EBE6",
+    "backgroundElement": "#C8E0DA",
+
+    "border": "#A8C8C0",
+    "borderActive": "#1299CA",
+    "borderSubtle": "#B8D4CE",
+
+    "diffAdded": "#2E8A3A",
+    "diffRemoved": "#C85A50",
+    "diffContext": "#4A7A88",
+    "diffHunkHeader": "#4A7A88",
+    "diffHighlightAdded": "#2E8A3A",
+    "diffHighlightRemoved": "#C85A50",
+    "diffAddedBg": "#D8EBE6",
+    "diffRemovedBg": "#D8EBE6",
+    "diffContextBg": "#D8EBE6",
+    "diffLineNumber": "#4A7A88",
+    "diffAddedLineNumberBg": "#D8EBE6",
+    "diffRemovedLineNumberBg": "#D8EBE6",
+
+    "markdownText": "#1A3344",
+    "markdownHeading": "#1299CA",
+    "markdownLink": "#2A8FC4",
+    "markdownLinkText": "#1299CA",
+    "markdownCode": "#2E8A3A",
+    "markdownBlockQuote": "#4A7A88",
+    "markdownEmph": "#3A8AAA",
+    "markdownStrong": "#0A1A2E",
+    "markdownHorizontalRule": "#A8C8C0",
+    "markdownListItem": "#1299CA",
+    "markdownListEnumeration": "#3AB0B4",
+    "markdownImage": "#3AB0B4",
+    "markdownImageText": "#1299CA",
+    "markdownCodeBlock": "#1A3344",
+
+    "syntaxComment": "#6A9AA8",
+    "syntaxKeyword": "#1299CA",
+    "syntaxFunction": "#2A8FC4",
+    "syntaxVariable": "#1A8A8A",
+    "syntaxString": "#2E8A3A",
+    "syntaxNumber": "#C08020",
+    "syntaxType": "#1A8A8A",
+    "syntaxOperator": "#1299CA",
+    "syntaxPunctuation": "#4A7A88"
+  }
+}
