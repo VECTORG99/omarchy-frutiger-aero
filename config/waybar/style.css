@@ -1,0 +1,300 @@
+@import "../omarchy/current/theme/waybar.css";
+
+* {
+  color: @foreground;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'Fira Sans', 'JetBrainsMono Nerd Font';
+  font-size: 13.5px;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  letter-spacing: 0.3px;
+}
+
+window#waybar {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+window#waybar > box {
+  background: @background;
+  margin: 4px 6px 0;
+  border-radius: 16px;
+  border-bottom: 2px solid rgba(18, 153, 202, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.modules-left {
+  margin-left: 6px;
+}
+
+.modules-right {
+  margin-right: 6px;
+}
+
+#custom-omarchy {
+  padding: 0 16px 0 18px;
+  margin: 4px 2px;
+  border-radius: 14px;
+  font-size: 17px;
+  background: linear-gradient(rgba(18, 153, 202, 0.18), rgba(18, 153, 202, 0.08));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#custom-omarchy:hover {
+  background: linear-gradient(rgba(18, 153, 202, 0.28), rgba(18, 153, 202, 0.12));
+}
+
+#workspaces {
+  margin: 4px 2px;
+  padding: 0 8px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 12px;
+  margin: 2px 3px;
+  min-width: 10px;
+  min-height: 22px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  color: @foreground;
+  font-size: 13px;
+}
+
+#workspaces button.active {
+  background: linear-gradient(rgba(18, 153, 202, 0.20), rgba(18, 153, 202, 0.08));
+  color: #35BCDE;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#workspaces button.empty {
+  opacity: 0.25;
+}
+
+#workspaces button:hover {
+  background: rgba(18, 153, 202, 0.10);
+}
+
+#clock {
+  margin: 4px 6px;
+  padding: 0 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#custom-weather {
+  margin: 4px 3px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#custom-weather.unavailable {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#custom-update {
+  margin: 4px 3px;
+  padding: 0 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#custom-update.has-update {
+  background: rgba(78, 200, 90, 0.10);
+  color: #4EC85A;
+}
+
+#cpu,
+#battery,
+#pulseaudio {
+  margin: 4px 3px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 13px;
+}
+
+#battery.warning {
+  background: rgba(200, 168, 48, 0.10);
+  color: #C8A830;
+}
+
+#battery.critical {
+  background: rgba(200, 90, 80, 0.10);
+  color: #C85A50;
+}
+
+#network {
+  margin: 4px 3px;
+  padding: 0 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#bluetooth {
+  margin: 4px 3px;
+  padding: 0 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#tray {
+  margin: 4px 3px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+tooltip {
+  background: rgba(26, 51, 68, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 8px 14px;
+  font-size: 12px;
+}
+
+tooltip label {
+  color: #D0ECE8;
+}
+
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  margin: 4px 2px;
+  padding: 0 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#custom-screenrecording-indicator.active {
+  background: rgba(200, 90, 80, 0.15);
+  color: #C85A50;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  background: rgba(200, 90, 80, 0.15);
+  color: #C85A50;
+}
+
+#custom-voxtype {
+  margin: 4px 2px;
+  padding: 0 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+#custom-voxtype.recording {
+  background: rgba(200, 90, 80, 0.15);
+  color: #C85A50;
+}
+
+#custom-expand-icon {
+  margin: 4px 2px;
+  padding: 0 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-weather.unavailable {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.left .modules-left, .right .modules-left { margin: 8px 0 0 0; }
+.left .modules-right, .right .modules-right { margin: 0 0 8px 0; }
+
+.left #workspaces button, .right #workspaces button {
+  padding: 8px 0;
+  margin: 1.5px 0;
+}
+
+.left #cpu, .right #cpu,
+.left #battery, .right #battery,
+.left #pulseaudio, .right #pulseaudio,
+.left #custom-omarchy, .right #custom-omarchy,
+.left #custom-update, .right #custom-update {
+  margin: 1.5px 0;
+  padding: 8px 0;
+  min-width: 0;
+  min-height: 14px;
+}
+
+.left #tray, .right #tray { margin: 0 0 16px 0; }
+.left #bluetooth, .right #bluetooth { margin: 1.5px 0; padding: 8px 0; min-height: 14px; }
+.left #network, .right #network { margin: 1.5px 0; padding: 8px 0; min-height: 14px; }
+.left #custom-expand-icon, .right #custom-expand-icon { margin: 1.5px 0; padding: 8px 0; min-height: 14px; }
+.left #clock, .right #clock { margin: 8.75px 0 0 0; }
+.left #custom-weather, .right #custom-weather { margin: 1.5px 0; padding: 8px 0; min-height: 14px; min-width: 14px; margin-right: 4px; }
+
+.left #custom-screenrecording-indicator, .right #custom-screenrecording-indicator,
+.left #custom-idle-indicator, .right #custom-idle-indicator,
+.left #custom-notification-silencing-indicator, .right #custom-notification-silencing-indicator {
+  margin: 5px 0 0 0;
+  min-width: 0;
+  min-height: 14px;
+}
+
+.left #custom-voxtype, .right #custom-voxtype { margin: 7.5px 0 0 0; min-width: 0; min-height: 14px; }
+
+#custom-expand-icon.vertical,
+.left #custom-expand-icon.horizontal,
+.right #custom-expand-icon.horizontal {
+  opacity: 0;
+  font-size: 0;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.left #custom-expand-icon.vertical,
+.right #custom-expand-icon.vertical {
+  opacity: 1;
+  font-size: inherit;
+  min-width: 0;
+  min-height: 14px;
+  margin: 1.5px 0;
+  padding: 8px 0;
+}
+
+#clock.vertical,
+.left #clock.horizontal,
+.right #clock.horizontal {
+  opacity: 0;
+  font-size: 0;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.left #clock.vertical,
+.right #clock.vertical {
+  opacity: 1;
+  font-size: inherit;
+  min-width: 0;
+  min-height: 14px;
+  margin: 8.75px 0 0 0;
+}

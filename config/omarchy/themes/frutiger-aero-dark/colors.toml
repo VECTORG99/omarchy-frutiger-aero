@@ -1,0 +1,26 @@
+accent = "#35BCDE"
+cursor = "#C8F0F0"
+
+foreground = "#C8F0F0"
+background = "#0A1A2E"
+
+selection_foreground = "#0A1A2E"
+selection_background = "#35BCDE"
+
+color0  = "#0A1A2E"
+color1  = "#D45A50"
+color2  = "#3AB85A"
+color3  = "#D4A830"
+color4  = "#2A8FC4"
+color5  = "#35BCDE"
+color6  = "#4AC0C4"
+color7  = "#B8DCE0"
+
+color8  = "#1A3A55"
+color9  = "#E86A60"
+color10 = "#5EC85A"
+color11 = "#E8C040"
+color12 = "#3AA0D4"
+color13 = "#5AC0E0"
+color14 = "#5AC8CC"
+color15 = "#E0F4F8"

@@ -1,0 +1,13 @@
+# Wallpapers are too large; download separately
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+*.svg
+backgrounds/
+
+# OS
+.DS_Store
+Thumbs.db
