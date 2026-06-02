@@ -1,0 +1,5 @@
+@define-color background-color rgba(10, 26, 46, 0.88);
+@define-color border-color #C8F0F0;
+@define-color label #C8F0F0;
+@define-color image #C8F0F0;
+@define-color progress #35BCDE;

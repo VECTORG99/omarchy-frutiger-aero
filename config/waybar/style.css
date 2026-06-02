@@ -12,6 +12,35 @@
   letter-spacing: 0.3px;
 }
 
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes aurora-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes orb-pulse {
+  0% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 0 8px rgba(18, 153, 202, 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 0 22px rgba(18, 153, 202, 0.30),
+      0 0 44px rgba(18, 153, 202, 0.10);
+  }
+  100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 0 8px rgba(18, 153, 202, 0.15);
+  }
+}
+
+/* ==================== BAR BACKGROUND ==================== */
+
 window#waybar {
   background: transparent;
   border: none;
@@ -19,10 +48,20 @@ window#waybar {
 }
 
 window#waybar > box {
-  background: @background;
   margin: 4px 6px 0;
   border-radius: 16px;
   border-bottom: 1px solid rgba(18, 153, 202, 0.06);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.10) 0%,
+    rgba(90, 172, 160, 0.05) 20%,
+    rgba(18, 153, 202, 0.03) 40%,
+    rgba(120, 200, 200, 0.08) 60%,
+    rgba(18, 153, 202, 0.06) 80%,
+    rgba(90, 172, 160, 0.10) 100%
+  );
+  background-size: 400% 400%;
+  animation: aurora-shift 12s ease infinite;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
     inset 0 -1px 0 rgba(18, 153, 202, 0.06),
@@ -33,17 +72,20 @@ window#waybar > box {
 /* Shared glass shine */
 @define-color pill-shine rgba(255, 255, 255, 0.18);
 
-/* Omarchy start button - Vista style */
+/* ==================== OMANCHY START BUTTON ==================== */
+
 #custom-omarchy {
   padding: 0 16px 0 18px;
   margin: 4px 2px;
   border-radius: 14px;
   font-size: 17px;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 153, 202, 0.22) 0%,
-    rgba(18, 153, 202, 0.06) 100%
-  );
+  background:
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(18, 153, 202, 0.14) 40%,
+      rgba(18, 153, 202, 0.06) 100%
+    );
   box-shadow:
     inset 0 1px 0 @pill-shine,
     inset 0 -1px 0 rgba(18, 153, 202, 0.10),
@@ -51,18 +93,25 @@ window#waybar > box {
 }
 
 #custom-omarchy:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(18, 153, 202, 0.32) 0%,
-    rgba(18, 153, 202, 0.12) 100%
-  );
+  background:
+    radial-gradient(
+      ellipse at 30% 20%,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(18, 153, 202, 0.22) 40%,
+      rgba(18, 153, 202, 0.10) 100%
+    );
   box-shadow:
-    inset 0 1px 0 @pill-shine,
-    inset 0 -1px 0 rgba(18, 153, 202, 0.15),
-    0 0 14px rgba(18, 153, 202, 0.10);
+    inset 0 1px 0 rgba(255, 255, 255, 0.30),
+    0 0 20px rgba(18, 153, 202, 0.20),
+    0 0 40px rgba(18, 153, 202, 0.08);
 }
 
-/* Workspace pills */
+#custom-omarchy:active {
+  transition-duration: 0.05s;
+}
+
+/* ==================== WORKSPACES ==================== */
+
 #workspaces {
   margin: 4px 2px;
   padding: 0 8px;
@@ -94,9 +143,7 @@ window#waybar > box {
     rgba(53, 188, 222, 0.12) 100%
   );
   color: #35BCDE;
-  box-shadow:
-    inset 0 1px 0 @pill-shine,
-    0 0 12px rgba(18, 153, 202, 0.15);
+  animation: orb-pulse 3s ease-in-out infinite;
 }
 
 #workspaces button.empty {
@@ -107,7 +154,8 @@ window#waybar > box {
   background: rgba(18, 153, 202, 0.10);
 }
 
-/* Clock - more Vista/7 presence */
+/* ==================== CLOCK ==================== */
+
 #clock {
   margin: 4px 6px;
   padding: 0 18px;
@@ -123,8 +171,16 @@ window#waybar > box {
   letter-spacing: 0.5px;
 }
 
-/* Standard pill modules */
-#custom-weather {
+/* ==================== PILL MODULES ==================== */
+
+#custom-weather,
+#custom-update,
+#cpu,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#tray {
   margin: 4px 3px;
   padding: 0 14px;
   border-radius: 14px;
@@ -136,6 +192,39 @@ window#waybar > box {
   box-shadow: inset 0 1px 0 @pill-shine;
 }
 
+#custom-weather,
+#custom-update,
+#clock,
+#cpu,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#tray,
+#custom-omarchy,
+#workspaces {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#custom-weather:hover,
+#custom-update:hover,
+#cpu:hover,
+#battery:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#tray:hover,
+#clock:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.14) 0%,
+    rgba(90, 172, 160, 0.08) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 @pill-shine,
+    0 0 14px rgba(18, 153, 202, 0.12);
+}
+
 #custom-weather.unavailable {
   min-width: 0;
   margin: 0;
@@ -143,16 +232,7 @@ window#waybar > box {
 }
 
 #custom-update {
-  margin: 4px 3px;
-  padding: 0 12px;
-  border-radius: 14px;
   font-size: 12px;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 153, 202, 0.06) 0%,
-    rgba(90, 172, 160, 0.04) 100%
-  );
-  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #custom-update.has-update {
@@ -167,23 +247,14 @@ window#waybar > box {
 #cpu,
 #battery,
 #pulseaudio {
-  margin: 4px 3px;
-  padding: 0 14px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 153, 202, 0.06) 0%,
-    rgba(90, 172, 160, 0.04) 100%
-  );
-  box-shadow: inset 0 1px 0 @pill-shine;
   font-size: 13px;
 }
 
 #battery.warning {
   background: linear-gradient(
     135deg,
-    rgba(200, 168, 48, 0.12) 0%,
-    rgba(200, 168, 48, 0.04) 100%
+    rgba(200, 168, 48, 0.14) 0%,
+    rgba(200, 168, 48, 0.06) 100%
   );
   color: #C8A830;
 }
@@ -191,46 +262,10 @@ window#waybar > box {
 #battery.critical {
   background: linear-gradient(
     135deg,
-    rgba(200, 90, 80, 0.12) 0%,
-    rgba(200, 90, 80, 0.04) 100%
+    rgba(200, 90, 80, 0.14) 0%,
+    rgba(200, 90, 80, 0.06) 100%
   );
   color: #C85A50;
-}
-
-#network {
-  margin: 4px 3px;
-  padding: 0 12px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 153, 202, 0.06) 0%,
-    rgba(90, 172, 160, 0.04) 100%
-  );
-  box-shadow: inset 0 1px 0 @pill-shine;
-}
-
-#bluetooth {
-  margin: 4px 3px;
-  padding: 0 12px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 153, 202, 0.06) 0%,
-    rgba(90, 172, 160, 0.04) 100%
-  );
-  box-shadow: inset 0 1px 0 @pill-shine;
-}
-
-#tray {
-  margin: 4px 3px;
-  padding: 0 14px;
-  border-radius: 14px;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 153, 202, 0.06) 0%,
-    rgba(90, 172, 160, 0.04) 100%
-  );
-  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 tooltip {
