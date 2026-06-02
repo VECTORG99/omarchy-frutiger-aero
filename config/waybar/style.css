@@ -22,38 +22,57 @@ window#waybar > box {
   background: @background;
   margin: 4px 6px 0;
   border-radius: 16px;
-  border-bottom: 2px solid rgba(18, 153, 202, 0.18);
+  border-bottom: 1px solid rgba(18, 153, 202, 0.06);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 2px 12px rgba(0, 0, 0, 0.04);
+    inset 0 -1px 0 rgba(18, 153, 202, 0.06),
+    0 3px 16px rgba(18, 153, 202, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
-.modules-left {
-  margin-left: 6px;
-}
+/* Shared glass shine */
+@define-color pill-shine rgba(255, 255, 255, 0.18);
 
-.modules-right {
-  margin-right: 6px;
-}
-
+/* Omarchy start button - Vista style */
 #custom-omarchy {
   padding: 0 16px 0 18px;
   margin: 4px 2px;
   border-radius: 14px;
   font-size: 17px;
-  background: linear-gradient(rgba(18, 153, 202, 0.18), rgba(18, 153, 202, 0.08));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.22) 0%,
+    rgba(18, 153, 202, 0.06) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 @pill-shine,
+    inset 0 -1px 0 rgba(18, 153, 202, 0.10),
+    0 0 8px rgba(18, 153, 202, 0.05);
 }
 
 #custom-omarchy:hover {
-  background: linear-gradient(rgba(18, 153, 202, 0.28), rgba(18, 153, 202, 0.12));
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.32) 0%,
+    rgba(18, 153, 202, 0.12) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 @pill-shine,
+    inset 0 -1px 0 rgba(18, 153, 202, 0.15),
+    0 0 14px rgba(18, 153, 202, 0.10);
 }
 
+/* Workspace pills */
 #workspaces {
   margin: 4px 2px;
   padding: 0 8px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #workspaces button {
@@ -69,9 +88,15 @@ window#waybar > box {
 }
 
 #workspaces button.active {
-  background: linear-gradient(rgba(18, 153, 202, 0.20), rgba(18, 153, 202, 0.08));
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.30) 0%,
+    rgba(53, 188, 222, 0.12) 100%
+  );
   color: #35BCDE;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow:
+    inset 0 1px 0 @pill-shine,
+    0 0 12px rgba(18, 153, 202, 0.15);
 }
 
 #workspaces button.empty {
@@ -82,20 +107,33 @@ window#waybar > box {
   background: rgba(18, 153, 202, 0.10);
 }
 
+/* Clock - more Vista/7 presence */
 #clock {
   margin: 4px 6px;
   padding: 0 18px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  font-weight: 600;
-  font-size: 13px;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.08) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.5px;
 }
 
+/* Standard pill modules */
 #custom-weather {
   margin: 4px 3px;
   padding: 0 14px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #custom-weather.unavailable {
@@ -109,11 +147,20 @@ window#waybar > box {
   padding: 0 12px;
   border-radius: 14px;
   font-size: 12px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #custom-update.has-update {
-  background: rgba(78, 200, 90, 0.10);
+  background: linear-gradient(
+    135deg,
+    rgba(78, 200, 90, 0.12) 0%,
+    rgba(78, 200, 90, 0.04) 100%
+  );
   color: #4EC85A;
 }
 
@@ -123,17 +170,30 @@ window#waybar > box {
   margin: 4px 3px;
   padding: 0 14px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
   font-size: 13px;
 }
 
 #battery.warning {
-  background: rgba(200, 168, 48, 0.10);
+  background: linear-gradient(
+    135deg,
+    rgba(200, 168, 48, 0.12) 0%,
+    rgba(200, 168, 48, 0.04) 100%
+  );
   color: #C8A830;
 }
 
 #battery.critical {
-  background: rgba(200, 90, 80, 0.10);
+  background: linear-gradient(
+    135deg,
+    rgba(200, 90, 80, 0.12) 0%,
+    rgba(200, 90, 80, 0.04) 100%
+  );
   color: #C85A50;
 }
 
@@ -141,21 +201,36 @@ window#waybar > box {
   margin: 4px 3px;
   padding: 0 12px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #bluetooth {
   margin: 4px 3px;
   padding: 0 12px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #tray {
   margin: 4px 3px;
   padding: 0 14px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 tooltip {
@@ -177,17 +252,30 @@ tooltip label {
   padding: 0 10px;
   border-radius: 12px;
   font-size: 11px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #custom-screenrecording-indicator.active {
-  background: rgba(200, 90, 80, 0.15);
+  background: linear-gradient(
+    135deg,
+    rgba(200, 90, 80, 0.18) 0%,
+    rgba(200, 90, 80, 0.06) 100%
+  );
   color: #C85A50;
 }
 
 #custom-idle-indicator.active,
 #custom-notification-silencing-indicator.active {
-  background: rgba(200, 90, 80, 0.15);
+  background: linear-gradient(
+    135deg,
+    rgba(200, 90, 80, 0.18) 0%,
+    rgba(200, 90, 80, 0.06) 100%
+  );
   color: #C85A50;
 }
 
@@ -196,11 +284,20 @@ tooltip label {
   padding: 0 10px;
   border-radius: 12px;
   font-size: 12px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 #custom-voxtype.recording {
-  background: rgba(200, 90, 80, 0.15);
+  background: linear-gradient(
+    135deg,
+    rgba(200, 90, 80, 0.18) 0%,
+    rgba(200, 90, 80, 0.06) 100%
+  );
   color: #C85A50;
 }
 
@@ -209,7 +306,12 @@ tooltip label {
   padding: 0 10px;
   border-radius: 12px;
   font-size: 11px;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(
+    135deg,
+    rgba(18, 153, 202, 0.06) 0%,
+    rgba(90, 172, 160, 0.04) 100%
+  );
+  box-shadow: inset 0 1px 0 @pill-shine;
 }
 
 .hidden {
@@ -222,6 +324,7 @@ tooltip label {
   padding: 0;
 }
 
+/* Vertical mode overrides */
 .left .modules-left, .right .modules-left { margin: 8px 0 0 0; }
 .left .modules-right, .right .modules-right { margin: 0 0 8px 0; }
 
