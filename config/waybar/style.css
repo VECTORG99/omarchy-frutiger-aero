@@ -155,12 +155,18 @@ window#waybar > box {
 
 #mpris,
 #idle_inhibitor,
+#custom-uptime,
+#custom-caffeine,
+#custom-power-profile,
+#custom-pomodoro,
+#custom-playerctl-cover,
 #custom-weather,
 #custom-update,
 #cpu,
 #battery,
 #pulseaudio,
 #network,
+#custom-network-speed,
 #bluetooth,
 #tray {
   margin: 4px 3px;
@@ -204,12 +210,18 @@ window#waybar > box {
     0 0 24px rgba(78, 200, 90, 0.08);
 }
 
+#custom-uptime:hover,
+#custom-caffeine:hover,
+#custom-power-profile:hover,
+#custom-pomodoro:hover,
+#custom-playerctl-cover:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
 #battery:hover,
 #pulseaudio:hover,
 #network:hover,
+#custom-network-speed:hover,
 #bluetooth:hover,
 #tray:hover,
 #clock:hover,
@@ -219,12 +231,18 @@ window#waybar > box {
   transition: all 0.15s ease;
 }
 
+#custom-uptime:hover,
+#custom-caffeine:hover,
+#custom-power-profile:hover,
+#custom-pomodoro:hover,
+#custom-playerctl-cover:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
 #battery:hover,
 #pulseaudio:hover,
 #network:hover,
+#custom-network-speed:hover,
 #bluetooth:hover,
 #tray:hover,
 #clock:hover,
@@ -251,18 +269,83 @@ window#waybar > box {
     0 0 18px rgba(78, 200, 90, 0.30);
 }
 
-#mpris:hover,
-#custom-weather:hover,
-#custom-update:hover,
-#cpu:hover,
-#battery:hover,
-#pulseaudio:hover,
-#network:hover,
-#bluetooth:hover,
-#tray:hover,
-#clock:hover,
-#custom-omarchy:hover {
-  transition: all 0.15s ease;
+/* Caffeine states */
+#custom-caffeine.active {
+  background: linear-gradient(
+    135deg,
+    rgba(78, 200, 90, 0.18) 0%,
+    rgba(78, 200, 90, 0.06) 100%
+  );
+  color: #4EC85A;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.20),
+    0 0 12px rgba(78, 200, 90, 0.25);
+}
+
+#custom-caffeine.active:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(78, 200, 90, 0.24) 0%,
+    rgba(78, 200, 90, 0.10) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 18px rgba(78, 200, 90, 0.30);
+}
+
+/* Power profile states */
+#custom-power-profile.performance {
+  color: #4EC85A;
+}
+
+#custom-power-profile.power-saver {
+  color: #35BCDE;
+}
+
+/* Pomodoro states */
+#custom-pomodoro.running {
+  color: #E8C84A;
+}
+
+#custom-pomodoro.break {
+  color: #4EC85A;
+}
+
+#custom-pomodoro.stopped {
+  min-width: 0;
+  margin: 4px 0;
+  padding: 0;
+}
+
+/* Playerctl cover */
+#custom-playerctl-cover {
+  min-width: 24px;
+  padding: 0 8px;
+}
+
+#custom-playerctl-cover image {
+  border-radius: 4px;
+}
+
+#custom-playerctl-cover.playing,
+#custom-playerctl-cover.paused {
+  padding: 0 10px;
+}
+
+/* Network speed */
+#custom-network-speed {
+  font-size: 11.5px;
+  letter-spacing: -0.3px;
+}
+
+#custom-network-speed.disconnected {
+  color: #C85A50;
+}
+
+/* Uptime */
+#custom-uptime {
+  font-size: 11px;
+  color: rgba(26, 51, 68, 0.65);
 }
 
 #custom-weather.unavailable {
@@ -442,7 +525,12 @@ tooltip label {
 .left #battery, .right #battery,
 .left #pulseaudio, .right #pulseaudio,
 .left #custom-omarchy, .right #custom-omarchy,
-.left #custom-update, .right #custom-update {
+.left #custom-update, .right #custom-update,
+.left #custom-uptime, .right #custom-uptime,
+.left #custom-caffeine, .right #custom-caffeine,
+.left #custom-power-profile, .right #custom-power-profile,
+.left #custom-pomodoro, .right #custom-pomodoro,
+.left #custom-network-speed, .right #custom-network-speed {
   margin: 1.5px 0;
   padding: 8px 0;
   min-width: 0;

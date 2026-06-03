@@ -6,11 +6,12 @@
   "height": 36,
   "width": 0,
   "modules-left": ["custom/omarchy", "hyprland/workspaces"],
-  "modules-center": ["clock#horizontal", "clock#vertical", "mpris", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "idle_inhibitor", "custom/notification-silencing-indicator"],
+  "modules-center": ["clock#horizontal", "clock#vertical", "mpris", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "idle_inhibitor", "custom/notification-silencing-indicator", "custom/uptime", "custom/caffeine", "custom/power-profile", "custom/pomodoro", "custom/playerctl-cover"],
   "modules-right": [
     "group/tray-expander",
     "bluetooth",
     "network",
+    "custom/network-speed",
     "pulseaudio",
     "cpu",
     "battery"
@@ -62,14 +63,13 @@
     "on-click-right": "alacritty"
   },
   "clock#horizontal": {
-    "format": "{:L%A %H:%M}",
-    "format-alt": "{:L%d %B W%V %Y}",
+    "format": "{:L%A %d/%m %I:%M %p}",
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
   },
   "clock#vertical": {
-    "format": "{:%H\n  —\n%M}",
-    "format-alt": "{:L%d %B W%V %Y}",
+    "format": "{:%A\n%d/%m\n%I:%M\n%p}",
+    "format-alt": "{:L%A %d/%m %I:%M %p}",
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
   },
@@ -91,6 +91,7 @@
       "firefox": "",
       "chromium": ""
     },
+    "dynamic-order": ["position", "title", "artist"],
     "artist-len": 20,
     "album-len": 15,
     "title-len": 25,
@@ -100,6 +101,50 @@
     "on-click-middle": "playerctl previous",
     "on-click-right": "playerctl next",
     "ignored-players": ["firefox"]
+  },
+  "custom/uptime": {
+    "exec": "$HOME/.config/waybar/scripts/uptime.sh",
+    "return-type": "json",
+    "interval": 60,
+    "tooltip": false
+  },
+  "custom/caffeine": {
+    "exec": "$HOME/.config/waybar/scripts/caffeine.sh",
+    "return-type": "json",
+    "interval": 5,
+    "signal": 10,
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/caffeine.sh toggle"
+  },
+  "custom/power-profile": {
+    "exec": "$HOME/.config/waybar/scripts/power-profile.sh",
+    "return-type": "json",
+    "interval": 30,
+    "signal": 11,
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/power-profile.sh next"
+  },
+  "custom/pomodoro": {
+    "exec": "$HOME/.config/waybar/scripts/pomodoro.sh",
+    "return-type": "json",
+    "interval": 1,
+    "signal": 12,
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/pomodoro.sh start",
+    "on-click-right": "$HOME/.config/waybar/scripts/pomodoro.sh stop"
+  },
+  "custom/playerctl-cover": {
+    "exec": "$HOME/.config/waybar/scripts/playerctl-cover.sh",
+    "return-type": "json",
+    "interval": 10,
+    "signal": 13,
+    "tooltip": false
+  },
+  "custom/network-speed": {
+    "exec": "$HOME/.config/waybar/scripts/network-speed.sh",
+    "return-type": "json",
+    "interval": 2,
+    "tooltip": false
   },
   "custom/weather": {
     "exec": "$OMARCHY_PATH/default/waybar/weather.sh",
