@@ -7,19 +7,18 @@ case $1 in
     if [[ -f $FLAG ]]; then
       rm -f "$FLAG" "$PIDFILE"
       kill "$(cat "$PIDFILE" 2>/dev/null)" 2>/dev/null
-      echo '{"text": "", "class": "", "tooltip": "Caffeine desactivado"}'
+      pkill -RTMIN+10 waybar
     else
       touch "$FLAG"
       systemd-inhibit --what=sleep:idle --who=caffeine --why="Caffeine mode" sleep infinity &
       echo $! > "$PIDFILE"
-      echo '{"text": "󰅶", "class": "active", "tooltip": "Caffeine activado — no suspender"}'
-    fi
-    ;;
-  *)
-    if [[ -f $FLAG ]]; then
-      echo '{"text": "󰅶", "class": "active", "tooltip": "Caffeine activado — no suspender"}'
-    else
-      echo '{"text": "", "class": "", "tooltip": "Caffeine desactivado"}'
+      pkill -RTMIN+10 waybar
     fi
     ;;
 esac
+
+if [[ -f $FLAG ]]; then
+  echo '{"text": "󰅶", "class": "active", "tooltip": "Caffeine — no suspender"}'
+else
+  echo '{"text": "󰛊", "class": "", "tooltip": "Caffeine desactivado — click para activar"}'
+fi

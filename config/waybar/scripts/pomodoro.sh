@@ -8,12 +8,13 @@ case $1 in
   start)
     echo "running 25 0" > "$STATE_FILE"
     notify-send " Pomodoro" "Trabajo 25 min — enfoque!" -u low
-    exec "$0"
+    pkill -RTMIN+12 waybar
+    exit 0
     ;;
   stop)
     echo "stopped 25 0" > "$STATE_FILE"
     notify-send " Pomodoro" "Timer cancelado" -u low
-    echo '{"text": "", "class": "stopped", "tooltip": "Pomodoro detenido"}'
+    pkill -RTMIN+12 waybar
     exit 0
     ;;
 esac
@@ -23,7 +24,8 @@ if [[ $state == "running" ]]; then
   if (( total_seconds <= 0 )); then
     notify-send " Pomodoro" "Tiempo! Tomate un descanso" -u critical
     echo "break 5 0" > "$STATE_FILE"
-    exec "$0"
+    pkill -RTMIN+12 waybar
+    exit 0
   fi
 
   display_min=$(( total_seconds / 60 ))
@@ -41,7 +43,8 @@ elif [[ $state == "break" ]]; then
   if (( total_seconds <= 0 )); then
     notify-send " Pomodoro" "Descanso terminado! A trabajar" -u critical
     echo "stopped 25 0" > "$STATE_FILE"
-    exec "$0"
+    pkill -RTMIN+12 waybar
+    exit 0
   fi
 
   display_min=$(( total_seconds / 60 ))

@@ -282,6 +282,10 @@ window#waybar > box {
     0 0 12px rgba(78, 200, 90, 0.25);
 }
 
+#custom-caffeine:not(.active) {
+  color: rgba(26, 51, 68, 0.45);
+}
+
 #custom-caffeine.active:hover {
   background: linear-gradient(
     135deg,
@@ -317,19 +321,19 @@ window#waybar > box {
   padding: 0;
 }
 
-/* Playerctl cover */
-#custom-playerctl-cover {
-  min-width: 24px;
-  padding: 0 8px;
+/* Player indicator */
+#custom-playerctl-cover.playing {
+  color: #35BCDE;
 }
 
-#custom-playerctl-cover image {
-  border-radius: 4px;
-}
-
-#custom-playerctl-cover.playing,
 #custom-playerctl-cover.paused {
-  padding: 0 10px;
+  opacity: 0.6;
+}
+
+#custom-playerctl-cover.stopped {
+  min-width: 0;
+  margin: 4px 0;
+  padding: 0;
 }
 
 /* Network speed */

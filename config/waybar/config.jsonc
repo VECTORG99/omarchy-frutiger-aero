@@ -92,10 +92,11 @@
       "chromium": ""
     },
     "dynamic-order": ["position", "title", "artist"],
+    "dynamic-importance-order": ["position", "title", "artist", "album"],
     "artist-len": 20,
     "album-len": 15,
     "title-len": 25,
-    "dynamic-len": 40,
+    "dynamic-len": 50,
     "ellipsis": "…",
     "on-click": "playerctl play-pause",
     "on-click-middle": "playerctl previous",
