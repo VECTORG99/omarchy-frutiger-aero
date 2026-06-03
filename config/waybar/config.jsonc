@@ -6,7 +6,7 @@
   "height": 36,
   "width": 0,
   "modules-left": ["custom/omarchy", "hyprland/workspaces"],
-  "modules-center": ["clock#horizontal", "clock#vertical", "mpris", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "idle_inhibitor", "custom/notification-silencing-indicator", "custom/uptime", "custom/caffeine", "custom/power-profile", "custom/pomodoro", "custom/playerctl-cover"],
+  "modules-center": ["custom/clock#horizontal", "custom/clock#vertical", "mpris", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "idle_inhibitor", "custom/notification-silencing-indicator", "custom/uptime", "custom/power-profile", "custom/playerctl-cover"],
   "modules-right": [
     "group/tray-expander",
     "bluetooth",
@@ -62,18 +62,22 @@
     "on-click": "omarchy-launch-or-focus-tui btop",
     "on-click-right": "alacritty"
   },
-  "clock#horizontal": {
-    "format": "{:L%A %d/%m %I:%M %p}",
+  "custom/clock#horizontal": {
+    "exec": "$HOME/.config/waybar/scripts/clock.sh horizontal",
+    "return-type": "json",
+    "interval": 30,
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
   },
-  "clock#vertical": {
-    "format": "{:%A\n%d/%m\n%I:%M\n%p}",
-    "format-alt": "{:L%A %d/%m %I:%M %p}",
+  "custom/clock#vertical": {
+    "exec": "$HOME/.config/waybar/scripts/clock.sh vertical",
+    "return-type": "json",
+    "interval": 30,
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
   },
   "mpris": {
+    "interval": 1,
     "format": "{player_icon} {dynamic}",
     "format-paused": "{status_icon} {dynamic}",
     "format-stopped": "",
@@ -109,14 +113,6 @@
     "interval": 60,
     "tooltip": false
   },
-  "custom/caffeine": {
-    "exec": "$HOME/.config/waybar/scripts/caffeine.sh",
-    "return-type": "json",
-    "interval": 5,
-    "signal": 10,
-    "tooltip": false,
-    "on-click": "$HOME/.config/waybar/scripts/caffeine.sh toggle"
-  },
   "custom/power-profile": {
     "exec": "$HOME/.config/waybar/scripts/power-profile.sh",
     "return-type": "json",
@@ -124,15 +120,6 @@
     "signal": 11,
     "tooltip": false,
     "on-click": "$HOME/.config/waybar/scripts/power-profile.sh next"
-  },
-  "custom/pomodoro": {
-    "exec": "$HOME/.config/waybar/scripts/pomodoro.sh",
-    "return-type": "json",
-    "interval": 1,
-    "signal": 12,
-    "tooltip": false,
-    "on-click": "$HOME/.config/waybar/scripts/pomodoro.sh start",
-    "on-click-right": "$HOME/.config/waybar/scripts/pomodoro.sh stop"
   },
   "custom/playerctl-cover": {
     "exec": "$HOME/.config/waybar/scripts/playerctl-cover.sh",

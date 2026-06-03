@@ -136,7 +136,7 @@ window#waybar > box {
 
 /* ==================== CLOCK ==================== */
 
-#clock {
+#custom-clock {
   margin: 4px 6px;
   padding: 0 18px;
   border-radius: 14px;
@@ -156,9 +156,8 @@ window#waybar > box {
 #mpris,
 #idle_inhibitor,
 #custom-uptime,
-#custom-caffeine,
+#custom-clock,
 #custom-power-profile,
-#custom-pomodoro,
 #custom-playerctl-cover,
 #custom-weather,
 #custom-update,
@@ -211,9 +210,7 @@ window#waybar > box {
 }
 
 #custom-uptime:hover,
-#custom-caffeine:hover,
 #custom-power-profile:hover,
-#custom-pomodoro:hover,
 #custom-playerctl-cover:hover,
 #custom-weather:hover,
 #custom-update:hover,
@@ -224,8 +221,26 @@ window#waybar > box {
 #custom-network-speed:hover,
 #bluetooth:hover,
 #tray:hover,
-#clock:hover,
+#custom-clock:hover,
 #custom-omarchy:hover,
+#mpris:hover,
+#idle_inhibitor:hover {
+  transition: all 0.15s ease;
+}
+
+#custom-uptime:hover,
+#custom-power-profile:hover,
+#custom-playerctl-cover:hover,
+#custom-weather:hover,
+#custom-update:hover,
+#cpu:hover,
+#battery:hover,
+#pulseaudio:hover,
+#network:hover,
+#custom-network-speed:hover,
+#bluetooth:hover,
+#tray:hover,
+#custom-clock:hover,
 #mpris:hover,
 #idle_inhibitor:hover {
   transition: all 0.15s ease;
@@ -245,7 +260,7 @@ window#waybar > box {
 #custom-network-speed:hover,
 #bluetooth:hover,
 #tray:hover,
-#clock:hover,
+#custom-clock:hover,
 #mpris:hover,
 #idle_inhibitor:hover {
   background: linear-gradient(
@@ -269,34 +284,6 @@ window#waybar > box {
     0 0 18px rgba(78, 200, 90, 0.30);
 }
 
-/* Caffeine states */
-#custom-caffeine.active {
-  background: linear-gradient(
-    135deg,
-    rgba(78, 200, 90, 0.18) 0%,
-    rgba(78, 200, 90, 0.06) 100%
-  );
-  color: #4EC85A;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.20),
-    0 0 12px rgba(78, 200, 90, 0.25);
-}
-
-#custom-caffeine:not(.active) {
-  color: rgba(26, 51, 68, 0.45);
-}
-
-#custom-caffeine.active:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(78, 200, 90, 0.24) 0%,
-    rgba(78, 200, 90, 0.10) 100%
-  );
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.25),
-    0 0 18px rgba(78, 200, 90, 0.30);
-}
-
 /* Power profile states */
 #custom-power-profile.performance {
   color: #4EC85A;
@@ -304,21 +291,6 @@ window#waybar > box {
 
 #custom-power-profile.power-saver {
   color: #35BCDE;
-}
-
-/* Pomodoro states */
-#custom-pomodoro.running {
-  color: #E8C84A;
-}
-
-#custom-pomodoro.break {
-  color: #4EC85A;
-}
-
-#custom-pomodoro.stopped {
-  min-width: 0;
-  margin: 4px 0;
-  padding: 0;
 }
 
 /* Player indicator */
@@ -531,9 +503,7 @@ tooltip label {
 .left #custom-omarchy, .right #custom-omarchy,
 .left #custom-update, .right #custom-update,
 .left #custom-uptime, .right #custom-uptime,
-.left #custom-caffeine, .right #custom-caffeine,
 .left #custom-power-profile, .right #custom-power-profile,
-.left #custom-pomodoro, .right #custom-pomodoro,
 .left #custom-network-speed, .right #custom-network-speed {
   margin: 1.5px 0;
   padding: 8px 0;
@@ -546,7 +516,7 @@ tooltip label {
 .left #network, .right #network { margin: 1.5px 0; padding: 8px 0; min-height: 14px; }
 .left #custom-expand-icon, .right #custom-expand-icon { margin: 1.5px 0; padding: 8px 0; min-height: 14px; }
 .left #mpris, .right #mpris { margin: 1.5px 0; padding: 8px 0; min-height: 14px; min-width: 80px; }
-.left #clock, .right #clock { margin: 8.75px 0 0 0; }
+.left #custom-clock, .right #custom-clock { margin: 8.75px 0 0 0; }
 .left #custom-weather, .right #custom-weather { margin: 1.5px 0; padding: 8px 0; min-height: 14px; min-width: 14px; margin-right: 4px; }
 
 .left #custom-screenrecording-indicator, .right #custom-screenrecording-indicator,
@@ -579,9 +549,9 @@ tooltip label {
   padding: 8px 0;
 }
 
-#clock.vertical,
-.left #clock.horizontal,
-.right #clock.horizontal {
+#custom-clock.vertical,
+.left #custom-clock.horizontal,
+.right #custom-clock.horizontal {
   opacity: 0;
   font-size: 0;
   min-width: 0;
@@ -590,8 +560,8 @@ tooltip label {
   padding: 0;
 }
 
-.left #clock.vertical,
-.right #clock.vertical {
+.left #custom-clock.vertical,
+.right #custom-clock.vertical {
   opacity: 1;
   font-size: inherit;
   min-width: 0;
