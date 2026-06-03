@@ -6,7 +6,7 @@
   "height": 36,
   "width": 0,
   "modules-left": ["custom/omarchy", "hyprland/workspaces"],
-  "modules-center": ["clock#horizontal", "clock#vertical", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator"],
+  "modules-center": ["clock#horizontal", "clock#vertical", "mpris", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "idle_inhibitor", "custom/notification-silencing-indicator"],
   "modules-right": [
     "group/tray-expander",
     "bluetooth",
@@ -72,6 +72,34 @@
     "format-alt": "{:L%d %B W%V %Y}",
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+  },
+  "mpris": {
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} {dynamic}",
+    "format-stopped": "",
+    "tooltip-format": "{player} ({status})\n{title}\n{artist}\n{album}",
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": ""
+    },
+    "player-icons": {
+      "default": "",
+      "spotify": "",
+      "mpv": "",
+      "vlc": "",
+      "firefox": "",
+      "chromium": ""
+    },
+    "artist-len": 20,
+    "album-len": 15,
+    "title-len": 25,
+    "dynamic-len": 40,
+    "ellipsis": "…",
+    "on-click": "playerctl play-pause",
+    "on-click-middle": "playerctl previous",
+    "on-click-right": "playerctl next",
+    "ignored-players": ["firefox"]
   },
   "custom/weather": {
     "exec": "$OMARCHY_PATH/default/waybar/weather.sh",
@@ -170,11 +198,15 @@
     "signal": 8,
     "return-type": "json"
   },
-  "custom/idle-indicator": {
-    "on-click": "omarchy-toggle-idle",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/idle.sh",
-    "signal": 9,
-    "return-type": "json"
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "tooltip-format-activated": "Inhibiendo idle — pantalla siempre encendida",
+    "tooltip-format-deactivated": "Idle normal — pantalla se apagará",
+    "on-click": "toggle"
   },
   "custom/notification-silencing-indicator": {
     "on-click": "omarchy-toggle-notification-silencing",

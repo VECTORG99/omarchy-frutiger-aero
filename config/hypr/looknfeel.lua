@@ -1,5 +1,9 @@
 -- Frutiger Aero look'n'feel: burbujas, glass, blur profundo
 
+-- Cursor theme
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
+
 hl.config({
   general = {
     gaps_in = 4,
