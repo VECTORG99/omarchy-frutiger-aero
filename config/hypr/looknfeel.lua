@@ -62,6 +62,9 @@ hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
 hl.curve("almostLinear", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1.0 } } })
 hl.curve("overshoot", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.1 } } })
 
+-- FA elastic bounce curve (Vista-style stronger overshoot)
+hl.curve("faBounce", { type = "bezier", points = { { 0.11, 0.9 }, { 0.1, 1.15 } } })
+
 -- Animaciones de ventanas
 hl.animation({ leaf = "global", enabled = true, speed = 10, bezier = "default" })
 hl.animation({ leaf = "border", enabled = true, speed = 5.39, bezier = "easeOutQuint" })
@@ -90,9 +93,6 @@ hl.config({
     column_width = 0.97,
   },
 })
-
--- FA elastic bounce curve (Vista-style stronger overshoot)
-hl.curve("faBounce", { type = "bezier", points = { { 0.11, 0.9 }, { 0.1, 1.15 } } })
 
 -- Capa de notificaciones con blur
 hl.layer_rule({
