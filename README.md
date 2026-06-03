@@ -2,6 +2,8 @@
 
 A fully swappable **Frutiger Aero** theme set for [Omarchy](https://github.com/anomalyco/omarchy) on Hyprland.
 
+This theme is built on top of [Omarchy on CachyOS](https://github.com/roboff/omarchy-on-cachyos) by [Mr. Roboff](https://github.com/roboff) — my Omarchy system base. All Frutiger Aero customizations are layered on top of that foundation.
+
 Includes light and dark variants with glassmorphism, blurred translucent windows, Vista/7-style Waybar, Alacritty terminal glass, authentic FA wallpapers (Asadal + Perfect Hue), SDDM Frutiger Aero greeter, Vista startup chime, matching cursor/icon themes, and Opencode TUI themes.
 
 ## Preview
