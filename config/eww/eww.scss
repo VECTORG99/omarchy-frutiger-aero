@@ -1,0 +1,227 @@
+/* Frutiger Aero - Weather Widget */
+
+* {
+  all: unset;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 13px;
+}
+
+.weather-container {
+  background: rgba(10, 26, 46, 0.55);
+  border: 1px solid rgba(18, 153, 202, 0.20);
+  border-radius: 24px;
+  padding: 18px 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 24px rgba(18, 153, 202, 0.08),
+    0 4px 32px rgba(18, 153, 202, 0.12),
+    0 8px 48px rgba(10, 26, 46, 0.30);
+}
+
+.weather-header {
+  margin-bottom: 8px;
+  padding: 0 2px;
+}
+
+.loc-icon {
+  font-size: 13px;
+  margin-right: 5px;
+  color: #1299CA;
+}
+
+.loc-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #C8F0F0;
+}
+
+.header-sub {
+  font-size: 11px;
+  color: rgba(200, 240, 240, 0.5);
+  margin-top: 1px;
+  margin-left: 18px;
+}
+
+.weather-actions button {
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  color: rgba(200, 240, 240, 0.4);
+}
+
+.weather-actions button:hover {
+  background: rgba(18, 153, 202, 0.15);
+  color: #1299CA;
+}
+
+.bubble-layer {
+  margin: 4px 0;
+  min-height: 12px;
+}
+
+.bubble {
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.b1 {
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.30) 0%, transparent 70%);
+  min-width: 32px;
+  min-height: 32px;
+  animation: float-up 4s ease-in-out infinite;
+}
+
+.b2 {
+  background: radial-gradient(circle, rgba(53, 188, 222, 0.25) 0%, transparent 70%);
+  min-width: 22px;
+  min-height: 22px;
+  animation: float-up 3.5s ease-in-out infinite 0.5s;
+}
+
+.b3 {
+  background: radial-gradient(circle, rgba(78, 200, 90, 0.20) 0%, transparent 70%);
+  min-width: 18px;
+  min-height: 18px;
+  animation: float-up 4.5s ease-in-out infinite 1s;
+}
+
+@keyframes float-up {
+  0% { opacity: 0.3; margin-top: 0; }
+  50% { opacity: 0.6; margin-top: -3px; }
+  100% { opacity: 0.3; margin-top: 0; }
+}
+
+.weather-current {
+  margin: 6px 0;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.weather-icon-wrap {
+  margin: 2px 0;
+  padding: 6px;
+  background: rgba(18, 153, 202, 0.04);
+  border-radius: 16px;
+  border: 1px solid rgba(200, 240, 240, 0.04);
+}
+
+.weather-temp {
+  font-size: 36px;
+  font-weight: 700;
+  color: #C8F0F0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hi-lo-row {
+  margin-top: 2px;
+  padding: 0 10px;
+}
+
+.hi-lo-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(200, 240, 240, 0.6);
+}
+
+.feels-text {
+  font-size: 11px;
+  color: rgba(200, 240, 240, 0.4);
+  margin-left: 14px;
+}
+
+.weather-details {
+  margin: 8px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.detail-item {
+  padding: 6px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(200, 240, 240, 0.02);
+  min-width: 44px;
+}
+
+.detail-item:hover {
+  background: rgba(18, 153, 202, 0.05);
+  border-color: rgba(18, 153, 202, 0.06);
+}
+
+.detail-icon {
+  font-size: 13px;
+  color: #1299CA;
+  margin-bottom: 1px;
+}
+
+.detail-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #C8F0F0;
+}
+
+.detail-label {
+  font-size: 8px;
+  color: rgba(200, 240, 240, 0.35);
+  margin-top: 1px;
+}
+
+.weather-forecast {
+  margin: 6px 0;
+}
+
+.forecast-day {
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(200, 240, 240, 0.03);
+  min-width: 55px;
+}
+
+.forecast-day:hover {
+  background: rgba(18, 153, 202, 0.06);
+  border-color: rgba(18, 153, 202, 0.10);
+}
+
+.fc-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(200, 240, 240, 0.6);
+  margin-top: 3px;
+}
+
+.fc-temp {
+  font-size: 14px;
+  font-weight: 700;
+  color: #C8F0F0;
+  margin-top: 2px;
+}
+
+.fc-min {
+  font-size: 10px;
+  color: rgba(200, 240, 240, 0.35);
+}
+
+.footer-row {
+  margin-top: 4px;
+  padding: 0 2px;
+}
+
+.updated-text {
+  font-size: 9px;
+  color: rgba(200, 240, 240, 0.25);
+}
+
+.glass-shine {
+  min-height: 1px;
+  margin-top: 6px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.05) 70%,
+    transparent 100%
+  );
+}
