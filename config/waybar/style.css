@@ -156,9 +156,8 @@ window#waybar > box {
 #mpris,
 #idle_inhibitor,
 #custom-uptime,
-#custom-clock,
 #custom-power-profile,
-#custom-playerctl-cover,
+#custom-audio-eq,
 #custom-weather,
 #custom-update,
 #cpu,
@@ -211,7 +210,7 @@ window#waybar > box {
 
 #custom-uptime:hover,
 #custom-power-profile:hover,
-#custom-playerctl-cover:hover,
+#custom-audio-eq:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
@@ -230,7 +229,7 @@ window#waybar > box {
 
 #custom-uptime:hover,
 #custom-power-profile:hover,
-#custom-playerctl-cover:hover,
+#custom-audio-eq:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
@@ -247,10 +246,8 @@ window#waybar > box {
 }
 
 #custom-uptime:hover,
-#custom-caffeine:hover,
 #custom-power-profile:hover,
-#custom-pomodoro:hover,
-#custom-playerctl-cover:hover,
+#custom-audio-eq:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
@@ -294,15 +291,16 @@ window#waybar > box {
 }
 
 /* Player indicator */
-#custom-playerctl-cover.playing {
+/* Audio visualizer */
+#custom-audio-eq.playing {
   color: #35BCDE;
+  font-size: 13px;
+  letter-spacing: 1px;
+  min-width: 30px;
 }
 
-#custom-playerctl-cover.paused {
-  opacity: 0.6;
-}
-
-#custom-playerctl-cover.stopped {
+#custom-audio-eq.idle,
+#custom-audio-eq.muted {
   min-width: 0;
   margin: 4px 0;
   padding: 0;
@@ -504,7 +502,8 @@ tooltip label {
 .left #custom-update, .right #custom-update,
 .left #custom-uptime, .right #custom-uptime,
 .left #custom-power-profile, .right #custom-power-profile,
-.left #custom-network-speed, .right #custom-network-speed {
+.left #custom-network-speed, .right #custom-network-speed,
+.left #custom-audio-eq, .right #custom-audio-eq {
   margin: 1.5px 0;
   padding: 8px 0;
   min-width: 0;
