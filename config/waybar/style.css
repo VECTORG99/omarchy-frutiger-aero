@@ -42,7 +42,18 @@ window#waybar {
 }
 
 window#waybar > box {
-  background: @background;
+  background-color: @background;
+  background-image:
+    radial-gradient(circle at 5% 60%, rgba(138, 43, 226, 0.12) 0%, transparent 14px),
+    radial-gradient(circle at 15% 30%, rgba(53, 188, 222, 0.10) 0%, transparent 9px),
+    radial-gradient(circle at 25% 70%, rgba(138, 43, 226, 0.08) 0%, transparent 18px),
+    radial-gradient(circle at 40% 40%, rgba(78, 200, 90, 0.08) 0%, transparent 12px),
+    radial-gradient(circle at 52% 65%, rgba(100, 120, 220, 0.06) 0%, transparent 8px),
+    radial-gradient(circle at 62% 25%, rgba(53, 188, 222, 0.10) 0%, transparent 16px),
+    radial-gradient(circle at 75% 55%, rgba(138, 43, 226, 0.06) 0%, transparent 10px),
+    radial-gradient(circle at 85% 35%, rgba(78, 200, 90, 0.07) 0%, transparent 13px),
+    radial-gradient(circle at 93% 70%, rgba(138, 43, 226, 0.05) 0%, transparent 8px),
+    radial-gradient(circle at 98% 40%, rgba(53, 188, 222, 0.08) 0%, transparent 11px);
   margin: 4px 6px 0;
   border-radius: 16px;
   border-bottom: 1px solid rgba(18, 153, 202, 0.06);
