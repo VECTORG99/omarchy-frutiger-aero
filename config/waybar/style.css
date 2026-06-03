@@ -294,20 +294,15 @@ window#waybar > box {
 /* Audio visualizer */
 #custom-audio-eq.playing {
   color: #35BCDE;
-  font-size: 13px;
-  letter-spacing: 1px;
+  font-size: 14px;
+  letter-spacing: 2px;
   min-width: 30px;
+  text-shadow: 0 0 6px rgba(53, 188, 222, 0.40);
 }
 
 #custom-audio-eq.idle {
   color: rgba(26, 51, 68, 0.35);
   font-size: 11px;
-}
-
-#custom-audio-eq.muted {
-  min-width: 0;
-  margin: 4px 0;
-  padding: 0;
 }
 
 /* Network speed */

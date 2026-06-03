@@ -10,9 +10,10 @@ if [[ $muted == "true" ]]; then
   exit 0
 fi
 
-inputs=$(pactl list sink-inputs 2>/dev/null | grep -c "State: RUNNING")
+# PipeWire/PulseAudio: count active non-corked streams
+active=$(pactl list sink-inputs 2>/dev/null | grep -c "Corked: no")
 
-if (( inputs == 0 )); then
+if (( active == 0 )); then
   echo "{\"text\": \"▂▄▆█\", \"class\": \"idle\", \"tooltip\": \"Volumen: ${vol}% — sin reproducción\"}"
   exit 0
 fi
