@@ -1,7 +1,7 @@
 @import "../omarchy/current/theme/waybar.css";
 
 * {
-  color: #0A1A2E;
+  color: @foreground;
   border: none;
   border-radius: 0;
   min-height: 0;
@@ -36,7 +36,7 @@
 /* ==================== BAR BACKGROUND ==================== */
 
 window#waybar {
-  background: rgba(90, 172, 160, 0.40);
+  background: @background;
   border: none;
   box-shadow: none;
 }
@@ -50,7 +50,7 @@ window#waybar > box {
                 rgba(100, 120, 220, 0.22) 75%,
                 rgba(138, 43, 226, 0.28) 100%
               ),
-              rgba(90, 172, 160, 0.40);
+              @background;
   margin: 4px 6px 0;
   border-radius: 16px;
   box-shadow:
