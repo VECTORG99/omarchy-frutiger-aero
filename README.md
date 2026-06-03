@@ -6,6 +6,8 @@ This theme is built on top of [Omarchy on CachyOS](https://github.com/roboff/oma
 
 Includes light and dark variants with glassmorphism, blurred translucent windows, Vista/7-style Waybar, Alacritty terminal glass, authentic FA wallpapers (Asadal + Perfect Hue), SDDM Frutiger Aero greeter, Vista startup chime, matching cursor/icon themes, and Opencode TUI themes.
 
+Both themes are fully swappable via `omarchy theme set` — includes preview images for the theme switcher UI. One-command install with `install.sh`.
+
 ## Preview
 
 | Light (`frutiger-aero`) | Dark (`frutiger-aero-dark`) |
@@ -184,16 +186,28 @@ config/
     └── current/theme/           # Active generated theme
 scripts/
 └── analyze-screenshot.sh    # ImageMagick + Tesseract color/text analyzer
+
+install.sh                   # One-command installer
 ```
 
 ## Installation
 
+### Quick install (recommended)
+
 ```bash
-# Clone into omarchy themes
+git clone https://github.com/VECTORG99/omarchy-frutiger-aero.git
+cd omarchy-frutiger-aero
+./install.sh
+```
+
+### Manual install
+
+```bash
+# Clone
 git clone https://github.com/VECTORG99/omarchy-frutiger-aero.git
 cd omarchy-frutiger-aero
 
-cp -r config/omarchy/themes/frutiger-aero* ~/.config/omarchy/themes/
+# Global configs
 cp config/waybar/*.css ~/.config/waybar/
 cp config/waybar/*.jsonc ~/.config/waybar/
 cp -r config/waybar/scripts ~/.config/waybar/
@@ -206,17 +220,16 @@ cp config/gtk/* ~/.config/gtk-3.0/
 cp config/fontconfig/* ~/.config/fontconfig/
 cp config/fastfetch/* ~/.config/fastfetch/
 
+# Theme files (swappable via omarchy theme set)
+cp -r config/omarchy/themes/frutiger-aero* ~/.config/omarchy/themes/
+
 # SDDM (requires sudo)
 sudo cp config/sddm/Main.qml /usr/share/sddm/themes/omarchy/
 
-# Set theme
+# Apply
 omarchy theme set "Frutiger Aero"
-
-# Reload
 hyprctl reload
 pkill waybar && waybar
-
-# SDDM refresh (requires sudo)
 sudo omarchy-refresh-sddm
 ```
 
