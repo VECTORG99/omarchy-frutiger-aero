@@ -1,0 +1,21 @@
+#!/bin/bash
+# Switches Opencode TUI theme based on light/dark desktop theme
+set -euo pipefail
+
+TUI_FILE="$HOME/.config/opencode/tui.json"
+
+if [ ! -f "$TUI_FILE" ]; then
+  exit 0
+fi
+
+if [ -f "$HOME/.config/omarchy/current/theme/light.mode" ]; then
+  NEW_THEME="frutiger-aero-light"
+else
+  NEW_THEME="frutiger-aero"
+fi
+
+CURRENT_THEME=$(grep '"theme"' "$TUI_FILE" 2>/dev/null | sed 's/.*"theme": "\(.*\)".*/\1/' || echo "")
+
+if [ "$CURRENT_THEME" != "$NEW_THEME" ]; then
+  sed -i "s/\"theme\": \".*\"/\"theme\": \"$NEW_THEME\"/" "$TUI_FILE"
+fi
