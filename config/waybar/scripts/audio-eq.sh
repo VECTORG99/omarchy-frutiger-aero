@@ -1,24 +1,22 @@
 #!/bin/bash
 export LC_ALL=en_US.utf8
 
-# Check if audio is playing
-inputs=$(pactl list sink-inputs 2>/dev/null | grep -c "State: RUNNING")
 muted=$(pamixer --get-mute 2>/dev/null)
+vol=$(pamixer --get-volume 2>/dev/null)
+vol=${vol:-0}
 
 if [[ $muted == "true" ]]; then
   echo '{"text": "", "class": "muted", "tooltip": "Audio silenciado"}'
   exit 0
 fi
 
+inputs=$(pactl list sink-inputs 2>/dev/null | grep -c "State: RUNNING")
+
 if (( inputs == 0 )); then
-  echo '{"text": "", "class": "idle", "tooltip": "Sin reproducción de audio"}'
+  echo "{\"text\": \"▂▄▆█\", \"class\": \"idle\", \"tooltip\": \"Volumen: ${vol}% — sin reproducción\"}"
   exit 0
 fi
 
-vol=$(pamixer --get-volume 2>/dev/null)
-vol=${vol:-0}
-
-# Visualizer bars — animate with the current count
 count=$(( RANDOM % 5 + 3 ))
 chars=()
 for (( i = 0; i < count; i++ )); do
@@ -30,7 +28,6 @@ for (( i = 0; i < count; i++ )); do
     4) chars+=("▇") ;;
   esac
 done
-
 bars=$(IFS=; echo "${chars[*]}")
 
-echo "{\"text\": \"$bars\", \"class\": \"playing\", \"tooltip\": \"Volumen: ${vol}% — reproduciendo audio\"}"
+echo "{\"text\": \"$bars\", \"class\": \"playing\", \"tooltip\": \"Volumen: ${vol}% — reproduciendo\"}"

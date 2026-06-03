@@ -299,7 +299,11 @@ window#waybar > box {
   min-width: 30px;
 }
 
-#custom-audio-eq.idle,
+#custom-audio-eq.idle {
+  color: rgba(26, 51, 68, 0.35);
+  font-size: 11px;
+}
+
 #custom-audio-eq.muted {
   min-width: 0;
   margin: 4px 0;
