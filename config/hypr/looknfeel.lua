@@ -1,10 +1,8 @@
 -- Frutiger Aero look'n'feel: burbujas, glass, blur profundo
 
 -- Cursor theme
--- Comentado porque Bibata-Modern-Ice está en ~/.local/share/icons/
--- y CS2 no lo encuentra, rompiendo el input del mouse
--- hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
--- hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
 
 hl.config({
   general = {
