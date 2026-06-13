@@ -104,5 +104,50 @@
        (box :class "footer-row"
             :orientation "h"
             :space-evenly false
-            (label :text "Updated ${weather_data.updated_time}" :class "updated-text")
-            (box :class "glass-shine"))))
+             (label :text "Updated ${weather_data.updated_time}" :class "updated-text")
+             (box :class "glass-shine"))))
+
+;; Frutiger Aero Clock Widget
+
+(defwindow clock
+  :monitor 0
+  :geometry (geometry :x "3%" :y "6%" :width 290 :height 260 :anchor "top left")
+  :windowtype "notification"
+  :stacking "overlay"
+  :focusable false
+  :decorations false
+  :wm-ignore true
+  :reserve (struts :distance "0" :enabled false)
+  (clock-widget))
+
+(defpoll clock_data :interval "1s"
+  :initial "{}"
+  `bash ~/.config/eww/scripts/clock.sh`)
+
+(defwidget clock-widget []
+  (box :class "clock-container"
+       :orientation "v"
+       :space-evenly false
+
+       ;; Date
+       (label :text "${clock_data.weekday}, ${clock_data.month} ${clock_data.day}" :class "clock-date")
+
+       ;; Decorative bubbles
+       (box :class "bubble-layer"
+            :orientation "h"
+            :space-evenly true
+            (box :class "bubble b1")
+            (box :class "bubble b2")
+            (box :class "bubble b3"))
+
+       ;; Time
+       (box :class "clock-time-row"
+            :orientation "h"
+            :space-evenly false
+            (label :text "${clock_data.hour}" :class "clock-hour")
+            (label :text ":" :class "clock-colon")
+            (label :text "${clock_data.minute}" :class "clock-minute")
+            (label :text "${clock_data.second}" :class "clock-seconds"))
+
+       ;; Glass shine
+       (box :class "glass-shine")))
