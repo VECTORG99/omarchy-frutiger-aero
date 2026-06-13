@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <filter id="blur-heavy">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <filter id="blur-medium">
+      <feGaussianBlur stdDeviation="25"/>
+    </filter>
+    <filter id="blur-light">
+      <feGaussianBlur stdDeviation="15"/>
+    </filter>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.06)"/>
+      <stop offset="40%" stop-color="rgba(255,255,255,0.01)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.04)"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="80" cy="120" rx="180" ry="140" fill="rgba(18,153,202,0.18)" filter="url(#blur-heavy)">
+    <animate attributeName="cx" values="80;110;60;80" dur="14s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="120;90;150;120" dur="12s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <ellipse cx="300" cy="280" rx="160" ry="180" fill="rgba(138,43,226,0.14)" filter="url(#blur-heavy)">
+    <animate attributeName="cx" values="300;270;320;300" dur="16s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="280;310;250;280" dur="13s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <ellipse cx="200" cy="350" rx="200" ry="130" fill="rgba(53,188,222,0.16)" filter="url(#blur-heavy)">
+    <animate attributeName="cx" values="200;230;180;200" dur="18s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="350;330;370;350" dur="15s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <ellipse cx="150" cy="60" rx="120" ry="80" fill="rgba(78,200,90,0.10)" filter="url(#blur-medium)">
+    <animate attributeName="cx" values="150;130;170;150" dur="11s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="60;80;40;60" dur="10s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <ellipse cx="350" cy="420" rx="140" ry="100" fill="rgba(53,188,222,0.12)" filter="url(#blur-medium)">
+    <animate attributeName="cx" values="350;370;330;350" dur="15s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="420;400;440;420" dur="17s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <ellipse cx="220" cy="200" rx="100" ry="90" fill="rgba(18,153,202,0.10)" filter="url(#blur-light)">
+    <animate attributeName="cx" values="220;200;240;220" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="200;220;180;200" dur="9s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <rect width="400" height="500" fill="url(#gloss)"/>
+</svg>
