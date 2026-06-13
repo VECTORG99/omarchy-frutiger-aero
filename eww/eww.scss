@@ -226,13 +226,13 @@
   );
 }
 
-/* Clock Widget */
+/* Clock Widget — Casio Digital Style */
 
 .clock-container {
   background: rgba(10, 22, 40, 0.90);
   border: 1px solid #1B3D5C;
-  border-radius: 26px;
-  padding: 22px 24px;
+  border-radius: 20px;
+  padding: 14px 16px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 0 24px rgba(18, 153, 202, 0.15),
@@ -240,37 +240,83 @@
     0 8px 44px rgba(0, 0, 0, 0.25);
 }
 
-.clock-date {
-  font-size: 14px;
-  font-weight: 500;
-  color: #7799AA;
+.casio-display {
+  font-family: monospace;
+  background: #0a1110;
+  border: 2px solid #1a3030;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow:
+    inset 0 0 20px rgba(50, 200, 180, 0.04),
+    inset 0 0 4px rgba(50, 200, 180, 0.08);
+}
+
+.casio-topbar {
   margin-bottom: 6px;
 }
 
-.clock-time-row {
-  margin: 8px 0;
-}
-
-.clock-hour,
-.clock-minute {
-  font-size: 52px;
+.casio-weekday {
+  font-size: 11px;
   font-weight: 700;
-  color: #C8F0F0;
-  text-shadow: 0 2px 12px rgba(18, 153, 202, 0.25);
+  color: #5a8880;
+  letter-spacing: 2px;
 }
 
-.clock-colon {
-  font-size: 42px;
+.casio-ampm {
+  font-size: 10px;
+  font-weight: 700;
+  color: #5a8880;
+  margin-right: 6px;
+}
+
+.casio-indicator {
+  font-size: 11px;
+  color: #3a6658;
+}
+
+.casio-time {
+  margin: 4px 0;
+}
+
+.casio-digit-lg {
+  font-size: 48px;
+  font-weight: 700;
+  color: #7ee0d6;
+  text-shadow: 0 0 10px rgba(100, 220, 200, 0.30);
+  letter-spacing: 2px;
+}
+
+.casio-colon {
+  font-size: 40px;
   font-weight: 400;
-  color: #557788;
-  margin: 0 2px;
-  text-shadow: 0 1px 6px rgba(18, 153, 202, 0.15);
+  color: #3a6658;
+  margin: 0 3px;
 }
 
-.clock-seconds {
-  font-size: 18px;
+.casio-digit-sm {
+  font-size: 14px;
   font-weight: 500;
-  color: #557788;
-  margin-left: 6px;
+  color: #4a7a6a;
   margin-top: 26px;
+  margin-left: 4px;
+  letter-spacing: 1px;
+}
+
+.casio-bottombar {
+  margin-top: 6px;
+}
+
+.casio-month {
+  font-size: 12px;
+  font-weight: 600;
+  color: #5a8880;
+  letter-spacing: 1px;
+}
+
+.casio-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7ee0d6;
+  margin-left: 4px;
+  letter-spacing: 1px;
 }

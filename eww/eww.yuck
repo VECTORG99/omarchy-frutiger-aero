@@ -111,7 +111,7 @@
 
 (defwindow clock
   :monitor 0
-  :geometry (geometry :x "3%" :y "6%" :width 290 :height 260 :anchor "top left")
+  :geometry (geometry :x "3%" :y "6%" :width 260 :height 210 :anchor "top left")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -129,25 +129,34 @@
        :orientation "v"
        :space-evenly false
 
-       ;; Date
-       (label :text "${clock_data.weekday}, ${clock_data.month} ${clock_data.day}" :class "clock-date")
-
-       ;; Decorative bubbles
-       (box :class "bubble-layer"
-            :orientation "h"
-            :space-evenly true
-            (box :class "bubble b1")
-            (box :class "bubble b2")
-            (box :class "bubble b3"))
-
-       ;; Time
-       (box :class "clock-time-row"
-            :orientation "h"
+       ;; Casio LCD display
+       (box :class "casio-display"
+            :orientation "v"
             :space-evenly false
-            (label :text "${clock_data.hour}" :class "clock-hour")
-            (label :text ":" :class "clock-colon")
-            (label :text "${clock_data.minute}" :class "clock-minute")
-            (label :text "${clock_data.second}" :class "clock-seconds"))
+
+            ;; Top bar: weekday + PM + alarm indicator
+            (box :class "casio-topbar"
+                 :orientation "h"
+                 :space-evenly false
+                 (label :text "${clock_data.weekday}" :class "casio-weekday")
+                 (box :hexpand true)
+                 (label :text "${clock_data.ampm}" :class "casio-ampm")
+                 (label :text "◷" :class "casio-indicator"))
+
+            ;; Time digits
+            (box :class "casio-time"
+                 :orientation "h"
+                 :space-evenly false
+                 (label :text "${clock_data.hour}" :class "casio-digit-lg")
+                 (label :text ":" :class "casio-colon")
+                 (label :text "${clock_data.minute}" :class "casio-digit-lg")
+                 (label :text "${clock_data.second}" :class "casio-digit-sm"))
+
+            ;; Bottom: date
+            (box :class "casio-bottombar"
+                 :orientation "h"
+                 :space-evenly false
+                 (label :text "${clock_data.month}-${clock_data.day}" :class "casio-date")))
 
        ;; Glass shine
        (box :class "glass-shine")))
