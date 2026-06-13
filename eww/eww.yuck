@@ -38,14 +38,6 @@
                  (button :onclick "eww close weather"
                          (label :text "✕" :class "act-icon"))))
 
-       ;; Decorative bubbles
-       (box :class "bubble-layer"
-            :orientation "h"
-            :space-evenly true
-            (box :class "bubble b1")
-            (box :class "bubble b2")
-            (box :class "bubble b3"))
-
        ;; Current weather
        (box :class "weather-current"
             :orientation "v"
@@ -165,6 +157,64 @@
 
        ;; Date
        (label :text "${clock_data.weekday}  ${clock_data.month} ${clock_data.day}" :class "clock-date")
+
+        ;; Glass shine
+       (box :class "glass-shine")))
+
+;; Widget Control Panel
+
+(defwindow widget-ctl
+  :monitor 0
+  :geometry (geometry :x "50%" :y "50%" :width 340 :height 180 :anchor "center")
+  :windowtype "notification"
+  :stacking "overlay"
+  :focusable false
+  :decorations false
+  :wm-ignore true
+  (widget-ctl-widget))
+
+(defpoll weather_status :interval "1s"
+  :initial "off"
+  `bash ~/.config/eww/scripts/widget-status.sh weather`)
+
+(defpoll clock_status :interval "1s"
+  :initial "off"
+  `bash ~/.config/eww/scripts/widget-status.sh clock`)
+
+(defwidget widget-ctl-widget []
+  (box :class "ctl-container"
+       :orientation "v"
+       :space-evenly false
+
+       ;; Title
+       (label :text "Widget Control" :class "ctl-title")
+       (label :text "SUPER+SHIFT+Q" :class "ctl-subtitle")
+
+       ;; Weather
+       (box :class "ctl-row"
+            :orientation "h"
+            :space-evenly false
+            (box :class "ctl-info" :orientation "v"
+                 (label :text "Weather" :class "ctl-label")
+                 (label :text "SUPER+SHIFT+T" :class "ctl-key"))
+            (box :hexpand true)
+            (box :class "ctl-status-box" :orientation "h"
+                 (label :text "${weather_status}" :class "ctl-status"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle weather"
+                    (label :text "TOGGLE" :class "ctl-btn")))
+
+       ;; Clock
+       (box :class "ctl-row"
+            :orientation "h"
+            :space-evenly false
+            (box :class "ctl-info" :orientation "v"
+                 (label :text "Clock" :class "ctl-label")
+                 (label :text "SUPER+SHIFT+K" :class "ctl-key"))
+            (box :hexpand true)
+            (box :class "ctl-status-box" :orientation "h"
+                 (label :text "${clock_status}" :class "ctl-status"))
+             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle clock"
+                     (label :text "TOGGLE" :class "ctl-btn")))
 
        ;; Glass shine
        (box :class "glass-shine")))
