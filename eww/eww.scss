@@ -226,97 +226,137 @@
   );
 }
 
-/* Clock Widget — Casio Digital Style */
+/* Clock Widget */
 
 .clock-container {
   background: rgba(10, 22, 40, 0.90);
   border: 1px solid #1B3D5C;
-  border-radius: 20px;
-  padding: 14px 16px;
+  border-radius: 24px;
+  padding: 12px 24px 16px 24px;
+  min-width: 460px;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 24px rgba(18, 153, 202, 0.15),
-    0 4px 32px rgba(10, 22, 40, 0.50),
-    0 8px 44px rgba(0, 0, 0, 0.25);
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 0 30px rgba(18,153,202,0.15),
+    0 4px 24px rgba(10,22,40,0.50),
+    0 8px 40px rgba(0,0,0,0.25);
 }
 
-.casio-display {
-  font-family: monospace;
-  background: #0a1110;
-  border: 2px solid #1a3030;
-  border-radius: 12px;
-  padding: 14px 16px;
-  box-shadow:
-    inset 0 0 20px rgba(50, 200, 180, 0.04),
-    inset 0 0 4px rgba(50, 200, 180, 0.08);
-}
-
-.casio-topbar {
+.clock-sep-top {
+  min-height: 1px;
+  border-radius: 1px;
   margin-bottom: 6px;
+  background: linear-gradient(90deg,
+    transparent 10%,
+    rgba(18,153,202,0.15) 30%,
+    rgba(18,153,202,0.25) 50%,
+    rgba(18,153,202,0.15) 70%,
+    transparent 90%);
 }
 
-.casio-weekday {
+.clock-top {
+  margin-bottom: 4px;
+  padding: 0 4px;
+}
+
+.clock-tz {
   font-size: 11px;
+  font-weight: 600;
+  color: #7799AA;
+  letter-spacing: 1px;
+  min-width: 48px;
+}
+
+.clock-ampm {
+  font-size: 24px;
   font-weight: 700;
-  color: #5a8880;
+  color: #35C8E0;
+  text-shadow: 0 0 12px rgba(18,153,202,0.40);
   letter-spacing: 2px;
+  min-width: 60px;
 }
 
-.casio-ampm {
-  font-size: 10px;
-  font-weight: 700;
-  color: #5a8880;
-  margin-right: 6px;
+.clock-accent {
+  min-height: 2px;
+  border-radius: 1px;
+  margin: 6px 0;
+  background: linear-gradient(90deg,
+    transparent 5%,
+    rgba(18,153,202,0.10) 15%,
+    rgba(80,200,160,0.35) 35%,
+    rgba(18,153,202,0.55) 50%,
+    rgba(80,200,160,0.35) 65%,
+    rgba(18,153,202,0.10) 85%,
+    transparent 95%);
 }
 
-.casio-indicator {
-  font-size: 11px;
-  color: #3a6658;
+.clock-panel {
+  padding: 10px 0;
+  margin: 8px 0;
+  border-radius: 16px;
+  background: rgba(18,153,202,0.06);
+  border: 1px solid rgba(200,240,240,0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    inset 0 0 30px rgba(18,153,202,0.04);
 }
 
-.casio-time {
+.clock-time-row {
   margin: 4px 0;
 }
 
-.casio-digit-lg {
-  font-size: 48px;
+.clock-digit {
+  font-size: 54px;
   font-weight: 700;
-  color: #7ee0d6;
-  text-shadow: 0 0 10px rgba(100, 220, 200, 0.30);
-  letter-spacing: 2px;
+  color: #C8F0F0;
+  text-shadow: 0 2px 12px rgba(18,153,202,0.30);
+  min-width: 80px;
 }
 
-.casio-colon {
-  font-size: 40px;
-  font-weight: 400;
-  color: #3a6658;
-  margin: 0 3px;
-}
-
-.casio-digit-sm {
-  font-size: 14px;
+.clock-colon {
+  font-size: 44px;
   font-weight: 500;
-  color: #4a7a6a;
-  margin-top: 26px;
+  color: #557788;
+  margin: 0 6px;
+  min-width: 24px;
+}
+
+.clock-sec-row {
+  margin-top: 2px;
+}
+
+.clock-sec {
+  font-size: 16px;
+  font-weight: 600;
+  color: #7799AA;
+}
+
+.clock-sec-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: #446666;
   margin-left: 4px;
-  letter-spacing: 1px;
+  margin-top: 2px;
 }
 
-.casio-bottombar {
-  margin-top: 6px;
+.clock-sep-bottom {
+  min-height: 1px;
+  border-radius: 1px;
+  margin-top: 8px;
+  background: linear-gradient(90deg,
+    transparent 10%,
+    rgba(80,200,160,0.12) 30%,
+    rgba(18,153,202,0.20) 50%,
+    rgba(80,200,160,0.12) 70%,
+    transparent 90%);
 }
 
-.casio-month {
+.clock-date {
   font-size: 12px;
   font-weight: 600;
-  color: #5a8880;
-  letter-spacing: 1px;
+  color: #88AABB;
+  min-width: 200px;
 }
 
-.casio-date {
-  font-size: 12px;
-  font-weight: 700;
-  color: #7ee0d6;
-  margin-left: 4px;
-  letter-spacing: 1px;
+.clock-date-row {
+  margin-top: 8px;
 }

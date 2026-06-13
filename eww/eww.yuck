@@ -111,7 +111,7 @@
 
 (defwindow clock
   :monitor 0
-  :geometry (geometry :x "3%" :y "6%" :width 260 :height 210 :anchor "top left")
+  :geometry (geometry :x "3%" :y "6%" :width 460 :height 240 :anchor "top left")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -129,34 +129,42 @@
        :orientation "v"
        :space-evenly false
 
-       ;; Casio LCD display
-       (box :class "casio-display"
+       ;; Top glossy separator
+       (box :class "clock-sep-top")
+
+       ;; Timezone + AM/PM
+       (box :class "clock-top"
+            :orientation "h"
+            :space-evenly false
+            (label :text "GMT${clock_data.tz}" :class "clock-tz")
+            (label :text "${clock_data.ampm}" :class "clock-ampm" :hexpand true :halign "end"))
+
+       ;; Glossy accent line
+       (box :class "clock-accent")
+
+       ;; Main time panel
+       (box :class "clock-panel"
             :orientation "v"
             :space-evenly false
-
-            ;; Top bar: weekday + PM + alarm indicator
-            (box :class "casio-topbar"
+            (box :class "clock-time-row"
                  :orientation "h"
                  :space-evenly false
-                 (label :text "${clock_data.weekday}" :class "casio-weekday")
-                 (box :hexpand true)
-                 (label :text "${clock_data.ampm}" :class "casio-ampm")
-                 (label :text "◷" :class "casio-indicator"))
-
-            ;; Time digits
-            (box :class "casio-time"
+                 :halign "center"
+                 (label :text "${clock_data.hour}" :class "clock-digit")
+                 (label :text ":" :class "clock-colon")
+                 (label :text "${clock_data.minute}" :class "clock-digit"))
+            (box :class "clock-sec-row"
                  :orientation "h"
                  :space-evenly false
-                 (label :text "${clock_data.hour}" :class "casio-digit-lg")
-                 (label :text ":" :class "casio-colon")
-                 (label :text "${clock_data.minute}" :class "casio-digit-lg")
-                 (label :text "${clock_data.second}" :class "casio-digit-sm"))
+                 :halign "center"
+                 (label :text "${clock_data.second}" :class "clock-sec")
+                 (label :text "SEC" :class "clock-sec-label")))
 
-            ;; Bottom: date
-            (box :class "casio-bottombar"
-                 :orientation "h"
-                 :space-evenly false
-                 (label :text "${clock_data.month}-${clock_data.day}" :class "casio-date")))
+       ;; Bottom glossy separator
+       (box :class "clock-sep-bottom")
+
+       ;; Date
+       (label :text "${clock_data.weekday}  ${clock_data.month} ${clock_data.day}" :class "clock-date")
 
        ;; Glass shine
        (box :class "glass-shine")))
