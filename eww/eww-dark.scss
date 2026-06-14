@@ -508,20 +508,19 @@
   font-size: 13px;
   font-weight: 500;
   color: #C8C0E8;
-  min-width: 36px;
-  min-height: 10px;
-  border-radius: 6px;
+  min-width: 34px;
+  min-height: 22px;
+  border-radius: 8px;
   padding: 0;
   background: linear-gradient(180deg, rgba(50, 25, 100, 0.08) 0%, rgba(100, 55, 160, 0.18) 100%);
   border: 1px solid rgba(140, 100, 200, 0.03);
 }
 
 .cal-dot {
-  font-size: 14px;
+  font-size: 8px;
   font-weight: 700;
   color: #35C8E0;
-  min-height: 2px;
-  text-shadow: 0 0 10px rgba(53, 200, 224, 0.80);
+  text-shadow: 0 0 6px rgba(53, 200, 224, 0.70);
 }
 
 .cal-cell {
