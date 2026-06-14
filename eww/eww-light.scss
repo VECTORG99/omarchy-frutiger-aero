@@ -546,10 +546,50 @@
 
 .eq-bar {
   min-width: 7px;
+  min-height: 4px;
   border-radius: 2px;
-  margin: 0 2px;
+}
+
+.eq-low {
   background: linear-gradient(180deg, #1299CA 0%, #0D8090 100%);
   box-shadow: 0 0 6px rgba(18,153,202,0.30);
+  animation: eq-low 0.7s ease-in-out infinite alternate;
+}
+
+.eq-mid {
+  background: linear-gradient(180deg, #30B070 0%, #1A8050 100%);
+  box-shadow: 0 0 5px rgba(48,176,112,0.25);
+  animation: eq-mid 0.5s ease-in-out infinite alternate;
+}
+
+.eq-high {
+  background: linear-gradient(180deg, #9060C0 0%, #6030A0 100%);
+  box-shadow: 0 0 5px rgba(144,96,192,0.25);
+  animation: eq-high 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes eq-low {
+  0% { min-height: 8px; opacity: 0.7; }
+  30% { min-height: 52px; opacity: 1.0; }
+  60% { min-height: 18px; opacity: 0.8; }
+  100% { min-height: 44px; opacity: 0.9; }
+}
+
+@keyframes eq-mid {
+  0% { min-height: 6px; opacity: 0.6; }
+  25% { min-height: 36px; opacity: 1.0; }
+  50% { min-height: 12px; opacity: 0.7; }
+  75% { min-height: 48px; opacity: 0.9; }
+  100% { min-height: 8px; opacity: 0.6; }
+}
+
+@keyframes eq-high {
+  0% { min-height: 4px; opacity: 0.5; }
+  20% { min-height: 28px; opacity: 1.0; }
+  40% { min-height: 6px; opacity: 0.6; }
+  60% { min-height: 40px; opacity: 0.9; }
+  80% { min-height: 2px; opacity: 0.4; }
+  100% { min-height: 32px; opacity: 0.8; }
 }
 
 .music-track-info {

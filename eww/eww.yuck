@@ -285,10 +285,6 @@
   :initial "{\"title\":\"---\",\"artist\":\"---\",\"status\":\"stopped\"}"
   `bash ~/.config/eww/scripts/music.sh`)
 
-(defpoll cava_data :interval "500ms"
-  :initial "{\"cava_00\":2,\"cava_01\":2,\"cava_02\":2,\"cava_03\":2,\"cava_04\":2,\"cava_05\":2,\"cava_06\":2,\"cava_07\":2,\"cava_08\":2,\"cava_09\":2,\"cava_10\":2,\"cava_11\":2}"
-  `python3 ~/.config/eww/scripts/cava-bridge.py`)
-
 (defwidget music-widget []
   (box :class "music-container"
        :orientation "v"
@@ -299,22 +295,22 @@
             :orientation "h"
             :space-evenly false
 
-            ;; EQ bars (CAVA)
+            ;; EQ bars (CSS animated)
             (box :class "music-eq"
                  :orientation "h"
                  :spacing 2
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_00}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_01}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_02}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_03}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_04}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_05}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_06}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_07}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_08}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_09}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_10}px")
-                 (box :class "eq-bar" :style "min-height:${cava_data.cava_11}px"))
+                 (box :class "eq-bar eq-low" :style "animation-delay:0ms")
+                 (box :class "eq-bar eq-low" :style "animation-delay:120ms")
+                 (box :class "eq-bar eq-low" :style "animation-delay:240ms")
+                 (box :class "eq-bar eq-mid" :style "animation-delay:60ms")
+                 (box :class "eq-bar eq-mid" :style "animation-delay:180ms")
+                 (box :class "eq-bar eq-mid" :style "animation-delay:300ms")
+                 (box :class "eq-bar eq-mid" :style "animation-delay:90ms")
+                 (box :class "eq-bar eq-high" :style "animation-delay:30ms")
+                 (box :class "eq-bar eq-high" :style "animation-delay:150ms")
+                 (box :class "eq-bar eq-high" :style "animation-delay:270ms")
+                 (box :class "eq-bar eq-high" :style "animation-delay:210ms")
+                 (box :class "eq-bar eq-high" :style "animation-delay:330ms"))
 
             ;; Track info
             (box :class "music-track-info"

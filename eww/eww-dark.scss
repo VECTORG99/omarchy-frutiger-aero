@@ -546,10 +546,59 @@
 
 .eq-bar {
   min-width: 7px;
+  min-height: 4px;
   border-radius: 2px;
-  margin: 0 2px;
+  animation: eq-none 0.5s ease-in-out infinite alternate;
+}
+
+.eq-low {
   background: linear-gradient(180deg, #35C8E0 0%, #1299CA 100%);
   box-shadow: 0 0 6px rgba(53,200,224,0.40);
+  animation-name: eq-low;
+  animation-duration: 0.7s;
+}
+
+.eq-mid {
+  background: linear-gradient(180deg, #53D0A0 0%, #20B880 100%);
+  box-shadow: 0 0 5px rgba(80,200,140,0.35);
+  animation-name: eq-mid;
+  animation-duration: 0.5s;
+}
+
+.eq-high {
+  background: linear-gradient(180deg, #C880E0 0%, #9050C0 100%);
+  box-shadow: 0 0 5px rgba(180,100,220,0.35);
+  animation-name: eq-high;
+  animation-duration: 0.4s;
+}
+
+@keyframes eq-low {
+  0% { min-height: 8px; opacity: 0.7; }
+  30% { min-height: 52px; opacity: 1.0; }
+  60% { min-height: 18px; opacity: 0.8; }
+  100% { min-height: 44px; opacity: 0.9; }
+}
+
+@keyframes eq-mid {
+  0% { min-height: 6px; opacity: 0.6; }
+  25% { min-height: 36px; opacity: 1.0; }
+  50% { min-height: 12px; opacity: 0.7; }
+  75% { min-height: 48px; opacity: 0.9; }
+  100% { min-height: 8px; opacity: 0.6; }
+}
+
+@keyframes eq-high {
+  0% { min-height: 4px; opacity: 0.5; }
+  20% { min-height: 28px; opacity: 1.0; }
+  40% { min-height: 6px; opacity: 0.6; }
+  60% { min-height: 40px; opacity: 0.9; }
+  80% { min-height: 2px; opacity: 0.4; }
+  100% { min-height: 32px; opacity: 0.8; }
+}
+
+@keyframes eq-none {
+  0% { min-height: 4px; }
+  100% { min-height: 30px; }
 }
 
 .music-track-info {
