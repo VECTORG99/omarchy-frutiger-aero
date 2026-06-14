@@ -101,9 +101,9 @@
 .weather-icon-wrap {
   margin: 3px 0;
   padding: 8px;
-  background: linear-gradient(180deg, rgba(180, 230, 240, 0.30) 0%, rgba(210, 180, 225, 0.25) 100%);
+  background: linear-gradient(180deg, rgba(180, 230, 240, 0.20) 0%, rgba(210, 180, 225, 0.16) 100%);
   border-radius: 18px;
-  border: 1px solid rgba(26, 51, 68, 0.04);
+  border: 1px solid rgba(26, 51, 68, 0.03);
 }
 
 .weather-temp {
@@ -139,14 +139,14 @@
 .detail-item {
   padding: 8px 10px;
   border-radius: 14px;
-  background: linear-gradient(180deg, rgba(180, 230, 240, 0.25) 0%, rgba(210, 180, 225, 0.22) 100%);
+  background: linear-gradient(180deg, rgba(180, 230, 240, 0.18) 0%, rgba(210, 180, 225, 0.15) 100%);
   border: 1px solid rgba(26, 51, 68, 0.03);
   min-width: 55px;
 }
 
 .detail-item:hover {
-  background: linear-gradient(180deg, rgba(160, 210, 225, 0.32) 0%, rgba(195, 160, 215, 0.28) 100%);
-  border-color: rgba(26, 51, 68, 0.06);
+  background: linear-gradient(180deg, rgba(160, 210, 225, 0.24) 0%, rgba(195, 160, 215, 0.20) 100%);
+  border-color: rgba(26, 51, 68, 0.05);
 }
 
 .detail-icon {
@@ -174,14 +174,14 @@
 .forecast-day {
   padding: 10px 14px;
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(180, 230, 240, 0.25) 0%, rgba(210, 180, 225, 0.22) 100%);
+  background: linear-gradient(180deg, rgba(180, 230, 240, 0.18) 0%, rgba(210, 180, 225, 0.15) 100%);
   border: 1px solid rgba(26, 51, 68, 0.03);
   min-width: 75px;
 }
 
 .forecast-day:hover {
-  background: linear-gradient(180deg, rgba(160, 210, 225, 0.32) 0%, rgba(195, 160, 215, 0.28) 100%);
-  border-color: rgba(26, 51, 68, 0.06);
+  background: linear-gradient(180deg, rgba(160, 210, 225, 0.24) 0%, rgba(195, 160, 215, 0.20) 100%);
+  border-color: rgba(26, 51, 68, 0.05);
 }
 
 .fc-label {
@@ -293,7 +293,7 @@
   padding: 10px 0;
   margin: 8px 0;
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(180, 230, 240, 0.22) 0%, rgba(210, 180, 225, 0.18) 100%);
+  background: linear-gradient(180deg, rgba(180, 230, 240, 0.15) 0%, rgba(210, 180, 225, 0.12) 100%);
   border: 1px solid rgba(26, 51, 68, 0.03);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
@@ -500,7 +500,7 @@
 }
 
 .cal-row {
-  margin: 2px 0;
+  margin: 0 0;
 }
 
 .cal-day {
@@ -511,15 +511,16 @@
   min-height: 22px;
   border-radius: 8px;
   padding: 3px 0 0 0;
-  background: linear-gradient(180deg, rgba(180, 150, 220, 0.35) 0%, rgba(140, 110, 190, 0.30) 100%);
-  border: 1px solid rgba(140, 100, 200, 0.08);
+  background: linear-gradient(180deg, rgba(180, 150, 220, 0.18) 0%, rgba(140, 110, 190, 0.15) 100%);
+  border: 1px solid rgba(140, 100, 200, 0.05);
 }
 
 .cal-dot {
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 700;
   color: #1299CA;
-  min-height: 6px;
+  min-height: 8px;
+  text-shadow: 0 0 6px rgba(18, 153, 202, 0.40);
 }
 
 .cal-cell {
