@@ -12,6 +12,7 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 
 | Light (`frutiger-aero`) | Dark (`frutiger-aero-dark`) |
 |------------------------|-----------------------------|
+| ![Light theme](preview-light.png) | ![Dark theme](preview-dark.png) |
 | Teal `#5AACA0` bg, `#1A3344` fg | Navy `#0A1A2E` bg, `#C8F0F0` fg |
 | Medium saturated teal + dark text | Deep navy + light teal text |
 
