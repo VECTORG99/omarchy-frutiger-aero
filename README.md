@@ -16,6 +16,12 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 | Teal `#5AACA0` bg, `#1A3344` fg | Navy `#0A1A2E` bg, `#C8F0F0` fg |
 | Medium saturated teal + dark text | Deep navy + light teal text |
 
+### Glass transparency
+
+| Light | Dark |
+|-------|------|
+| ![Glass light](preview-glass-light.png) | ![Glass dark](preview-glass-dark.png) |
+
 ### Light palette
 
 | Token | Color | Hex |
