@@ -464,7 +464,7 @@
   font-weight: 700;
   color: #1A4A30;
   margin: 0 12px;
-  min-width: 150px;
+  min-width: 250px;
 }
 
 .cal-nav {
@@ -516,7 +516,7 @@
   border: 1px solid rgba(140, 100, 200, 0.04);
 }
 
-/* Music Player Widget - Pioneer Car Stereo */
+/* Music Player Widget */
 
 .music-container {
   background: linear-gradient(180deg, rgba(200, 235, 245, 0.92) 0%, rgba(195, 235, 235, 0.90) 40%, rgba(190, 235, 215, 0.88) 100%);
@@ -534,67 +534,13 @@
   background: #d8e8e4;
   border: 2px solid rgba(26,51,68,0.12);
   border-radius: 8px;
-  padding: 10px 14px;
+  padding: 12px 14px;
   box-shadow: inset 0 2px 6px rgba(26,51,68,0.10);
   margin-bottom: 6px;
 }
 
-.music-eq {
-  min-height: 64px;
-  margin-right: 12px;
-}
-
-.eq-bar {
-  min-width: 7px;
-  min-height: 4px;
-  border-radius: 2px;
-}
-
-.eq-low {
-  background: linear-gradient(180deg, #1299CA 0%, #0D8090 100%);
-  box-shadow: 0 0 6px rgba(18,153,202,0.30);
-  animation: eq-low 0.7s ease-in-out infinite alternate;
-}
-
-.eq-mid {
-  background: linear-gradient(180deg, #30B070 0%, #1A8050 100%);
-  box-shadow: 0 0 5px rgba(48,176,112,0.25);
-  animation: eq-mid 0.5s ease-in-out infinite alternate;
-}
-
-.eq-high {
-  background: linear-gradient(180deg, #9060C0 0%, #6030A0 100%);
-  box-shadow: 0 0 5px rgba(144,96,192,0.25);
-  animation: eq-high 0.4s ease-in-out infinite alternate;
-}
-
-@keyframes eq-low {
-  0% { min-height: 8px; opacity: 0.7; }
-  30% { min-height: 52px; opacity: 1.0; }
-  60% { min-height: 18px; opacity: 0.8; }
-  100% { min-height: 44px; opacity: 0.9; }
-}
-
-@keyframes eq-mid {
-  0% { min-height: 6px; opacity: 0.6; }
-  25% { min-height: 36px; opacity: 1.0; }
-  50% { min-height: 12px; opacity: 0.7; }
-  75% { min-height: 48px; opacity: 0.9; }
-  100% { min-height: 8px; opacity: 0.6; }
-}
-
-@keyframes eq-high {
-  0% { min-height: 4px; opacity: 0.5; }
-  20% { min-height: 28px; opacity: 1.0; }
-  40% { min-height: 6px; opacity: 0.6; }
-  60% { min-height: 40px; opacity: 0.9; }
-  80% { min-height: 2px; opacity: 0.4; }
-  100% { min-height: 32px; opacity: 0.8; }
-}
-
 .music-track-info {
-  min-width: 160px;
-  margin: 0 8px;
+  min-width: 250px;
 }
 
 .music-title {
@@ -614,7 +560,7 @@
   font-size: 9px;
   font-weight: 600;
   color: #6A9A9A;
-  margin-top: 6px;
+  margin-top: 8px;
   letter-spacing: 2px;
 }
 
@@ -631,10 +577,10 @@
 }
 
 .music-btn-circle {
-  font-size: 20px;
-  padding: 10px;
-  min-width: 44px;
-  min-height: 44px;
+  font-size: 22px;
+  padding: 8px;
+  min-width: 48px;
+  min-height: 48px;
   border-radius: 50%;
   color: #5A7A8A;
   background: linear-gradient(135deg, rgba(180,200,210,0.30) 0%, rgba(140,160,170,0.35) 50%, rgba(180,200,210,0.25) 100%);
@@ -650,24 +596,4 @@
 
 .music-btn-play {
   font-size: 26px;
-  min-width: 52px;
-  min-height: 52px;
-}
-
-.vol-knob {
-  min-width: 44px;
-  min-height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(180,190,200,0.30) 0%, rgba(140,150,160,0.35) 50%, rgba(180,190,200,0.25) 100%);
-  border: 2px solid rgba(100,120,140,0.20);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.20), 0 3px 4px rgba(0,0,0,0.06);
-}
-
-.vol-dot {
-  min-width: 6px;
-  min-height: 6px;
-  border-radius: 50%;
-  margin: 17px;
-  background: rgba(220,230,240,0.20);
-  border: 1px solid rgba(100,120,140,0.10);
 }

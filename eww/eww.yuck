@@ -170,7 +170,7 @@
 
 (defwindow calendar
   :monitor 0
-  :geometry (geometry :x "2%" :y "24%" :width 340 :height 340 :anchor "bottom left")
+  :geometry (geometry :x "2%" :y "30%" :width 340 :height 340 :anchor "bottom left")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -180,7 +180,7 @@
 
 (defpoll cal_data :interval "5s"
   :initial "{}"
-  `bash ~/.config/eww/scripts/calendar.sh 0`)
+  `python3 ~/.config/eww/scripts/calendar.sh 0`)
 
 (defwidget calendar-widget []
   (box :class "cal-container"
@@ -192,10 +192,10 @@
             :orientation "h"
             :space-evenly false
             :halign "center"
-            (button :onclick "eww update cal_data=\"$(bash ~/.config/eww/scripts/calendar.sh -1)\""
+            (button :onclick "eww update cal_data=\"$(python3 ~/.config/eww/scripts/calendar.sh -1)\""
                     (label :text "<" :class "cal-nav"))
             (label :text "${cal_data.month} ${cal_data.year}" :class "cal-month")
-            (button :onclick "eww update cal_data=\"$(bash ~/.config/eww/scripts/calendar.sh 1)\""
+            (button :onclick "eww update cal_data=\"$(python3 ~/.config/eww/scripts/calendar.sh 1)\""
                     (label :text ">" :class "cal-nav")))
 
        ;; Glossy separator
@@ -273,7 +273,7 @@
 
 (defwindow music
   :monitor 0
-  :geometry (geometry :x "2%" :y "55%" :width 460 :height 220 :anchor "bottom left")
+  :geometry (geometry :x "2%" :y "55%" :width 460 :height 200 :anchor "bottom left")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -292,25 +292,8 @@
 
        ;; LCD Display
        (box :class "music-display"
-            :orientation "h"
+            :orientation "v"
             :space-evenly false
-
-            ;; EQ bars (CSS animated)
-            (box :class "music-eq"
-                 :orientation "h"
-                 :spacing 2
-                 (box :class "eq-bar eq-low" :style "animation-delay:0ms")
-                 (box :class "eq-bar eq-low" :style "animation-delay:120ms")
-                 (box :class "eq-bar eq-low" :style "animation-delay:240ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:60ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:180ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:300ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:90ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:30ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:150ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:270ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:210ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:330ms"))
 
             ;; Track info
             (box :class "music-track-info"
@@ -322,19 +305,17 @@
        ;; Metallic separator
        (box :class "music-sep")
 
-       ;; Controls row (all circular)
+       ;; Controls
        (box :class "music-controls"
             :orientation "h"
-            :spacing 16
+            :spacing 24
             :halign "center"
             (button :onclick "playerctl previous"
                     (label :text "⏮" :class "music-btn-circle"))
             (button :onclick "playerctl play-pause"
-                    (label :text "⏯" :class "music-btn-circle music-btn-play"))
+                    (label :text "⏸" :class "music-btn-circle music-btn-play"))
             (button :onclick "playerctl next"
-                    (label :text "⏭" :class "music-btn-circle"))
-            (box :class "vol-knob"
-                 (box :class "vol-dot")))
+                    (label :text "⏭" :class "music-btn-circle")))
 
        ;; Glass shine
        (box :class "glass-shine")))
@@ -366,6 +347,7 @@
 (defpoll music_status :interval "1s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh music`)
+
 
 (defwidget widget-ctl-widget []
   (box :class "ctl-container"
