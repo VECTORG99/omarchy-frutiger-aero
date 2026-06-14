@@ -101,7 +101,7 @@
 .weather-icon-wrap {
   margin: 3px 0;
   padding: 8px;
-  background: linear-gradient(180deg, rgba(16, 31, 51, 0.20) 0%, rgba(28, 20, 50, 0.16) 100%);
+  background: linear-gradient(180deg, rgba(16, 31, 51, 0.14) 0%, rgba(28, 20, 50, 0.10) 100%);
   border-radius: 18px;
   border: 1px solid rgba(200, 240, 240, 0.03);
 }
@@ -139,13 +139,13 @@
 .detail-item {
   padding: 8px 10px;
   border-radius: 14px;
-  background: linear-gradient(180deg, rgba(13, 27, 48, 0.22) 0%, rgba(24, 18, 45, 0.18) 100%);
+  background: linear-gradient(180deg, rgba(13, 27, 48, 0.14) 0%, rgba(24, 18, 45, 0.10) 100%);
   border: 1px solid rgba(200, 240, 240, 0.03);
   min-width: 55px;
 }
 
 .detail-item:hover {
-  background: linear-gradient(180deg, rgba(18, 45, 68, 0.28) 0%, rgba(40, 25, 60, 0.24) 100%);
+  background: linear-gradient(180deg, rgba(18, 45, 68, 0.20) 0%, rgba(40, 25, 60, 0.16) 100%);
   border-color: rgba(200, 240, 240, 0.06);
 }
 
@@ -174,13 +174,13 @@
 .forecast-day {
   padding: 10px 14px;
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(13, 27, 48, 0.22) 0%, rgba(24, 18, 45, 0.18) 100%);
+  background: linear-gradient(180deg, rgba(13, 27, 48, 0.14) 0%, rgba(24, 18, 45, 0.10) 100%);
   border: 1px solid rgba(200, 240, 240, 0.03);
   min-width: 75px;
 }
 
 .forecast-day:hover {
-  background: linear-gradient(180deg, rgba(18, 45, 68, 0.28) 0%, rgba(40, 25, 60, 0.24) 100%);
+  background: linear-gradient(180deg, rgba(18, 45, 68, 0.20) 0%, rgba(40, 25, 60, 0.16) 100%);
   border-color: rgba(200, 240, 240, 0.06);
 }
 
@@ -496,11 +496,11 @@
 }
 
 .cal-grid {
-  margin: 2px 0;
+  margin: 0;
 }
 
 .cal-row {
-  margin: 0 0;
+  margin: 0;
 }
 
 .cal-day {
@@ -508,19 +508,19 @@
   font-weight: 500;
   color: #C8C0E8;
   min-width: 36px;
-  min-height: 22px;
-  border-radius: 8px;
-  padding: 3px 0 0 0;
-  background: linear-gradient(180deg, rgba(90, 50, 150, 0.18) 0%, rgba(50, 25, 100, 0.15) 100%);
-  border: 1px solid rgba(140, 100, 200, 0.04);
+  min-height: 20px;
+  border-radius: 6px;
+  padding: 2px 0 0 0;
+  background: linear-gradient(180deg, rgba(90, 50, 150, 0.12) 0%, rgba(50, 25, 100, 0.10) 100%);
+  border: 1px solid rgba(140, 100, 200, 0.03);
 }
 
 .cal-dot {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   color: #35C8E0;
-  min-height: 8px;
-  text-shadow: 0 0 6px rgba(53, 200, 224, 0.50);
+  min-height: 10px;
+  text-shadow: 0 0 8px rgba(53, 200, 224, 0.60);
 }
 
 .cal-cell {
