@@ -29,15 +29,15 @@ for week in weeks_raw:
     for d in week:
         if d.month == m:
             data[f"d{idx:02d}"] = str(d.day)
-            data[f"h{idx:02d}"] = "1" if d == today else "0"
+            data[f"h{idx:02d}"] = "." if d == today else ""
         else:
             data[f"d{idx:02d}"] = ""
-            data[f"h{idx:02d}"] = "0"
+            data[f"h{idx:02d}"] = ""
         idx += 1
 
 while idx < 42:
     data[f"d{idx:02d}"] = ""
-    data[f"h{idx:02d}"] = "0"
+    data[f"h{idx:02d}"] = ""
     idx += 1
 
 json.dump(data, sys.stdout)
