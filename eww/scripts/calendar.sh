@@ -29,7 +29,7 @@ for week in weeks_raw:
     for d in week:
         if d.month == m:
             data[f"d{idx:02d}"] = str(d.day)
-            data[f"h{idx:02d}"] = "." if d == today else ""
+            data[f"h{idx:02d}"] = "●" if d == today else ""
         else:
             data[f"d{idx:02d}"] = ""
             data[f"h{idx:02d}"] = ""
