@@ -27,7 +27,10 @@ data = {
 idx = 0
 for week in weeks_raw:
     for d in week:
-        data[f"d{idx:02d}"] = str(d.day) if d.month == m else ""
+        if d.month == m:
+            data[f"d{idx:02d}"] = f"[{d.day}]" if d == today else str(d.day)
+        else:
+            data[f"d{idx:02d}"] = ""
         idx += 1
 
 while idx < 42:
