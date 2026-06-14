@@ -437,8 +437,23 @@
 }
 
 .ctl-btn:hover {
-  background: rgba(18,153,202,0.12);
+  background: rgba(18,153,202,0.20);
   border-color: rgba(18,153,202,0.30);
+}
+
+.ctl-scr {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #6A8A9A;
+  background: rgba(26,51,68,0.04);
+  border: 1px solid rgba(26,51,68,0.06);
+}
+
+.ctl-scr:hover {
+  background: rgba(18,153,202,0.12);
+  color: #0D8090;
 }
 
 /* Calendar Widget */

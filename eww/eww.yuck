@@ -388,7 +388,7 @@
 
 (defwindow widget-ctl
   :monitor 0
-  :geometry (geometry :x "50%" :y "1%" :width 340 :height 240 :anchor "bottom center")
+  :geometry (geometry :x "50%" :y "1%" :width 390 :height 240 :anchor "bottom center")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -436,8 +436,12 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${weather_status}" :class "ctl-status"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle weather"
-                    (label :text "TOGGLE" :class "ctl-btn")))
+             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle weather"
+                     (label :text "TOGGLE" :class "ctl-btn"))
+             (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh weather 0"
+                     (label :text "1" :class "ctl-scr"))
+             (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh weather 1"
+                     (label :text "2" :class "ctl-scr")))
 
        ;; Clock
        (box :class "ctl-row"
@@ -449,8 +453,12 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${clock_status}" :class "ctl-status"))
-             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle clock"
-                     (label :text "TOGGLE" :class "ctl-btn")))
+              (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle clock"
+                      (label :text "TOGGLE" :class "ctl-btn"))
+              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh clock 0"
+                      (label :text "1" :class "ctl-scr"))
+              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh clock 1"
+                      (label :text "2" :class "ctl-scr")))
 
        ;; Calendar
        (box :class "ctl-row"
@@ -462,8 +470,12 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${calendar_status}" :class "ctl-status"))
-             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle calendar"
-                     (label :text "TOGGLE" :class "ctl-btn")))
+              (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle calendar"
+                      (label :text "TOGGLE" :class "ctl-btn"))
+              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh calendar 0"
+                      (label :text "1" :class "ctl-scr"))
+              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh calendar 1"
+                      (label :text "2" :class "ctl-scr")))
 
        ;; Music
        (box :class "ctl-row"
@@ -476,7 +488,11 @@
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${music_status}" :class "ctl-status"))
             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle music"
-                    (label :text "TOGGLE" :class "ctl-btn")))
+                    (label :text "TOGGLE" :class "ctl-btn"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh music 0"
+                    (label :text "1" :class "ctl-scr"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh music 1"
+                    (label :text "2" :class "ctl-scr")))
 
        (box :class "ctl-row"
             :orientation "h"
@@ -488,7 +504,11 @@
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${sysmon_status}" :class "ctl-status"))
             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle sysmon"
-                    (label :text "TOGGLE" :class "ctl-btn")))
+                    (label :text "TOGGLE" :class "ctl-btn"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh sysmon 0"
+                    (label :text "1" :class "ctl-scr"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh sysmon 1"
+                    (label :text "2" :class "ctl-scr")))
 
        ;; Glass shine
        (box :class "glass-shine")))

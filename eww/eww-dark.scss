@@ -441,6 +441,21 @@
   border-color: rgba(18,153,202,0.35);
 }
 
+.ctl-scr {
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #557788;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(200,240,240,0.04);
+}
+
+.ctl-scr:hover {
+  background: rgba(18,153,202,0.15);
+  color: #1299CA;
+}
+
 /* Calendar Widget */
 
 .cal-container {
