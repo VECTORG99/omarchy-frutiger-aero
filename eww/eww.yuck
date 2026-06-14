@@ -273,7 +273,7 @@
 
 (defwindow music
   :monitor 0
-  :geometry (geometry :x "2%" :y "55%" :width 300 :height 340 :anchor "bottom left")
+  :geometry (geometry :x "2%" :y "55%" :width 340 :height 320 :anchor "bottom left")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -290,37 +290,59 @@
        :orientation "v"
        :space-evenly false
 
-       ;; Decorative floating bubbles
-       (box :class "music-bubbles"
-            :orientation "h"
-            :space-evenly true
-            :halign "center"
-            (box :class "m-bubble mb1")
-            (box :class "m-bubble mb2")
-            (box :class "m-bubble mb3"))
+       ;; Display panel (Pioneer LCD style)
+       (box :class "music-display"
+            :orientation "v"
+            :space-evenly false
 
-       ;; Album art circle
-       (box :class "music-art-wrap" :halign "center"
-            (image :path "${music_data.art}" :image-width 120 :image-height 120))
+            ;; Equalizer bars
+            (box :class "music-eq"
+                 :orientation "h"
+                 :space-evenly false
+                 :halign "center"
+                 (box :class "eq-bar" :style "animation-delay:0ms")
+                 (box :class "eq-bar" :style "animation-delay:80ms")
+                 (box :class "eq-bar" :style "animation-delay:160ms")
+                 (box :class "eq-bar" :style "animation-delay:40ms")
+                 (box :class "eq-bar" :style "animation-delay:200ms")
+                 (box :class "eq-bar" :style "animation-delay:120ms")
+                 (box :class "eq-bar" :style "animation-delay:60ms")
+                 (box :class "eq-bar" :style "animation-delay:180ms")
+                 (box :class "eq-bar" :style "animation-delay:100ms")
+                 (box :class "eq-bar" :style "animation-delay:20ms")
+                 (box :class "eq-bar" :style "animation-delay:140ms")
+                 (box :class "eq-bar" :style "animation-delay:90ms"))
 
-       ;; Title + Artist
-       (label :text "${music_data.title}" :class "music-title")
-       (label :text "${music_data.artist}" :class "music-artist")
+            ;; Track info
+            (box :class "music-track-info"
+                 :orientation "v"
+                 :space-evenly false
+                 (label :text "${music_data.title}" :class "music-title")
+                 (label :text "${music_data.artist}" :class "music-artist"))
 
-       ;; Status indicator
-       (label :text "${music_data.status}" :class "music-status")
+            ;; Status indicator
+            (label :text "${music_data.status}" :class "music-status"))
 
-       ;; Controls
+       ;; Metallic separator
+       (box :class "music-sep")
+
+       ;; Controls (Pioneer buttons)
        (box :class "music-controls"
             :orientation "h"
             :space-evenly true
             :halign "center"
             (button :onclick "playerctl previous"
-                    (label :text "⏮" :class "music-btn"))
+                    (box :class "music-btn-wrap" :orientation "v"
+                         (label :text "⏮" :class "music-btn-icon")
+                         (label :text "PREV" :class "music-btn-label")))
             (button :onclick "playerctl play-pause"
-                    (label :text "⏯" :class "music-btn music-btn-play"))
+                    (box :class "music-btn-wrap music-btn-main" :orientation "v"
+                         (label :text "⏯" :class "music-btn-icon music-icon-big")
+                         (label :text "PLAY" :class "music-btn-label")))
             (button :onclick "playerctl next"
-                    (label :text "⏭" :class "music-btn")))
+                    (box :class "music-btn-wrap" :orientation "v"
+                         (label :text "⏭" :class "music-btn-icon")
+                         (label :text "NEXT" :class "music-btn-label"))))
 
        ;; Glass shine
        (box :class "glass-shine")))
