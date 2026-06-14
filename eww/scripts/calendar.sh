@@ -28,16 +28,16 @@ idx = 0
 for week in weeks_raw:
     for d in week:
         if d.month == m:
-            num = str(d.day)
-            if d == today:
-                num = f"*{num}"
-            data[f"d{idx:02d}"] = num
+            data[f"d{idx:02d}"] = str(d.day)
+            data[f"h{idx:02d}"] = "1" if d == today else "0"
         else:
             data[f"d{idx:02d}"] = ""
+            data[f"h{idx:02d}"] = "0"
         idx += 1
 
 while idx < 42:
     data[f"d{idx:02d}"] = ""
+    data[f"h{idx:02d}"] = "0"
     idx += 1
 
 json.dump(data, sys.stdout)
