@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
-# Switch EWW theme between light and dark Frutiger Aero
 EWW_DIR="$HOME/.config/eww"
-MODE="${1:-dark}"
+MODE="${1:-auto}"
+
+# Auto-detect: check if dark theme is active via Omarchy or color scheme
+if [ "$MODE" = "auto" ]; then
+  THEME=$(omarchy theme current 2>/dev/null || echo "")
+  case "$THEME" in
+    *[Dd]ark*) MODE="dark" ;;
+    *) MODE="light" ;;
+  esac
+fi
 
 case "$MODE" in
   light|frutiger-aero)
@@ -13,12 +21,3 @@ case "$MODE" in
     echo "EWW theme: dark"
     ;;
 esac
-
-# Reload EWW if daemon is running
-if pgrep -x eww > /dev/null; then
-  "$HOME/.local/bin/eww" reload 2>/dev/null || {
-    "$HOME/.local/bin/eww" kill 2>/dev/null
-    sleep 1
-    "$HOME/.local/bin/eww" daemon 2>/dev/null &
-  }
-fi
