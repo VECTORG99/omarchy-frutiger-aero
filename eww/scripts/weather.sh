@@ -2,6 +2,9 @@
 # Frutiger Aero Weather — fetches weather from wttr.in (auto-location)
 set -euo pipefail
 
+FORCE=false
+[ "${1:-}" = "--force" ] && FORCE=true
+
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/eww-weather"
 CACHE_FILE="$CACHE_DIR/weather.json"
 CACHE_TTL=1800
@@ -9,7 +12,7 @@ ICON_DIR="$HOME/.config/eww/assets/icons"
 
 mkdir -p "$CACHE_DIR"
 
-if [ -f "$CACHE_FILE" ]; then
+if [ "$FORCE" = false ] && [ -f "$CACHE_FILE" ]; then
   cache_age=$(($(date +%s) - $(stat -c %Y "$CACHE_FILE" 2>/dev/null || echo 0)))
   if [ "$cache_age" -lt "$CACHE_TTL" ]; then
     cat "$CACHE_FILE"

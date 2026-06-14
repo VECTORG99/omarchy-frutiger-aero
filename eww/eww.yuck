@@ -30,8 +30,8 @@
                  :orientation "h"
                  :space-evenly false
                  :halign "end"
-                 (button :onclick "eww update weather_data=\"$(bash ~/.config/eww/scripts/weather.sh)\""
-                         (label :text "↻" :class "act-icon"))
+(button :onclick "eww update weather_data=\"$(bash ~/.config/eww/scripts/weather.sh --force)\""
+                          (label :text "↻" :class "act-icon"))
                  (button :onclick "eww close weather"
                          (label :text "✕" :class "act-icon")))
 
