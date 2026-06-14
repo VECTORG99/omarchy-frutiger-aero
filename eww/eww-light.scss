@@ -508,23 +508,10 @@
   font-size: 13px;
   font-weight: 500;
   color: #5A3A80;
-  min-width: 34px;
-  min-height: 22px;
+  min-width: 36px;
+  min-height: 24px;
   border-radius: 8px;
   padding: 0;
   background: linear-gradient(180deg, rgba(140, 110, 190, 0.08) 0%, rgba(190, 155, 225, 0.18) 100%);
   border: 1px solid rgba(140, 100, 200, 0.04);
-}
-
-.cal-dot {
-  font-size: 8px;
-  font-weight: 700;
-  color: #1299CA;
-  text-shadow: 0 0 6px rgba(18, 153, 202, 0.60);
-}
-
-.cal-cell {
-  min-width: 36px;
-  padding: 0;
-  margin: 0;
 }
