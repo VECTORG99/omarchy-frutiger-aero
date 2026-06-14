@@ -72,6 +72,26 @@ if [ -f "$CONFIG_DIR/sddm/Main.qml" ] && command -v sudo &>/dev/null; then
   fi
 fi
 
+# ── EWW Widgets ─────────────────────────────────────────────
+
+echo ""
+echo ":: Installing EWW widgets..."
+
+EWW_DIR="$REPO_DIR/eww"
+if [ -d "$EWW_DIR" ]; then
+  mkdir -p ~/.config/eww/assets/icons ~/.config/eww/scripts
+  cp "$EWW_DIR/eww.yuck" ~/.config/eww/eww.yuck
+  cp "$EWW_DIR/eww-dark.scss" ~/.config/eww/eww-dark.scss
+  cp "$EWW_DIR/eww-light.scss" ~/.config/eww/eww-light.scss
+  ln -sf ~/.config/eww/eww-dark.scss ~/.config/eww/eww.scss
+  cp "$EWW_DIR/scripts/"* ~/.config/eww/scripts/
+  chmod +x ~/.config/eww/scripts/*.sh
+  [ -d "$EWW_DIR/assets" ] && cp -r "$EWW_DIR/assets/"* ~/.config/eww/assets/
+  echo "   → eww/ (weather, clock, calendar, music, control panel)"
+else
+  echo "   → eww/ not found — skipping widgets"
+fi
+
 # ── Omarchy theme files ─────────────────────────────────────
 
 echo ""

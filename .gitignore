@@ -1,11 +1,22 @@
-# Wallpapers are too large; download separately
+# Wallpapers — download separately
 *.jpg
 *.jpeg
 *.gif
 *.webp
 *.ico
+*.png
+!preview.png
+!preview-unlock.png
+!unlock.png
 backgrounds/
 
 # OS
 .DS_Store
 Thumbs.db
+
+# Cache / temp
+*.log
+__pycache__/
+*.pyc
+.cache/
+current/

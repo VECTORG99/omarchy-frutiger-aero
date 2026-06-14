@@ -233,17 +233,24 @@ pkill waybar && waybar
 sudo omarchy-refresh-sddm
 ```
 
-## System
+## EWW Widgets
 
-- **OS**: CachyOS (Arch-based)
-- **WM**: Hyprland 0.55 (Lua config)
-- **GPU**: NVIDIA RTX 3060 (12 GB)
-- **CPU**: AMD Ryzen 5 5500
-- **Displays**: LG 27" 1440p (DP-2) + Samsung 24" 1080p (DP-3)
-- **Audio**: PipeWire
-- **Terminal**: Alacritty
-- **Editor**: Helix
-- **Shell**: Fish
+Five Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/eww) 0.5+:
+
+| Widget | Keybind | Description |
+|--------|---------|-------------|
+| **Weather** | `SUPER+SHIFT+T` | Auto-location forecast via wttr.in, 3-day outlook, glass-minimal SVG icons |
+| **Clock** | `SUPER+SHIFT+K` | 12h digital clock with date, timezone, glossy separators |
+| **Calendar** | `SUPER+SHIFT+L` | Monthly calendar with `< >` navigation, today marked `[day]` |
+| **Music** | `SUPER+SHIFT+R` | Now playing via playerctl, Pioneer car stereo style, LCD display |
+| **Control** | `SUPER+SHIFT+Q` | Toggle any widget on/off, shows status and keybinds |
+
+All widgets support light/dark themes via `omarchy theme set`.
+
+### Widget dependencies
+```
+eww 0.5+  playerctl  python3  curl  pulseaudio/pipewire
+```
 
 ## License
 
