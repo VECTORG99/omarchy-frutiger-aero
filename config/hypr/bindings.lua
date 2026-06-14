@@ -50,3 +50,4 @@ o.bind("SUPER + SHIFT + T", "Weather widget", "~/.local/bin/eww open weather --t
 o.bind("SUPER + SHIFT + K", "Clock widget", "~/.local/bin/eww open clock --toggle")
 o.bind("SUPER + SHIFT + Q", "Widget control", "~/.local/bin/eww open widget-ctl --toggle")
 o.bind("SUPER + SHIFT + L", "Calendar widget", "~/.local/bin/eww open calendar --toggle")
+o.bind("SUPER + SHIFT + R", "Music widget", "~/.local/bin/eww open music --toggle")

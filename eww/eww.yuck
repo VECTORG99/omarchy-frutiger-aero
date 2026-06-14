@@ -269,11 +269,67 @@
        ;; Glass shine
        (box :class "glass-shine")))
 
+;; Music Player Widget
+
+(defwindow music
+  :monitor 0
+  :geometry (geometry :x "2%" :y "55%" :width 300 :height 340 :anchor "bottom left")
+  :windowtype "notification"
+  :stacking "overlay"
+  :focusable false
+  :decorations false
+  :wm-ignore true
+  (music-widget))
+
+(defpoll music_data :interval "2s"
+  :initial "{\"title\":\"---\",\"artist\":\"---\",\"status\":\"stopped\"}"
+  `bash ~/.config/eww/scripts/music.sh`)
+
+(defwidget music-widget []
+  (box :class "music-container"
+       :orientation "v"
+       :space-evenly false
+
+       ;; Decorative floating bubbles
+       (box :class "music-bubbles"
+            :orientation "h"
+            :space-evenly true
+            :halign "center"
+            (box :class "m-bubble mb1")
+            (box :class "m-bubble mb2")
+            (box :class "m-bubble mb3"))
+
+       ;; Album art circle
+       (box :class "music-art-wrap" :halign "center"
+            (image :path "${music_data.art}" :image-width 120 :image-height 120))
+
+       ;; Title + Artist
+       (label :text "${music_data.title}" :class "music-title")
+       (label :text "${music_data.artist}" :class "music-artist")
+
+       ;; Status indicator
+       (label :text "${music_data.status}" :class "music-status")
+
+       ;; Controls
+       (box :class "music-controls"
+            :orientation "h"
+            :space-evenly true
+            :halign "center"
+            (button :onclick "playerctl previous"
+                    (label :text "⏮" :class "music-btn"))
+            (button :onclick "playerctl play-pause"
+                    (label :text "⏯" :class "music-btn music-btn-play"))
+            (button :onclick "playerctl next"
+                    (label :text "⏭" :class "music-btn")))
+
+       ;; Glass shine
+       (box :class "glass-shine")))
+
 ;; Widget Control Panel
 
 (defwindow widget-ctl
   :monitor 0
-  :geometry (geometry :x "2%" :y "1%" :width 340 :height 180 :anchor "bottom left")
+  :geometry (geometry :x "2%" :y "1%" :width 340 :height 220 :anchor "bottom left")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -292,6 +348,10 @@
 (defpoll calendar_status :interval "1s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh calendar`)
+
+(defpoll music_status :interval "1s"
+  :initial "off"
+  `bash ~/.config/eww/scripts/widget-status.sh music`)
 
 (defwidget widget-ctl-widget []
   (box :class "ctl-container"
@@ -338,7 +398,20 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${calendar_status}" :class "ctl-status"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle calendar"
+             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle calendar"
+                     (label :text "TOGGLE" :class "ctl-btn")))
+
+       ;; Music
+       (box :class "ctl-row"
+            :orientation "h"
+            :space-evenly false
+            (box :class "ctl-info" :orientation "v"
+                 (label :text "Music" :class "ctl-label")
+                 (label :text "SUPER+SHIFT+R" :class "ctl-key"))
+            (box :hexpand true)
+            (box :class "ctl-status-box" :orientation "h"
+                 (label :text "${music_status}" :class "ctl-status"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle music"
                     (label :text "TOGGLE" :class "ctl-btn")))
 
        ;; Glass shine
