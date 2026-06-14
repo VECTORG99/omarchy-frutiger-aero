@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Calendar data for EWW — outputs flat JSON with 42 day slots."""
+"""Calendar data for EWW — flat JSON with 42 day slots."""
 import json, sys, calendar as cal_mod
-from datetime import date, timedelta
+from datetime import date
 
 try:
     OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
@@ -27,13 +27,17 @@ data = {
 idx = 0
 for week in weeks_raw:
     for d in week:
-        data[f"d{idx:02d}"] = str(d.day) if d.month == m else ""
-        data[f"t{idx:02d}"] = "1" if d == today and d.month == m else "0"
+        if d.month == m:
+            num = str(d.day)
+            if d == today:
+                num = f"*{num}"
+            data[f"d{idx:02d}"] = num
+        else:
+            data[f"d{idx:02d}"] = ""
         idx += 1
 
 while idx < 42:
     data[f"d{idx:02d}"] = ""
-    data[f"t{idx:02d}"] = "0"
     idx += 1
 
 json.dump(data, sys.stdout)
