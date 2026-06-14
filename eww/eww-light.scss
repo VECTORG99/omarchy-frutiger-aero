@@ -485,6 +485,7 @@
 
 .cal-weekdays {
   margin-bottom: 6px;
+  margin-top: 4px;
   padding-bottom: 6px;
   border-bottom: 1px solid rgba(60, 140, 100, 0.12);
 }
@@ -508,7 +509,7 @@
   font-weight: 500;
   color: #5A3A80;
   min-width: 36px;
-  min-height: 12px;
+  min-height: 10px;
   border-radius: 6px;
   padding: 0;
   background: linear-gradient(180deg, rgba(140, 110, 190, 0.08) 0%, rgba(190, 155, 225, 0.18) 100%);
@@ -516,11 +517,11 @@
 }
 
 .cal-dot {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: #1299CA;
-  min-height: 6px;
-  text-shadow: 0 0 12px rgba(18, 153, 202, 0.70);
+  min-height: 2px;
+  text-shadow: 0 0 10px rgba(18, 153, 202, 0.70);
 }
 
 .cal-cell {
