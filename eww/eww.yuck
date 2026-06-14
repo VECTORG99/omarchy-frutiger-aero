@@ -12,7 +12,7 @@
   (weather-widget))
 
 (defpoll weather_data :interval "1800s"
-  :initial "{}"
+  :initial "{\"temp\":\"--\",\"condition\":\"Loading...\",\"city\":\"...\"}"
   `bash ~/.config/eww/scripts/weather.sh`)
 
 (defwidget weather-widget []
@@ -178,7 +178,7 @@
   :wm-ignore true
   (calendar-widget))
 
-(defpoll cal_data :interval "10s"
+(defpoll cal_data :interval "5s"
   :initial "{}"
   `bash ~/.config/eww/scripts/calendar.sh 0`)
 
