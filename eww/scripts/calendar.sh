@@ -1,36 +1,39 @@
 #!/usr/bin/env python3
-import json, sys, calendar
-from datetime import date
+"""Calendar data for EWW — outputs flat JSON with 42 day slots."""
+import json, sys, calendar as cal_mod
+from datetime import date, timedelta
 
-OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+try:
+    OFFSET = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+except ValueError:
+    OFFSET = 0
 
 today = date.today()
 y, m = today.year, today.month
 m += OFFSET
-while m > 12: y += 1; m -= 12
-while m < 1: y -= 1; m += 12
+while m > 12:
+    y += 1; m -= 12
+while m < 1:
+    y -= 1; m += 12
 
-cal = calendar.Calendar(firstweekday=6)
+cal = cal_mod.Calendar(firstweekday=6)
 weeks_raw = cal.monthdatescalendar(y, m)
 
 data = {
-    "month": calendar.month_name[m],
+    "month": cal_mod.month_name[m],
     "year": str(y),
 }
+
 idx = 0
 for week in weeks_raw:
     for d in week:
-        if d.month == m:
-            data[f"d{idx:02d}"] = str(d.day)
-            data[f"t{idx:02d}"] = "true" if d == today else "false"
-        else:
-            data[f"d{idx:02d}"] = ""
-            data[f"t{idx:02d}"] = "false"
+        data[f"d{idx:02d}"] = str(d.day) if d.month == m else ""
+        data[f"t{idx:02d}"] = "1" if d == today and d.month == m else "0"
         idx += 1
-# Fill remaining slots (up to 42) with empty
+
 while idx < 42:
     data[f"d{idx:02d}"] = ""
-    data[f"t{idx:02d}"] = "false"
+    data[f"t{idx:02d}"] = "0"
     idx += 1
 
-print(json.dumps(data))
+json.dump(data, sys.stdout)
