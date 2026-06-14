@@ -101,9 +101,9 @@
 .weather-icon-wrap {
   margin: 3px 0;
   padding: 8px;
-  background: #101F33;
+  background: linear-gradient(180deg, rgba(16, 31, 51, 0.40) 0%, rgba(28, 20, 50, 0.35) 100%);
   border-radius: 18px;
-  border: 1px solid #1B3148;
+  border: 1px solid rgba(200, 240, 240, 0.04);
 }
 
 .weather-temp {
@@ -139,14 +139,14 @@
 .detail-item {
   padding: 8px 10px;
   border-radius: 14px;
-  background: #0D1B30;
-  border: 1px solid #152A40;
+  background: linear-gradient(180deg, rgba(13, 27, 48, 0.40) 0%, rgba(24, 18, 45, 0.35) 100%);
+  border: 1px solid rgba(200, 240, 240, 0.04);
   min-width: 55px;
 }
 
 .detail-item:hover {
-  background: #122D44;
-  border-color: #1A4A66;
+  background: linear-gradient(180deg, rgba(18, 45, 68, 0.50) 0%, rgba(40, 25, 60, 0.45) 100%);
+  border-color: rgba(200, 240, 240, 0.08);
 }
 
 .detail-icon {
@@ -174,14 +174,14 @@
 .forecast-day {
   padding: 10px 14px;
   border-radius: 16px;
-  background: #0D1B30;
-  border: 1px solid #152A40;
+  background: linear-gradient(180deg, rgba(13, 27, 48, 0.40) 0%, rgba(24, 18, 45, 0.35) 100%);
+  border: 1px solid rgba(200, 240, 240, 0.04);
   min-width: 75px;
 }
 
 .forecast-day:hover {
-  background: #122D44;
-  border-color: #1A4A66;
+  background: linear-gradient(180deg, rgba(18, 45, 68, 0.50) 0%, rgba(40, 25, 60, 0.45) 100%);
+  border-color: rgba(200, 240, 240, 0.08);
 }
 
 .fc-label {
@@ -293,11 +293,11 @@
   padding: 10px 0;
   margin: 8px 0;
   border-radius: 16px;
-  background: rgba(18,153,202,0.06);
-  border: 1px solid rgba(200,240,240,0.08);
+  background: linear-gradient(180deg, rgba(18, 153, 202, 0.05) 0%, rgba(100, 40, 180, 0.04) 100%);
+  border: 1px solid rgba(200, 240, 240, 0.05);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.03),
-    inset 0 0 30px rgba(18,153,202,0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.02),
+    inset 0 0 30px rgba(18, 153, 202, 0.03);
 }
 
 .clock-time-row {
@@ -391,8 +391,8 @@
   padding: 8px 10px;
   margin: 4px 0;
   border-radius: 10px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(200,240,240,0.04);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(100, 40, 180, 0.04) 100%);
+  border: 1px solid rgba(200, 240, 240, 0.03);
 }
 
 .ctl-info {
@@ -421,8 +421,8 @@
 .ctl-status-box {
   padding: 2px 10px;
   border-radius: 6px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(200,240,240,0.06);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(100, 40, 180, 0.08) 100%);
+  border: 1px solid rgba(200, 240, 240, 0.06);
 }
 
 .ctl-btn {
@@ -439,4 +439,74 @@
 .ctl-btn:hover {
   background: rgba(18,153,202,0.25);
   border-color: rgba(18,153,202,0.35);
+}
+
+/* Calendar Widget */
+
+.cal-container {
+  background: linear-gradient(180deg, rgba(10, 28, 48, 0.92) 0%, rgba(10, 30, 35, 0.90) 50%, rgba(10, 32, 28, 0.88) 100%);
+  border: 1px solid #1B3D5C;
+  border-radius: 20px;
+  padding: 16px 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 0 24px rgba(18,153,202,0.15),
+    0 4px 32px rgba(10,22,40,0.50),
+    0 8px 44px rgba(0,0,0,0.25);
+}
+
+.cal-header {
+  margin-bottom: 10px;
+}
+
+.cal-month {
+  font-size: 16px;
+  font-weight: 700;
+  color: #C8F0F0;
+  margin: 0 12px;
+  min-width: 160px;
+}
+
+.cal-nav {
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #557788;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(200,240,240,0.04);
+}
+
+.cal-nav:hover {
+  background: rgba(18,153,202,0.12);
+  color: #1299CA;
+}
+
+.cal-weekdays {
+  margin-bottom: 6px;
+}
+
+.cal-wday {
+  font-size: 10px;
+  font-weight: 700;
+  color: #446666;
+}
+
+.cal-grid {
+  margin: 4px 0;
+}
+
+.cal-row {
+  margin: 2px 0;
+}
+
+.cal-day {
+  font-size: 13px;
+  font-weight: 500;
+  color: #7799AA;
+  min-width: 36px;
+  min-height: 28px;
+  border-radius: 8px;
+  padding: 3px 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(100,40,180,0.04) 100%);
 }

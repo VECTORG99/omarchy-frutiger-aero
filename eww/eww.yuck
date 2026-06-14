@@ -22,30 +22,35 @@
 
        ;; Header
        (box :class "weather-header"
-            :orientation "h"
+            :orientation "v"
             :space-evenly false
-            (box :class "weather-location"
-                 :orientation "v"
-                 :hexpand true
-                 (box :orientation "h" :space-evenly false
-                      (label :text "⊡" :class "loc-icon")
-                      (label :text "${weather_data.city}" :class "loc-text"))
-                 (label :text "${weather_data.condition} · ${weather_data.temp}°C" :class "header-sub"))
+
+            ;; Actions row (top-right)
             (box :class "weather-actions"
                  :orientation "h"
+                 :space-evenly false
+                 :halign "end"
                  (button :onclick "eww update weather_data=\"$(bash ~/.config/eww/scripts/weather.sh)\""
                          (label :text "↻" :class "act-icon"))
                  (button :onclick "eww close weather"
-                         (label :text "✕" :class "act-icon"))))
+                         (label :text "✕" :class "act-icon")))
+
+            ;; Location (centered)
+            (box :class "weather-location"
+                 :orientation "v"
+                 (box :orientation "h" :space-evenly false :halign "center"
+                      (label :text "⊡" :class "loc-icon")
+                      (label :text "${weather_data.city}" :class "loc-text"))
+                 (label :text "${weather_data.condition} · ${weather_data.temp}°C" :class "header-sub" :halign "center")))
 
        ;; Current weather
        (box :class "weather-current"
             :orientation "v"
             :space-evenly false
-            (box :class "weather-icon-wrap"
+            (box :class "weather-icon-wrap" :halign "center"
                  (image :path "${weather_data.icon}" :image-width 72 :image-height 72))
-            (label :text "${weather_data.temp}°C" :class "weather-temp")
-            (box :class "hi-lo-row" :orientation "h" :space-evenly false
+            (label :text "${weather_data.temp}°C" :class "weather-temp" :halign "center")
+            (box :class "hi-lo-row" :orientation "h" :space-evenly false :halign "center"
                  (label :text "H:${weather_data.today_max}° L:${weather_data.today_min}°" :class "hi-lo-text")
                  (label :text "Feels ${weather_data.feels}°" :class "feels-text")))
 
@@ -96,7 +101,7 @@
        (box :class "footer-row"
             :orientation "h"
             :space-evenly false
-             (label :text "Updated ${weather_data.updated_time}" :class "updated-text")
+             (label :text "Updated ${weather_data.updated_time}" :class "updated-text" :halign "center" :hexpand true)
              (box :class "glass-shine"))))
 
 ;; Frutiger Aero Clock Widget
@@ -158,14 +163,120 @@
        ;; Date
        (label :text "${clock_data.weekday}  ${clock_data.month} ${clock_data.day}" :class "clock-date")
 
-        ;; Glass shine
+       ;; Glass shine
+       (box :class "glass-shine")))
+
+;; Calendar Widget
+
+(defwindow calendar
+  :monitor 0
+  :geometry (geometry :x "2%" :y "75%" :width 340 :height 340 :anchor "bottom left")
+  :windowtype "notification"
+  :stacking "overlay"
+  :focusable false
+  :decorations false
+  :wm-ignore true
+  (calendar-widget))
+
+(defpoll cal_data :interval "60s"
+  :initial "{}"
+  `bash ~/.config/eww/scripts/calendar.sh 0`)
+
+(defwidget calendar-widget []
+  (box :class "cal-container"
+       :orientation "v"
+       :space-evenly false
+
+       ;; Header
+       (box :class "cal-header"
+            :orientation "h"
+            :space-evenly false
+            :halign "center"
+            (button :onclick "eww update cal_data=\"$(bash ~/.config/eww/scripts/calendar.sh -1)\""
+                    (label :text "<" :class "cal-nav"))
+            (label :text "${cal_data.month} ${cal_data.year}" :class "cal-month")
+            (button :onclick "eww update cal_data=\"$(bash ~/.config/eww/scripts/calendar.sh 1)\""
+                    (label :text ">" :class "cal-nav")))
+
+       ;; Weekday labels
+       (box :class "cal-weekdays"
+            :orientation "h"
+            :space-evenly true
+            (label :text "SUN" :class "cal-wday")
+            (label :text "MON" :class "cal-wday")
+            (label :text "TUE" :class "cal-wday")
+            (label :text "WED" :class "cal-wday")
+            (label :text "THU" :class "cal-wday")
+            (label :text "FRI" :class "cal-wday")
+            (label :text "SAT" :class "cal-wday"))
+
+       ;; Day grid - 6 rows, 7 cols each
+       (box :class "cal-grid"
+            :orientation "v"
+            :space-evenly false
+            ;; Row 0
+            (box :class "cal-row" :orientation "h" :space-evenly true
+                 (label :text "${cal_data.d00}" :class "cal-day")
+                 (label :text "${cal_data.d01}" :class "cal-day")
+                 (label :text "${cal_data.d02}" :class "cal-day")
+                 (label :text "${cal_data.d03}" :class "cal-day")
+                 (label :text "${cal_data.d04}" :class "cal-day")
+                 (label :text "${cal_data.d05}" :class "cal-day")
+                 (label :text "${cal_data.d06}" :class "cal-day"))
+            ;; Row 1
+            (box :class "cal-row" :orientation "h" :space-evenly true
+                 (label :text "${cal_data.d07}" :class "cal-day")
+                 (label :text "${cal_data.d08}" :class "cal-day")
+                 (label :text "${cal_data.d09}" :class "cal-day")
+                 (label :text "${cal_data.d10}" :class "cal-day")
+                 (label :text "${cal_data.d11}" :class "cal-day")
+                 (label :text "${cal_data.d12}" :class "cal-day")
+                 (label :text "${cal_data.d13}" :class "cal-day"))
+            ;; Row 2
+            (box :class "cal-row" :orientation "h" :space-evenly true
+                 (label :text "${cal_data.d14}" :class "cal-day")
+                 (label :text "${cal_data.d15}" :class "cal-day")
+                 (label :text "${cal_data.d16}" :class "cal-day")
+                 (label :text "${cal_data.d17}" :class "cal-day")
+                 (label :text "${cal_data.d18}" :class "cal-day")
+                 (label :text "${cal_data.d19}" :class "cal-day")
+                 (label :text "${cal_data.d20}" :class "cal-day"))
+            ;; Row 3
+            (box :class "cal-row" :orientation "h" :space-evenly true
+                 (label :text "${cal_data.d21}" :class "cal-day")
+                 (label :text "${cal_data.d22}" :class "cal-day")
+                 (label :text "${cal_data.d23}" :class "cal-day")
+                 (label :text "${cal_data.d24}" :class "cal-day")
+                 (label :text "${cal_data.d25}" :class "cal-day")
+                 (label :text "${cal_data.d26}" :class "cal-day")
+                 (label :text "${cal_data.d27}" :class "cal-day"))
+            ;; Row 4
+            (box :class "cal-row" :orientation "h" :space-evenly true
+                 (label :text "${cal_data.d28}" :class "cal-day")
+                 (label :text "${cal_data.d29}" :class "cal-day")
+                 (label :text "${cal_data.d30}" :class "cal-day")
+                 (label :text "${cal_data.d31}" :class "cal-day")
+                 (label :text "${cal_data.d32}" :class "cal-day")
+                 (label :text "${cal_data.d33}" :class "cal-day")
+                 (label :text "${cal_data.d34}" :class "cal-day"))
+            ;; Row 5
+            (box :class "cal-row" :orientation "h" :space-evenly true
+                 (label :text "${cal_data.d35}" :class "cal-day")
+                 (label :text "${cal_data.d36}" :class "cal-day")
+                 (label :text "${cal_data.d37}" :class "cal-day")
+                 (label :text "${cal_data.d38}" :class "cal-day")
+                 (label :text "${cal_data.d39}" :class "cal-day")
+                 (label :text "${cal_data.d40}" :class "cal-day")
+                 (label :text "${cal_data.d41}" :class "cal-day")))
+
+       ;; Glass shine
        (box :class "glass-shine")))
 
 ;; Widget Control Panel
 
 (defwindow widget-ctl
   :monitor 0
-  :geometry (geometry :x "50%" :y "50%" :width 340 :height 180 :anchor "center")
+  :geometry (geometry :x "2%" :y "1%" :width 340 :height 180 :anchor "bottom left")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -180,6 +291,10 @@
 (defpoll clock_status :interval "1s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh clock`)
+
+(defpoll calendar_status :interval "1s"
+  :initial "off"
+  `bash ~/.config/eww/scripts/widget-status.sh calendar`)
 
 (defwidget widget-ctl-widget []
   (box :class "ctl-container"
@@ -215,6 +330,19 @@
                  (label :text "${clock_status}" :class "ctl-status"))
              (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle clock"
                      (label :text "TOGGLE" :class "ctl-btn")))
+
+       ;; Calendar
+       (box :class "ctl-row"
+            :orientation "h"
+            :space-evenly false
+            (box :class "ctl-info" :orientation "v"
+                 (label :text "Calendar" :class "ctl-label")
+                 (label :text "SUPER+SHIFT+L" :class "ctl-key"))
+            (box :hexpand true)
+            (box :class "ctl-status-box" :orientation "h"
+                 (label :text "${calendar_status}" :class "ctl-status"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle calendar"
+                    (label :text "TOGGLE" :class "ctl-btn")))
 
        ;; Glass shine
        (box :class "glass-shine")))
