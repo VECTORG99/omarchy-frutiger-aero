@@ -371,12 +371,14 @@
             ;; RAM
             (box :class "sysmon-card" :orientation "v"
                  (label :text "RAM" :class "sysmon-label")
-                 (label :text "${sysmon_data.ram}%" :class "sysmon-val"))
+                 (label :text "${sysmon_data.ram}%" :class "sysmon-val")
+                 (label :text "/ 32GB" :class "sysmon-sub"))
 
             ;; DISK
             (box :class "sysmon-card" :orientation "v"
                  (label :text "DISK" :class "sysmon-label")
-                 (label :text "${sysmon_data.disk}%" :class "sysmon-val")))
+                 (label :text "${sysmon_data.disk}%" :class "sysmon-val")
+                 (label :text "/ 1TB" :class "sysmon-sub")))
 
        ;; Bottom separator
        (box :class "sysmon-sep")
