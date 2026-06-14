@@ -215,7 +215,7 @@
 
 .glass-shine {
   min-height: 1px;
-  margin-top: 2px;
+  margin-top: 6px;
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -447,7 +447,7 @@
   background: linear-gradient(180deg, rgba(180, 230, 200, 0.92) 0%, rgba(195, 240, 215, 0.90) 50%, rgba(205, 248, 225, 0.92) 100%);
   border: 1px solid rgba(60, 140, 100, 0.15);
   border-radius: 20px;
-  padding: 10px 16px;
+  padding: 14px 16px;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.40),
     0 0 30px rgba(80, 180, 120, 0.10),
@@ -509,9 +509,9 @@
   font-weight: 500;
   color: #5A3A80;
   min-width: 36px;
-  min-height: 24px;
+  min-height: 0;
+  padding: 3px 0;
   border-radius: 8px;
-  padding: 0;
   background: linear-gradient(180deg, rgba(140, 110, 190, 0.08) 0%, rgba(190, 155, 225, 0.18) 100%);
   border: 1px solid rgba(140, 100, 200, 0.04);
 }
