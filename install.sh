@@ -87,7 +87,7 @@ if [ -d "$EWW_DIR" ]; then
   cp "$EWW_DIR/scripts/"* ~/.config/eww/scripts/
   chmod +x ~/.config/eww/scripts/*.sh
   [ -d "$EWW_DIR/assets" ] && cp -r "$EWW_DIR/assets/"* ~/.config/eww/assets/
-  echo "   → eww/ (weather, clock, calendar, music, control panel)"
+  echo "   → eww/ (weather, clock, calendar, music, sysmon, control panel)"
 else
   echo "   → eww/ not found — skipping widgets"
 fi

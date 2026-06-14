@@ -235,7 +235,7 @@ sudo omarchy-refresh-sddm
 
 ## EWW Widgets
 
-Five Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/eww) 0.5+:
+Six Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/eww) 0.5+:
 
 | Widget | Keybind | Description |
 |--------|---------|-------------|
@@ -243,13 +243,14 @@ Five Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/e
 | **Clock** | `SUPER+SHIFT+K` | 12h digital clock with date, timezone, glossy separators |
 | **Calendar** | `SUPER+SHIFT+L` | Monthly calendar with `< >` navigation, today marked `[day]` |
 | **Music** | `SUPER+SHIFT+R` | Now playing via playerctl, Pioneer car stereo style, LCD display |
-| **Control** | `SUPER+SHIFT+Q` | Toggle any widget on/off, shows status and keybinds |
+| **System Monitor** | `SUPER+SHIFT+U` | CPU/GPU/RAM/DISK with rounded percentages and temps |
+| **Control** | `SUPER+SHIFT+Q` | Toggle any widget on/off, per-widget screen selector [1][2], shows status and keybinds |
 
 All widgets support light/dark themes via `omarchy theme set`.
 
 ### Widget dependencies
 ```
-eww 0.5+  playerctl  python3  curl  pulseaudio/pipewire
+eww 0.5+  playerctl  python3  curl  nvidia-smi  lm-sensors  pulseaudio/pipewire
 ```
 
 ## License
