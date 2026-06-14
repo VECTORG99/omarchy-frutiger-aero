@@ -215,7 +215,7 @@
 
 .glass-shine {
   min-height: 1px;
-  margin-top: 6px;
+  margin-top: 2px;
   background: linear-gradient(
     90deg,
     transparent 0%,
@@ -447,16 +447,12 @@
   background: linear-gradient(180deg, rgba(10, 24, 18, 0.92) 0%, rgba(15, 50, 30, 0.90) 50%, rgba(18, 55, 35, 0.92) 100%);
   border: 1px solid rgba(60, 140, 100, 0.20);
   border-radius: 20px;
-  padding: 14px 16px 8px 16px;
+  padding: 10px 16px;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 0 24px rgba(60,180,120,0.10),
     0 4px 32px rgba(10,22,40,0.50),
     0 8px 44px rgba(0,0,0,0.25);
-}
-
-.cal-container .glass-shine {
-  margin-top: 2px;
 }
 
 .cal-header {
