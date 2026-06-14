@@ -2,7 +2,7 @@
 
 (defwindow weather
   :monitor 0
-  :geometry (geometry :x "63%" :y "6%" :width 430 :height 550 :anchor "top center")
+  :geometry (geometry :x "2%" :y "6%" :width 430 :height 550 :anchor "top right")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -320,34 +320,11 @@
        ;; Glass shine
        (box :class "glass-shine")))
 
-;; Analog Clock Widget
-
-(defwindow analog-clock
-  :monitor 0
-  :geometry (geometry :x "63%" :y "45%" :width 180 :height 180 :anchor "top center")
-  :windowtype "notification"
-  :stacking "overlay"
-  :focusable false
-  :decorations false
-  :wm-ignore true
-  (analog-widget))
-
-(defpoll analog_tick :interval "1s"
-  :initial ""
-  `python3 ~/.config/eww/scripts/analog-clock.py`)
-
-(defwidget analog-widget []
-  (box :class "analog-container"
-       :orientation "v"
-       :halign "center"
-       (box :class "analog-face"
-            (image :path "/home/vector/.cache/eww/analog-clock.svg" :image-width 160 :image-height 160))))
-
 ;; System Monitor Widget
 
 (defwindow sysmon
   :monitor 0
-  :geometry (geometry :x "63%" :y "70%" :width 360 :height 240 :anchor "top center")
+  :geometry (geometry :x "2%" :y "55%" :width 460 :height 170 :anchor "top right")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -355,57 +332,54 @@
   :wm-ignore true
   (sysmon-widget))
 
-(defpoll gpu_data :interval "3s"
-  :initial "{\"gpu_usage\":\"0\",\"gpu_temp\":\"0\"}"
-  `bash ~/.config/eww/scripts/sysmon-gpu.sh`)
+(defpoll sysmon_data :interval "2s"
+  :initial "{\"cpu\":\"0\",\"cpu_temp\":\"0\",\"gpu\":\"0\",\"gpu_temp\":\"0\",\"ram\":\"0\",\"disk\":\"0\"}"
+  `bash ~/.config/eww/scripts/sysmon-data.sh`)
 
 (defwidget sysmon-widget []
   (box :class "sysmon-container"
        :orientation "v"
        :space-evenly false
 
+       ;; Top separator
+       (box :class "sysmon-sep")
+
        ;; Title
        (label :text "System Monitor" :class "sysmon-title")
 
-       ;; CPU
-       (box :class "sysmon-row"
-            :orientation "h"
-            :spacing 10
-            (label :text "⊞" :class "sysmon-icon")
-            (label :text "CPU" :class "sysmon-label")
-            (box :class "sysmon-bar-wrap"
-                 (box :class "sysmon-bar" :style "min-width:${EWW_CPU.avg}%"))
-            (label :text "${EWW_CPU.avg}%" :class "sysmon-val"))
+       ;; Middle separator
+       (box :class "sysmon-sep")
 
-       ;; GPU
+       ;; Cards row
        (box :class "sysmon-row"
             :orientation "h"
             :spacing 10
-            (label :text "▣" :class "sysmon-icon")
-            (label :text "GPU" :class "sysmon-label")
-            (box :class "sysmon-bar-wrap sysmon-gpu"
-                 (box :class "sysmon-bar" :style "min-width:${gpu_data.gpu_usage}%"))
-            (label :text "${gpu_data.gpu_usage}%  ${gpu_data.gpu_temp}°C" :class "sysmon-val"))
+            :space-evenly true
 
-       ;; RAM
-       (box :class "sysmon-row"
-            :orientation "h"
-            :spacing 10
-            (label :text "⊟" :class "sysmon-icon")
-            (label :text "RAM" :class "sysmon-label")
-            (box :class "sysmon-bar-wrap sysmon-ram"
-                 (box :class "sysmon-bar" :style "min-width:${EWW_RAM.used_mem_perc}%"))
-            (label :text "${EWW_RAM.used_mem_perc}%" :class "sysmon-val"))
+            ;; CPU
+            (box :class "sysmon-card" :orientation "v"
+                 (label :text "CPU" :class "sysmon-label")
+                 (label :text "${sysmon_data.cpu}%" :class "sysmon-val")
+                 (label :text "${sysmon_data.cpu_temp}°C" :class "sysmon-sub"))
 
-       ;; DISK
-       (box :class "sysmon-row"
-            :orientation "h"
-            :spacing 10
-            (label :text "⊠" :class "sysmon-icon")
-            (label :text "DISK" :class "sysmon-label")
-            (box :class "sysmon-bar-wrap sysmon-disk"
-                 (box :class "sysmon-bar" :style "min-width:${EWW_DISK["/"].used_perc}%"))
-            (label :text "${EWW_DISK["/"].used_perc}%" :class "sysmon-val"))
+            ;; GPU
+            (box :class "sysmon-card" :orientation "v"
+                 (label :text "GPU" :class "sysmon-label")
+                 (label :text "${sysmon_data.gpu}%" :class "sysmon-val")
+                 (label :text "${sysmon_data.gpu_temp}°C" :class "sysmon-sub"))
+
+            ;; RAM
+            (box :class "sysmon-card" :orientation "v"
+                 (label :text "RAM" :class "sysmon-label")
+                 (label :text "${sysmon_data.ram}%" :class "sysmon-val"))
+
+            ;; DISK
+            (box :class "sysmon-card" :orientation "v"
+                 (label :text "DISK" :class "sysmon-label")
+                 (label :text "${sysmon_data.disk}%" :class "sysmon-val")))
+
+       ;; Bottom separator
+       (box :class "sysmon-sep")
 
        ;; Glass shine
        (box :class "glass-shine")))
@@ -414,7 +388,7 @@
 
 (defwindow widget-ctl
   :monitor 0
-  :geometry (geometry :x "2%" :y "1%" :width 340 :height 260 :anchor "bottom left")
+  :geometry (geometry :x "50%" :y "1%" :width 340 :height 240 :anchor "bottom center")
   :windowtype "notification"
   :stacking "overlay"
   :focusable false
@@ -437,10 +411,6 @@
 (defpoll music_status :interval "1s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh music`)
-
-(defpoll analog_status :interval "1s"
-  :initial "off"
-  `bash ~/.config/eww/scripts/widget-status.sh analog-clock`)
 
 (defpoll sysmon_status :interval "1s"
   :initial "off"
@@ -508,20 +478,6 @@
             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle music"
                     (label :text "TOGGLE" :class "ctl-btn")))
 
-       ;; Analog Clock
-       (box :class "ctl-row"
-            :orientation "h"
-            :space-evenly false
-            (box :class "ctl-info" :orientation "v"
-                 (label :text "Analog Clock" :class "ctl-label")
-                 (label :text "SUPER+SHIFT+Z" :class "ctl-key"))
-            (box :hexpand true)
-            (box :class "ctl-status-box" :orientation "h"
-                 (label :text "${analog_status}" :class "ctl-status"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle analog-clock"
-                    (label :text "TOGGLE" :class "ctl-btn")))
-
-       ;; System Monitor
        (box :class "ctl-row"
             :orientation "h"
             :space-evenly false

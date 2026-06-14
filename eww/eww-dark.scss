@@ -599,99 +599,67 @@
   font-size: 26px;
 }
 
-/* Analog Clock Widget */
-
-.analog-container {
-  background: linear-gradient(180deg, rgba(10, 28, 48, 0.92) 0%, rgba(10, 30, 35, 0.90) 50%, rgba(10, 32, 28, 0.88) 100%);
-  border: 1px solid #1B3D5C;
-  border-radius: 50%;
-  padding: 12px;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    0 0 30px rgba(18,153,202,0.15),
-    0 4px 24px rgba(10,22,40,0.50),
-    0 8px 40px rgba(0,0,0,0.25);
-}
-
-.analog-face {
-  min-width: 160px;
-  min-height: 160px;
-}
-
 /* System Monitor Widget */
 
 .sysmon-container {
-  background: linear-gradient(180deg, rgba(10, 28, 48, 0.92) 0%, rgba(10, 30, 35, 0.90) 50%, rgba(10, 32, 28, 0.88) 100%);
-  border: 1px solid #1B3D5C;
+  background: linear-gradient(0deg, rgba(12, 40, 28, 0.92) 0%, rgba(10, 28, 22, 0.92) 100%);
+  border: 1px solid rgba(60, 140, 100, 0.20);
   border-radius: 18px;
-  padding: 14px 18px;
+  padding: 14px 16px;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    0 0 24px rgba(18,153,202,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 0 24px rgba(60,180,120,0.10),
     0 4px 32px rgba(10,22,40,0.50),
     0 8px 44px rgba(0,0,0,0.25);
 }
 
-.sysmon-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #C8F0F0;
-  margin-bottom: 10px;
+.sysmon-card {
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: linear-gradient(0deg, rgba(100, 40, 180, 0.10) 0%, rgba(50, 25, 100, 0.04) 100%);
+  border: 1px solid rgba(140, 100, 200, 0.04);
 }
 
 .sysmon-row {
   margin: 4px 0;
-  padding: 6px 8px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(100,40,180,0.04) 100%);
-  border: 1px solid rgba(200,240,240,0.03);
 }
 
-.sysmon-icon {
-  font-size: 14px;
-  color: #1299CA;
-  min-width: 20px;
+.sysmon-sep {
+  min-height: 1px;
+  border-radius: 1px;
+  background: linear-gradient(90deg,
+    transparent 5%,
+    rgba(140,100,200,0.12) 30%,
+    rgba(100,40,180,0.20) 50%,
+    rgba(140,100,200,0.12) 70%,
+    transparent 95%);
 }
 
 .sysmon-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #7799AA;
+  font-size: 11px;
+  font-weight: 700;
+  color: #557788;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
 }
 
-.sysmon-bar-wrap {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(200,240,240,0.04);
-  border-radius: 4px;
-  min-height: 10px;
-  min-width: 120px;
-}
-
-.sysmon-bar {
-  min-height: 10px;
-  border-radius: 3px;
-  background: linear-gradient(90deg, #1299CA, #35C8E0);
-  box-shadow: 0 0 6px rgba(18,153,202,0.30);
-}
-
-.sysmon-gpu .sysmon-bar {
-  background: linear-gradient(90deg, #9050C0, #C880E0);
-  box-shadow: 0 0 6px rgba(180,100,220,0.30);
-}
-
-.sysmon-ram .sysmon-bar {
-  background: linear-gradient(90deg, #20B880, #53D0A0);
-  box-shadow: 0 0 6px rgba(80,200,140,0.30);
-}
-
-.sysmon-disk .sysmon-bar {
-  background: linear-gradient(90deg, #C88040, #E8A860);
-  box-shadow: 0 0 6px rgba(200,140,60,0.30);
+.sysmon-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #88AABB;
+  letter-spacing: 1px;
 }
 
 .sysmon-val {
-  font-size: 11px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #C8F0F0;
+  text-shadow: 0 1px 6px rgba(18,153,202,0.20);
+}
+
+.sysmon-sub {
+  font-size: 12px;
   font-weight: 600;
-  color: #88AABB;
-  min-width: 50px;
+  color: #7799AA;
+  margin-top: 2px;
 }

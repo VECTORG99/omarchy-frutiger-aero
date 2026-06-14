@@ -51,5 +51,4 @@ o.bind("SUPER + SHIFT + K", "Clock widget", "~/.local/bin/eww open clock --toggl
 o.bind("SUPER + SHIFT + Q", "Widget control", "~/.local/bin/eww open widget-ctl --toggle")
 o.bind("SUPER + SHIFT + L", "Calendar widget", "~/.local/bin/eww open calendar --toggle")
 o.bind("SUPER + SHIFT + R", "Music widget", "~/.local/bin/eww open music --toggle")
-o.bind("SUPER + SHIFT + Z", "Analog clock", "~/.local/bin/eww open analog-clock --toggle")
 o.bind("SUPER + SHIFT + U", "System monitor", "~/.local/bin/eww open sysmon --toggle")
