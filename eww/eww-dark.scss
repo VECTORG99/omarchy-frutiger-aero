@@ -521,8 +521,8 @@
 .music-container {
   background: linear-gradient(180deg, rgba(10, 28, 48, 0.92) 0%, rgba(10, 30, 35, 0.90) 50%, rgba(10, 32, 28, 0.88) 100%);
   border: 1px solid #1B3D5C;
-  border-radius: 20px;
-  padding: 12px 16px;
+  border-radius: 16px;
+  padding: 10px 14px;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.08),
     0 0 24px rgba(18,153,202,0.15),
@@ -530,40 +530,80 @@
     0 8px 44px rgba(0,0,0,0.25);
 }
 
-/* LCD display panel */
 .music-display {
   background: #060e16;
   border: 2px solid #0d1f2e;
-  border-radius: 10px;
-  padding: 12px 14px;
+  border-radius: 8px;
+  padding: 10px 14px;
   box-shadow: inset 0 2px 8px rgba(0,0,0,0.40);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-/* Equalizer bars */
 .music-eq {
-  margin-bottom: 8px;
-  min-height: 40px;
+  min-height: 64px;
+  margin-right: 12px;
 }
 
 .eq-bar {
-  min-width: 14px;
+  min-width: 6px;
   min-height: 4px;
   border-radius: 2px;
-  margin: 0 3px;
+  animation: eq-none 0.5s ease-in-out infinite alternate;
+}
+
+.eq-low {
   background: linear-gradient(180deg, #35C8E0 0%, #1299CA 100%);
   box-shadow: 0 0 6px rgba(53,200,224,0.40);
-  animation: eq-dance 0.6s ease-in-out infinite alternate;
+  animation-name: eq-low;
+  animation-duration: 0.7s;
 }
 
-@keyframes eq-dance {
-  0% { min-height: 4px; opacity: 0.6; }
-  100% { min-height: 36px; opacity: 1.0; }
+.eq-mid {
+  background: linear-gradient(180deg, #53D0A0 0%, #20B880 100%);
+  box-shadow: 0 0 5px rgba(80,200,140,0.35);
+  animation-name: eq-mid;
+  animation-duration: 0.5s;
 }
 
-/* Track info in LCD */
+.eq-high {
+  background: linear-gradient(180deg, #C880E0 0%, #9050C0 100%);
+  box-shadow: 0 0 5px rgba(180,100,220,0.35);
+  animation-name: eq-high;
+  animation-duration: 0.4s;
+}
+
+@keyframes eq-low {
+  0% { min-height: 8px; opacity: 0.7; }
+  30% { min-height: 52px; opacity: 1.0; }
+  60% { min-height: 18px; opacity: 0.8; }
+  100% { min-height: 44px; opacity: 0.9; }
+}
+
+@keyframes eq-mid {
+  0% { min-height: 6px; opacity: 0.6; }
+  25% { min-height: 36px; opacity: 1.0; }
+  50% { min-height: 12px; opacity: 0.7; }
+  75% { min-height: 48px; opacity: 0.9; }
+  100% { min-height: 8px; opacity: 0.6; }
+}
+
+@keyframes eq-high {
+  0% { min-height: 4px; opacity: 0.5; }
+  20% { min-height: 28px; opacity: 1.0; }
+  40% { min-height: 6px; opacity: 0.6; }
+  60% { min-height: 40px; opacity: 0.9; }
+  80% { min-height: 2px; opacity: 0.4; }
+  100% { min-height: 32px; opacity: 0.8; }
+}
+
+@keyframes eq-none {
+  0% { min-height: 4px; }
+  100% { min-height: 30px; }
+}
+
 .music-track-info {
-  margin: 4px 0;
+  min-width: 160px;
+  margin: 0 8px;
 }
 
 .music-title {
@@ -577,22 +617,55 @@
   font-size: 11px;
   font-weight: 500;
   color: #4a8a9a;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .music-status {
   font-size: 9px;
   font-weight: 600;
   color: #2a5a6a;
-  margin-top: 4px;
+  margin-top: 6px;
   letter-spacing: 2px;
 }
 
-/* Metallic separator */
+/* Volume knob */
+.music-vol {
+  min-width: 50px;
+  margin-left: 8px;
+}
+
+.vol-knob-outer {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(100,110,120,0.30) 0%, rgba(50,55,60,0.40) 50%, rgba(100,110,120,0.25) 100%);
+  border: 2px solid rgba(140,160,170,0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 2px 6px rgba(0,0,0,0.30);
+}
+
+.vol-knob-inner {
+  min-width: 8px;
+  min-height: 8px;
+  border-radius: 50%;
+  margin: 12px;
+  background: linear-gradient(135deg, rgba(200,220,230,0.15) 0%, rgba(80,90,100,0.10) 100%);
+  border: 1px solid rgba(140,160,170,0.15);
+}
+
+.vol-label {
+  font-size: 8px;
+  font-weight: 700;
+  color: #445566;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
 .music-sep {
   min-height: 2px;
   border-radius: 1px;
-  margin: 8px 0;
+  margin: 6px 0;
   background: linear-gradient(90deg,
     transparent 5%,
     rgba(120,140,150,0.30) 20%,
@@ -602,14 +675,13 @@
   box-shadow: 0 1px 0 rgba(0,0,0,0.20);
 }
 
-/* Pioneer button area */
 .music-controls {
-  margin: 4px 0 6px 0;
+  margin: 2px 0 4px 0;
 }
 
 .music-btn-wrap {
-  padding: 6px 12px;
-  border-radius: 10px;
+  padding: 5px 14px;
+  border-radius: 8px;
   background: linear-gradient(180deg, rgba(80,90,100,0.20) 0%, rgba(40,45,50,0.30) 50%, rgba(80,90,100,0.15) 100%);
   border: 1px solid rgba(140,160,170,0.20);
   box-shadow:
@@ -624,8 +696,8 @@
 }
 
 .music-btn-main {
-  padding: 8px 16px;
-  border-radius: 14px;
+  padding: 6px 18px;
+  border-radius: 10px;
 }
 
 .music-btn-icon {
@@ -638,7 +710,7 @@
 }
 
 .music-icon-big {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .music-btn-label {
