@@ -6,7 +6,7 @@
   "height": 36,
   "width": 0,
   "modules-left": ["custom/omarchy", "hyprland/workspaces"],
-  "modules-center": ["custom/clock#horizontal", "custom/clock#vertical", "mpris", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "idle_inhibitor", "custom/notification-silencing-indicator", "custom/uptime", "custom/power-profile", "custom/audio-eq"],
+  "modules-center": ["custom/clock#horizontal", "custom/clock#vertical", "mpris", "custom/weather", "custom/update", "custom/voxtype", "custom/screenrecording-indicator", "idle_inhibitor", "custom/notification-silencing-indicator", "custom/uptime", "custom/power-profile"],
   "modules-right": [
     "group/tray-expander",
     "bluetooth",
@@ -125,12 +125,6 @@
     "exec": "$HOME/.config/waybar/scripts/network-speed.sh",
     "return-type": "json",
     "interval": 2,
-    "tooltip": false
-  },
-  "custom/audio-eq": {
-    "exec": "$HOME/.config/waybar/scripts/audio-eq.sh",
-    "return-type": "json",
-    "interval": 1,
     "tooltip": false
   },
   "custom/weather": {

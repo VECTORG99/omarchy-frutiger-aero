@@ -164,7 +164,6 @@ window#waybar > box {
 #idle_inhibitor,
 #custom-uptime,
 #custom-power-profile,
-#custom-audio-eq,
 #custom-weather,
 #custom-update,
 #cpu,
@@ -217,7 +216,6 @@ window#waybar > box {
 
 #custom-uptime:hover,
 #custom-power-profile:hover,
-#custom-audio-eq:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
@@ -236,7 +234,6 @@ window#waybar > box {
 
 #custom-uptime:hover,
 #custom-power-profile:hover,
-#custom-audio-eq:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
@@ -254,7 +251,6 @@ window#waybar > box {
 
 #custom-uptime:hover,
 #custom-power-profile:hover,
-#custom-audio-eq:hover,
 #custom-weather:hover,
 #custom-update:hover,
 #cpu:hover,
@@ -295,21 +291,6 @@ window#waybar > box {
 
 #custom-power-profile.power-saver {
   color: #35BCDE;
-}
-
-/* Player indicator */
-/* Audio visualizer */
-#custom-audio-eq.playing {
-  color: #35BCDE;
-  font-size: 14px;
-  letter-spacing: 2px;
-  min-width: 30px;
-  text-shadow: 0 0 6px rgba(53, 188, 222, 0.40);
-}
-
-#custom-audio-eq.idle {
-  color: rgba(26, 51, 68, 0.35);
-  font-size: 11px;
 }
 
 /* Network speed */
@@ -509,12 +490,6 @@ tooltip label {
 .left #custom-uptime, .right #custom-uptime,
 .left #custom-power-profile, .right #custom-power-profile,
 .left #custom-network-speed, .right #custom-network-speed,
-.left #custom-audio-eq, .right #custom-audio-eq {
-  margin: 1.5px 0;
-  padding: 8px 0;
-  min-width: 0;
-  min-height: 14px;
-}
 
 .left #tray, .right #tray { margin: 0 0 16px 0; }
 .left #bluetooth, .right #bluetooth { margin: 1.5px 0; padding: 8px 0; min-height: 14px; }
