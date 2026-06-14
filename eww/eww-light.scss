@@ -444,8 +444,8 @@
 /* Calendar Widget */
 
 .cal-container {
-  background: linear-gradient(180deg, rgba(200, 245, 220, 0.92) 0%, rgba(185, 235, 210, 0.90) 50%, rgba(175, 230, 200, 0.88) 100%);
-  border: 1px solid rgba(60, 140, 100, 0.10);
+  background: linear-gradient(180deg, rgba(180, 230, 200, 0.92) 0%, rgba(195, 240, 215, 0.90) 50%, rgba(205, 248, 225, 0.92) 100%);
+  border: 1px solid rgba(60, 140, 100, 0.15);
   border-radius: 20px;
   padding: 14px 16px;
   box-shadow:
@@ -508,19 +508,19 @@
   font-weight: 500;
   color: #5A3A80;
   min-width: 36px;
-  min-height: 20px;
+  min-height: 16px;
   border-radius: 6px;
-  padding: 2px 0 0 0;
-  background: linear-gradient(180deg, rgba(180, 150, 220, 0.12) 0%, rgba(140, 110, 190, 0.10) 100%);
+  padding: 1px 0 0 0;
+  background: linear-gradient(180deg, rgba(140, 110, 190, 0.08) 0%, rgba(190, 155, 225, 0.18) 100%);
   border: 1px solid rgba(140, 100, 200, 0.04);
 }
 
 .cal-dot {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   color: #1299CA;
   min-height: 10px;
-  text-shadow: 0 0 8px rgba(18, 153, 202, 0.50);
+  text-shadow: 0 0 10px rgba(18, 153, 202, 0.60);
 }
 
 .cal-cell {
