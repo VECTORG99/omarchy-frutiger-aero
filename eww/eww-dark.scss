@@ -229,7 +229,7 @@
 /* Clock Widget */
 
 .clock-container {
-  background: rgba(10, 22, 40, 0.90);
+  background: linear-gradient(180deg, rgba(10, 28, 48, 0.92) 0%, rgba(10, 30, 35, 0.90) 50%, rgba(10, 32, 28, 0.88) 100%);
   border: 1px solid #1B3D5C;
   border-radius: 24px;
   padding: 12px 24px 16px 24px;
@@ -363,7 +363,7 @@
 /* Widget Control Panel */
 
 .ctl-container {
-  background: rgba(10, 22, 40, 0.92);
+  background: linear-gradient(180deg, rgba(10, 28, 48, 0.92) 0%, rgba(10, 30, 35, 0.90) 50%, rgba(10, 32, 28, 0.88) 100%);
   border: 1px solid #1B3D5C;
   border-radius: 20px;
   padding: 18px 22px;
