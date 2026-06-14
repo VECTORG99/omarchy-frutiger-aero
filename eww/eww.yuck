@@ -285,69 +285,60 @@
   :initial "{\"title\":\"---\",\"artist\":\"---\",\"status\":\"stopped\"}"
   `bash ~/.config/eww/scripts/music.sh`)
 
+(defpoll cava_data :interval "500ms"
+  :initial "{\"cava_00\":2,\"cava_01\":2,\"cava_02\":2,\"cava_03\":2,\"cava_04\":2,\"cava_05\":2,\"cava_06\":2,\"cava_07\":2,\"cava_08\":2,\"cava_09\":2,\"cava_10\":2,\"cava_11\":2}"
+  `python3 ~/.config/eww/scripts/cava-bridge.py`)
+
 (defwidget music-widget []
   (box :class "music-container"
        :orientation "v"
        :space-evenly false
 
-       ;; Top: LCD Display panel with EQ + info
+       ;; LCD Display
        (box :class "music-display"
             :orientation "h"
             :space-evenly false
 
-            ;; Left: EQ bars
+            ;; EQ bars (CAVA)
             (box :class "music-eq"
                  :orientation "h"
                  :spacing 2
-                 (box :class "eq-bar eq-low" :style "animation-delay:0ms")
-                 (box :class "eq-bar eq-low" :style "animation-delay:120ms")
-                 (box :class "eq-bar eq-low" :style "animation-delay:240ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:60ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:180ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:300ms")
-                 (box :class "eq-bar eq-mid" :style "animation-delay:90ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:30ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:150ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:270ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:210ms")
-                 (box :class "eq-bar eq-high" :style "animation-delay:330ms"))
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_00}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_01}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_02}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_03}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_04}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_05}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_06}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_07}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_08}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_09}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_10}px")
+                 (box :class "eq-bar" :style "min-height:${cava_data.cava_11}px"))
 
-            ;; Center: track info
+            ;; Track info
             (box :class "music-track-info"
                  :orientation "v"
-                 :space-evenly false
                  (label :text "${music_data.title}" :class "music-title")
                  (label :text "${music_data.artist}" :class "music-artist")
-                 (label :text "${music_data.status}" :class "music-status"))
-
-            ;; Right: volume knob
-            (box :class "music-vol"
-                 :orientation "v"
-                 :halign "center"
-                 (box :class "vol-knob-outer"
-                      (box :class "vol-knob-inner"))
-                 (label :text "VOL" :class "vol-label")))
+                 (label :text "${music_data.status}" :class "music-status")))
 
        ;; Metallic separator
        (box :class "music-sep")
 
-       ;; Bottom: Controls
+       ;; Controls row (all circular)
        (box :class "music-controls"
             :orientation "h"
-            :space-evenly true
+            :spacing 16
             :halign "center"
             (button :onclick "playerctl previous"
-                    (box :class "music-btn-wrap" :orientation "v"
-                         (label :text "⏮" :class "music-btn-icon")
-                         (label :text "PREV" :class "music-btn-label")))
+                    (label :text "⏮" :class "music-btn-circle"))
             (button :onclick "playerctl play-pause"
-                    (box :class "music-btn-wrap music-btn-main" :orientation "v"
-                         (label :text "⏯" :class "music-btn-icon music-icon-big")
-                         (label :text "PLAY" :class "music-btn-label")))
+                    (label :text "⏯" :class "music-btn-circle music-btn-play"))
             (button :onclick "playerctl next"
-                    (box :class "music-btn-wrap" :orientation "v"
-                         (label :text "⏭" :class "music-btn-icon")
-                         (label :text "NEXT" :class "music-btn-label"))))
+                    (label :text "⏭" :class "music-btn-circle"))
+            (box :class "vol-knob"
+                 (box :class "vol-dot")))
 
        ;; Glass shine
        (box :class "glass-shine")))
