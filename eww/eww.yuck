@@ -178,7 +178,7 @@
   :wm-ignore true
   (calendar-widget))
 
-(defpoll cal_data :interval "5s"
+(defpoll cal_data :interval "6h"
   :initial "{}"
   `python3 ~/.config/eww/scripts/calendar.sh 0`)
 
