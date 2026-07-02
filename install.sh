@@ -58,19 +58,7 @@ mkdir -p ~/.config/opencode/themes
 cp "$CONFIG_DIR/opencode/tui.json" ~/.config/opencode/tui.json 2>/dev/null || true
 cp "$CONFIG_DIR/opencode/themes/"*.json ~/.config/opencode/themes/
 
-# ── SDDM (optional, requires sudo) ──────────────────────────
 
-if [ -f "$CONFIG_DIR/sddm/Main.qml" ] && command -v sudo &>/dev/null; then
-  echo ""
-  echo ":: SDDM theme detected."
-  if [ -w /usr/share/sddm/themes/omarchy/ ] 2>/dev/null; then
-    cp "$CONFIG_DIR/sddm/Main.qml" /usr/share/sddm/themes/omarchy/Main.qml
-    echo "   → sddm/  installed"
-  else
-    echo "   → Run the following to install the SDDM greeter:"
-    echo "     sudo cp $CONFIG_DIR/sddm/Main.qml /usr/share/sddm/themes/omarchy/"
-  fi
-fi
 
 # ── EWW Widgets ─────────────────────────────────────────────
 
@@ -123,9 +111,7 @@ fi
 echo ""
 echo ":: Reloading Hyprland and restarting Waybar..."
 hyprctl reload 2>/dev/null || true
-killall waybar 2>/dev/null || true
-sleep 1
-waybar &>/dev/null & disown
+omarchy-restart-waybar 2>/dev/null || true
 
 echo ""
 echo "========================================"
