@@ -90,6 +90,6 @@ result = {
     'fc2_day': day_name(forecast[2]['date']),
 }
 print(json.dumps(result))
-" > "$CACHE_FILE"
+" > "$CACHE_FILE.tmp" && mv "$CACHE_FILE.tmp" "$CACHE_FILE"
 
 cat "$CACHE_FILE"
