@@ -25,6 +25,7 @@
 - **No commitar** `config/omarchy/current/` ni binarios (wallpapers, `.wav`).
 - **Usar helpers de Omarchy** en lua (`hl.config`, `o.bind`) — no sintaxis raw de Hyprland.
 - **Testear** con `shellcheck` y `luac -p` antes de abrir PR.
+- **Testear en el sistema actual** antes de abrir PR: correr `bash install.sh` sobre el home real y verificar que los widgets/waybar/hypr se comportan como se espera. Los cambios que tocan `install.sh`, scripts, o configs activas deben validarse en vivo, no solo en CI. Si el cambio elimina archivos del repo, confirmar que `install.sh` también los elimina del home (idempotencia).
 
 ## CI Checks
 
