@@ -26,10 +26,14 @@ fi
 # RAM
 ram_info=$(free -m 2>/dev/null | awk '/^Mem:/ {printf "%d", ($3/$2)*100}')
 [ -z "$ram_info" ] && ram_info="0"
+ram_total=$(free -g 2>/dev/null | awk '/^Mem:/ {printf "%d", $2}')
+[ -z "$ram_total" ] && ram_total="0"
 
 # Disk root
 disk_info=$(df / --output=pcent 2>/dev/null | tail -1 | tr -d ' %')
 [ -z "$disk_info" ] && disk_info="0"
+disk_total=$(df / --output=size -B1 2>/dev/null | tail -1 | awk '{printf "%.0f", $1/1024/1024/1024}')
+[ -z "$disk_total" ] && disk_total="0"
 
-printf '%s %s %s %s %s %s' "$cpu" "$cpu_temp" "$gpu_usage" "$gpu_temp" "$ram_info" "$disk_info" | jq -R -s '
-  split(" ") | {cpu:.[0], cpu_temp:.[1], gpu:.[2], gpu_temp:.[3], ram:.[4], disk:.[5]}'
+printf '%s %s %s %s %s %s %s %s' "$cpu" "$cpu_temp" "$gpu_usage" "$gpu_temp" "$ram_info" "$ram_total" "$disk_info" "$disk_total" | jq -R -s '
+  split(" ") | {cpu:.[0], cpu_temp:.[1], gpu:.[2], gpu_temp:.[3], ram:.[4], ram_total:.[5], disk:.[6], disk_total:.[7]}'
