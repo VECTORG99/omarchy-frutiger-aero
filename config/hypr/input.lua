@@ -22,6 +22,10 @@ hl.config({
 		-- feels like unstable sensitivity. Flat keeps it predictable.
 		accel_profile = "flat",
 
+		-- Sensitivity 0 (default). Set explicitly so future edits don't
+		-- silently drift from the repo standard.
+		sensitivity = 0,
+
 		touchpad = {
 			-- Use natural (inverse) scrolling.
 			-- natural_scroll = true,
