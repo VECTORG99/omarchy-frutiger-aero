@@ -22,6 +22,18 @@ for f in "$CONFIG_DIR/waybar/scripts/"*.sh; do
   chmod +x ~/.config/waybar/scripts/"$(basename "$f")"
 done
 
+# Remove waybar scripts that no longer ship in the repo (e.g. caffeine.sh,
+# pomodoro.sh, playerctl-cover.sh removed in #12). Keeps the install
+# idempotent: stale files from a previous version don't survive an upgrade.
+for installed in ~/.config/waybar/scripts/*.sh; do
+  [ -f "$installed" ] || continue
+  name="$(basename "$installed")"
+  if [ ! -f "$CONFIG_DIR/waybar/scripts/$name" ]; then
+    rm "$installed"
+    echo "   → removing stale waybar script: $name"
+  fi
+done
+
 # Hyprland
 echo "   → hypr/"
 mkdir -p ~/.config/hypr
