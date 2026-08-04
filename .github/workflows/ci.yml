@@ -16,7 +16,7 @@ jobs:
         uses: ludeeus/action-shellcheck@master
         with:
           severity: warning
-          additional_paths: "install.sh"
+          additional_files: "install.sh"
           ignore_paths: ".git"
           ignore_names: "calendar.sh"
 
