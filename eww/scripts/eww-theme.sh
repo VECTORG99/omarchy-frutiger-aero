@@ -26,7 +26,7 @@ if pgrep -x eww > /dev/null; then
   "$EWW" kill 2>/dev/null
   sleep 1
 fi
-rm -f /run/user/$(id -u)/eww-server_* 2>/dev/null
+rm -f "/run/user/$(id -u)/eww-server_"* 2>/dev/null
 "$EWW" daemon 2>/dev/null &
 sleep 3
 "$EWW" update cal_data="$(python3 "$EWW_DIR/scripts/calendar.sh" 0)" 2>/dev/null

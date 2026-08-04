@@ -31,7 +31,7 @@ case "${1:-get}" in
     fi
     init_state
     echo "$new_val" > "$STATE_FILE"
-    hyprctl eval "hl.config({decoration={inactive_opacity=$new_val}})" 2>/dev/null || true
+    hyprctl eval "hl.config({decoration={inactive_opacity=$new_val}})" > /dev/null 2>&1 || true
     pct=$(awk "BEGIN { printf \"%.0f\", $new_val * 100 }")
     jq -n --arg v "$new_val" --arg p "$pct" '{opacity:$v, percent:$p}'
     ;;
@@ -40,7 +40,7 @@ case "${1:-get}" in
     # Apply saved state to Hyprland (used on startup/reload)
     init_state
     current=$(cat "$STATE_FILE" 2>/dev/null || echo "$DEFAULT_OPACITY")
-    hyprctl eval "hl.config({decoration={inactive_opacity=$current}})" 2>/dev/null || true
+    hyprctl eval "hl.config({decoration={inactive_opacity=$current}})" > /dev/null 2>&1 || true
     ;;
 
   *)

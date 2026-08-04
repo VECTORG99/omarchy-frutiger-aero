@@ -18,6 +18,7 @@ jobs:
           severity: warning
           additional_paths: "install.sh"
           ignore_paths: ".git"
+          ignore_names: "calendar.sh"
 
   lua-check:
     name: Lua syntax check
