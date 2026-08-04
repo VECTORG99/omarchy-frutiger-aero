@@ -101,12 +101,16 @@ hl.layer_rule({
   ignore_alpha = 0.2,
 })
 
--- Steam fixes
+-- Steam + CS2 fixes
 hl.config({
   windowrulev2 = {
     "noblur,class:^(steam)$",
     "rounding 0,class:^(steam)$",
     "noanim,class:^(steam)$",
+    "noblur,class:^(cs2)$",
+    "rounding 0,class:^(cs2)$",
+    "noanim,class:^(cs2)$",
+    "fullscreen,class:^(cs2)$",
   },
 })
 
