@@ -227,7 +227,7 @@ pkill waybar && waybar
 
 ## EWW Widgets
 
-Six Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/eww) 0.5+:
+Seven Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/eww) 0.5+:
 
 | Widget | Keybind | Description |
 |--------|---------|-------------|
@@ -236,6 +236,7 @@ Six Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/ew
 | **Calendar** | `SUPER+SHIFT+L` | Monthly calendar with `< >` navigation, today marked `[day]` |
 | **Music** | `SUPER+SHIFT+R` | Now playing via playerctl, Pioneer car stereo style, LCD display |
 | **System Monitor** | `SUPER+SHIFT+U` | CPU/GPU/RAM/DISK with rounded percentages and temps |
+| **Opacity** | `SUPER+SHIFT+V` | Slider to control inactive window opacity (0-100%), presets, persists across reloads |
 | **Control** | `SUPER+SHIFT+Q` | Toggle any widget on/off, per-widget screen selector [1][2], shows status and keybinds |
 
 All widgets support light/dark themes via `omarchy theme set`.

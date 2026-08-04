@@ -677,3 +677,86 @@
   color: #4A7080;
   margin-top: 2px;
 }
+
+/* ==================== OPACITY WIDGET ==================== */
+
+.opacity-container {
+  background: linear-gradient(180deg, rgba(90, 172, 160, 0.92) 0%, rgba(80, 160, 180, 0.90) 50%, rgba(70, 150, 170, 0.88) 100%);
+  border: 1px solid #1299CA;
+  border-radius: 22px;
+  padding: 20px 24px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.20),
+    0 0 24px rgba(18, 153, 202, 0.15),
+    0 4px 32px rgba(26, 51, 68, 0.30);
+}
+
+.opacity-header {
+  margin-bottom: 12px;
+}
+
+.opacity-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A3344;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.20);
+}
+
+.opacity-display {
+  margin: 8px 0;
+}
+
+.opacity-value {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1299CA;
+  text-shadow: 0 2px 8px rgba(18, 153, 202, 0.20);
+}
+
+.opacity-slider-box {
+  margin: 12px 0 16px 0;
+}
+
+.opacity-container scale {
+  min-width: 280px;
+  min-height: 8px;
+}
+
+.opacity-container scale trough {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  min-height: 6px;
+}
+
+.opacity-container scale highlight {
+  background: linear-gradient(90deg, #1299CA, #35BCDE);
+  border-radius: 6px;
+  min-height: 6px;
+}
+
+.opacity-container scale slider {
+  background: radial-gradient(circle, #35BCDE 30%, #1299CA 100%);
+  border-radius: 50%;
+  min-width: 18px;
+  min-height: 18px;
+  box-shadow: 0 0 12px rgba(18, 153, 202, 0.30);
+}
+
+.opacity-presets {
+  margin-top: 4px;
+}
+
+.opacity-preset {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A3344;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 6px 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+.opacity-preset:hover {
+  background: rgba(255, 255, 255, 0.30);
+  color: #1299CA;
+}
