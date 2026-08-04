@@ -20,7 +20,7 @@ if [ "$FORCE" = false ] && [ -f "$CACHE_FILE" ]; then
   fi
 fi
 
-RESPONSE=$(curl -sf "wttr.in?format=j1" 2>/dev/null) || {
+RESPONSE=$(curl -sf --max-time 10 "wttr.in?format=j1" 2>/dev/null) || {
   if [ -f "$CACHE_FILE" ]; then
     cat "$CACHE_FILE"
     exit 0
@@ -90,6 +90,6 @@ result = {
     'fc2_day': day_name(forecast[2]['date']),
 }
 print(json.dumps(result))
-" > "$CACHE_FILE"
+" > "$CACHE_FILE.tmp" && mv "$CACHE_FILE.tmp" "$CACHE_FILE"
 
 cat "$CACHE_FILE"

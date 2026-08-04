@@ -77,7 +77,7 @@
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
   },
   "mpris": {
-    "interval": 1,
+    "interval": 2,
     "format": "{player_icon} {dynamic}",
     "format-paused": "{status_icon} {dynamic}",
     "format-stopped": "",
@@ -124,7 +124,7 @@
   "custom/network-speed": {
     "exec": "$HOME/.config/waybar/scripts/network-speed.sh",
     "return-type": "json",
-    "interval": 2,
+    "interval": 3,
     "tooltip": false
   },
   "custom/weather": {
@@ -137,6 +137,7 @@
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "format": "{icon}",
+    "interval": 5,
     "format-wifi": "{icon}",
     "format-ethernet": "󰀂",
     "format-disconnected": "󰤮",

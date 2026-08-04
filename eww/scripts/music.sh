@@ -6,7 +6,7 @@ DEFAULT_ART="$HOME/.config/eww/assets/icons/music-default.svg"
 mkdir -p "$ART_DIR"
 PLAYER=$(playerctl -l 2>/dev/null | head -1 || echo "")
 if [ -z "$PLAYER" ]; then
-  echo '{"title":"No Music","artist":"---","status":"stopped","art":"'$DEFAULT_ART'"}'
+  jq -n --arg art "$DEFAULT_ART" '{title:"No Music",artist:"---",status:"stopped",art:$art}'
   exit 0
 fi
 TITLE=$(playerctl -p "$PLAYER" metadata xesam:title 2>/dev/null | head -c 80 || echo "---")
@@ -20,4 +20,5 @@ if [ -n "$ART_URL" ] && [ "$ART_URL" != "$DEFAULT_ART" ]; then
   [ ! -f "$ART_FILE" ] && curl -sfL "$ART_URL" -o "$ART_FILE" 2>/dev/null || true
   [ ! -f "$ART_FILE" ] && ART_FILE="$DEFAULT_ART"
 fi
-echo "{\"title\":\"$TITLE\",\"artist\":\"$ARTIST\",\"status\":\"$STATUS\",\"art\":\"$ART_FILE\"}"
+jq -n --arg t "$TITLE" --arg a "$ARTIST" --arg s "$STATUS" --arg art "$ART_FILE" \
+  '{title:$t, artist:$a, status:$s, art:$art}'

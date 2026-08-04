@@ -95,6 +95,25 @@ for variant in frutiger-aero frutiger-aero-dark; do
   fi
 done
 
+# ── Omarchy hooks ───────────────────────────────────────────
+
+echo ""
+echo ":: Installing Omarchy hooks..."
+
+HOOK_SRC="$CONFIG_DIR/omarchy/hooks"
+HOOK_DST=~/.config/omarchy/hooks
+if [ -d "$HOOK_SRC" ]; then
+  mkdir -p "$HOOK_DST/theme-set.d"
+  for f in "$HOOK_SRC"/theme-set.d/*; do
+    [ -f "$f" ] || continue
+    cp "$f" "$HOOK_DST/theme-set.d/"
+    chmod +x "$HOOK_DST/theme-set.d/$(basename "$f")"
+    echo "   → theme-set.d/$(basename "$f")"
+  done
+else
+  echo "   → hooks/ not found — skipping"
+fi
+
 # ── Apply theme ─────────────────────────────────────────────
 
 echo ""

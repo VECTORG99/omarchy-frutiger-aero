@@ -4,7 +4,7 @@ A fully swappable **Frutiger Aero** theme set for [Omarchy](https://github.com/a
 
 This theme is built on top of [Omarchy on CachyOS](https://github.com/roboff/omarchy-on-cachyos) by [Mr. Roboff](https://github.com/roboff) — my Omarchy system base. All Frutiger Aero customizations are layered on top of that foundation.
 
-Includes light and dark variants with glassmorphism, blurred translucent windows, Vista/7-style Waybar, Alacritty terminal glass, authentic FA wallpapers (Asadal + Perfect Hue), SDDM Frutiger Aero greeter, Vista startup chime, matching cursor/icon themes, and Opencode TUI themes.
+Includes light and dark variants with glassmorphism, blurred translucent windows, Vista/7-style Waybar, Alacritty terminal glass, authentic FA wallpapers (Asadal + Perfect Hue), Vista startup chime (optional, see [Issue #11](https://github.com/VECTORG99/omarchy-frutiger-aero/issues/11)), matching cursor/icon themes, and Opencode TUI themes.
 
 Both themes are fully swappable via `omarchy theme set` — includes preview images for the theme switcher UI. One-command install with `install.sh`.
 
@@ -62,7 +62,6 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 - `custom/update` — Package update indicator
 - `custom/uptime` — System uptime
 - `custom/power-profile` — Cycle power modes (power-saver/balanced/performance)
-- `custom/audio-eq` — Unicode bar audio visualizer (PipeWire detection via `Corked: no`)
 - `custom/network-speed` — Download/upload via `/proc/net/dev`
 - `custom/voxtype` — Voice recording/transcription indicator
 - `custom/screenrecording-indicator` — Screen recording status
@@ -99,17 +98,6 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 - **Font**: JetBrainsMono Nerd Font 10.5px
 - **Theme**: Imports omarchy active theme colors
 
-### SDDM (login screen)
-
-- **Frutiger Aero glass design**: FastBlur radius 48
-- **Glass panel**: Gradient translucent panel with teal border `#1299CA`
-- **Header shine**: White gradient highlight
-- **Clock**: Fira Sans, Spanish date
-- **Password field**: Rounded (14px) with teal glow
-- **Login button**: Hover/pressed states with teal gradient
-- **Session selector**: Available in panel
-- **Footer**: "Frutiger Aero" branding
-
 ### Opencode TUI
 
 | Theme | Background | Text |
@@ -119,7 +107,7 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 
 ### Startup sound
 
-Vista startup chime plays 2s after login via `paplay --volume=45000` (autostart.lua).
+Vista startup chime plays 2s after login via `paplay --volume=45000` (autostart.lua). The `.wav` file is **not included** in the repo (copyright concerns) — place it at `~/.config/omarchy/sounds/vista-startup.wav` to enable. The autostart script skips silently if the file is missing.
 
 ### Icons & Cursors
 
@@ -184,15 +172,11 @@ config/
 │   └── config.toml          # Editor colors
 ├── fastfetch/
 │   └── config.jsonc         # System info display
-├── sddm/
-│   └── Main.qml             # Frutiger Aero SDDM greeter
 └── omarchy/
     ├── themes/
     │   ├── frutiger-aero/       # Light theme (colors, backgrounds, styles)
     │   └── frutiger-aero-dark/  # Dark theme
-    └── current/theme/           # Active generated theme
-scripts/
-└── analyze-screenshot.sh    # ImageMagick + Tesseract color/text analyzer
+    └── current/theme/           # Active generated theme (runtime, gitignored)
 
 install.sh                   # One-command installer
 ```
@@ -230,19 +214,20 @@ cp config/fastfetch/* ~/.config/fastfetch/
 # Theme files (swappable via omarchy theme set)
 cp -r config/omarchy/themes/frutiger-aero* ~/.config/omarchy/themes/
 
-# SDDM (requires sudo)
-sudo cp config/sddm/Main.qml /usr/share/sddm/themes/omarchy/
+# Hooks (auto-switch opencode theme on theme change)
+mkdir -p ~/.config/omarchy/hooks/theme-set.d
+cp config/omarchy/hooks/theme-set.d/opencode-theme ~/.config/omarchy/hooks/theme-set.d/
+chmod +x ~/.config/omarchy/hooks/theme-set.d/opencode-theme
 
 # Apply
 omarchy theme set "Frutiger Aero"
 hyprctl reload
 pkill waybar && waybar
-sudo omarchy-refresh-sddm
 ```
 
 ## EWW Widgets
 
-Six Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/eww) 0.5+:
+Seven Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/eww) 0.5+:
 
 | Widget | Keybind | Description |
 |--------|---------|-------------|
@@ -251,6 +236,7 @@ Six Frutiger Aero desktop widgets built with [EWW](https://github.com/elkowar/ew
 | **Calendar** | `SUPER+SHIFT+L` | Monthly calendar with `< >` navigation, today marked `[day]` |
 | **Music** | `SUPER+SHIFT+R` | Now playing via playerctl, Pioneer car stereo style, LCD display |
 | **System Monitor** | `SUPER+SHIFT+U` | CPU/GPU/RAM/DISK with rounded percentages and temps |
+| **Opacity** | `SUPER+SHIFT+V` | Slider to control inactive window opacity (0-100%), presets, persists across reloads |
 | **Control** | `SUPER+SHIFT+Q` | Toggle any widget on/off, per-widget screen selector [1][2], shows status and keybinds |
 
 All widgets support light/dark themes via `omarchy theme set`.

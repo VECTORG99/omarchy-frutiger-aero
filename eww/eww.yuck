@@ -281,7 +281,7 @@
   :wm-ignore true
   (music-widget))
 
-(defpoll music_data :interval "2s"
+(defpoll music_data :interval "3s"
   :initial "{\"title\":\"---\",\"artist\":\"---\",\"status\":\"stopped\"}"
   `bash ~/.config/eww/scripts/music.sh`)
 
@@ -332,7 +332,7 @@
   :wm-ignore true
   (sysmon-widget))
 
-(defpoll sysmon_data :interval "2s"
+(defpoll sysmon_data :interval "3s"
   :initial "{\"cpu\":\"0\",\"cpu_temp\":\"0\",\"gpu\":\"0\",\"gpu_temp\":\"0\",\"ram\":\"0\",\"disk\":\"0\"}"
   `bash ~/.config/eww/scripts/sysmon-data.sh`)
 
@@ -372,13 +372,13 @@
             (box :class "sysmon-card" :orientation "v"
                  (label :text "RAM" :class "sysmon-label")
                  (label :text "${sysmon_data.ram}%" :class "sysmon-val")
-                 (label :text "/ 32GB" :class "sysmon-sub"))
+                 (label :text "/ ${sysmon_data.ram_total}GB" :class "sysmon-sub"))
 
             ;; DISK
             (box :class "sysmon-card" :orientation "v"
                  (label :text "DISK" :class "sysmon-label")
                  (label :text "${sysmon_data.disk}%" :class "sysmon-val")
-                 (label :text "/ 1TB" :class "sysmon-sub")))
+                 (label :text "/ ${sysmon_data.disk_total}GB" :class "sysmon-sub")))
 
        ;; Bottom separator
        (box :class "sysmon-sep")
@@ -398,25 +398,29 @@
   :wm-ignore true
   (widget-ctl-widget))
 
-(defpoll weather_status :interval "1s"
+(defpoll weather_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh weather`)
 
-(defpoll clock_status :interval "1s"
+(defpoll clock_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh clock`)
 
-(defpoll calendar_status :interval "1s"
+(defpoll calendar_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh calendar`)
 
-(defpoll music_status :interval "1s"
+(defpoll music_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh music`)
 
-(defpoll sysmon_status :interval "1s"
+(defpoll sysmon_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh sysmon`)
+
+(defpoll opacity_status :interval "5s"
+  :initial "off"
+  `bash ~/.config/eww/scripts/widget-status.sh opacity`)
 
 
 (defwidget widget-ctl-widget []
@@ -511,6 +515,86 @@
                     (label :text "1" :class "ctl-scr"))
             (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh sysmon 1"
                     (label :text "2" :class "ctl-scr")))
+
+       ;; Opacity
+       (box :class "ctl-row"
+            :orientation "h"
+            :space-evenly false
+            (box :class "ctl-info" :orientation "v"
+                 (label :text "Opacity" :class "ctl-label")
+                 (label :text "SUPER+SHIFT+V" :class "ctl-key"))
+            (box :hexpand true)
+            (box :class "ctl-status-box" :orientation "h"
+                 (label :text "${opacity_status}" :class "ctl-status"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle opacity"
+                    (label :text "TOGGLE" :class "ctl-btn"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh opacity 0"
+                    (label :text "1" :class "ctl-scr"))
+            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh opacity 1"
+                    (label :text "2" :class "ctl-scr")))
+
+       ;; Glass shine
+       (box :class "glass-shine")))
+
+;; Opacity Control Widget
+
+(defwindow opacity
+  :monitor 0
+  :geometry (geometry :x "50%" :y "1%" :width 360 :height 200 :anchor "top center")
+  :windowtype "notification"
+  :stacking "overlay"
+  :focusable true
+  :decorations false
+  :wm-ignore true
+  (opacity-widget))
+
+(defpoll opacity_data :interval "1s"
+  :initial "{\"opacity\":\"0.72\",\"percent\":\"72\"}"
+  `bash ~/.config/eww/scripts/opacity.sh get`)
+
+(defwidget opacity-widget []
+  (box :class "opacity-container"
+       :orientation "v"
+       :space-evenly false
+
+       ;; Header
+       (box :class "opacity-header"
+            :orientation "h"
+            :space-evenly false
+            (label :text "Window Opacity" :class "opacity-title")
+            (box :hexpand true)
+            (button :onclick "eww close opacity"
+                    (label :text "✕" :class "act-icon")))
+
+       ;; Current value display
+       (box :class "opacity-display"
+            :orientation "h"
+            :halign "center"
+            :space-evenly false
+            (label :text "${opacity_data.percent}%" :class "opacity-value"))
+
+       ;; Slider
+       (box :class "opacity-slider-box"
+            :orientation "h"
+            :halign "center"
+            (scale :min 0
+                   :max 100
+                   :value "${opacity_data.percent}"
+                   :onchange "bash ~/.config/eww/scripts/opacity.sh set \"$(awk -v v={} 'BEGIN{printf \"%.2f\", v/100}')\""))
+
+       ;; Preset buttons
+       (box :class "opacity-presets"
+            :orientation "h"
+            :halign "center"
+            :spacing 12
+            (button :onclick "bash ~/.config/eww/scripts/opacity.sh set 0.50"
+                    (label :text "50%" :class "opacity-preset"))
+            (button :onclick "bash ~/.config/eww/scripts/opacity.sh set 0.72"
+                    (label :text "72%" :class "opacity-preset"))
+            (button :onclick "bash ~/.config/eww/scripts/opacity.sh set 0.85"
+                    (label :text "85%" :class "opacity-preset"))
+            (button :onclick "bash ~/.config/eww/scripts/opacity.sh set 1.0"
+                    (label :text "100%" :class "opacity-preset")))
 
        ;; Glass shine
        (box :class "glass-shine")))

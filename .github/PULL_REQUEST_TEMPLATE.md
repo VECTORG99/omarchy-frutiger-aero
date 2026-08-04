@@ -1,14 +1,18 @@
-## Description
+## Summary
 
-<!-- Briefly describe what this PR does -->
+<!-- Brief description of changes -->
 
-## Type of change
+## Changes
 
-- [ ] Bug fix
-- [ ] New feature / widget
-- [ ] Theme improvement (colors, glass, gradients)
-- [ ] Documentation
-- [ ] Refactor / chore
+<!-- List of specific changes -->
+
+## Related Issue
+
+<!-- Closes #N -->
+
+## Testing
+
+<!-- What was tested and how: shellcheck, luac -p, jq, manual testing -->
 
 ## Screenshots
 
@@ -16,8 +20,11 @@
 
 ## Checklist
 
-- [ ] I tested the changes on my setup
-- [ ] Light and dark themes both look correct
+- [ ] `shellcheck` passes on modified scripts
+- [ ] `luac -p` passes on modified lua
+- [ ] `jq` passes on modified JSON
 - [ ] No hardcoded personal paths (`/home/...`)
+- [ ] No hardcoded hardware values (monitor names, RAM totals, GPU vendor)
 - [ ] No API keys, tokens, or credentials added
+- [ ] Light and dark themes both look correct
 - [ ] Widgets work on both 1920x1080 and 2560x1440 (if applicable)
