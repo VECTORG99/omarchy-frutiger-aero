@@ -4,9 +4,12 @@ export LC_ALL=en_US.utf8
 case ${1:-horizontal} in
   horizontal)
     d=$(date "+%A %d/%m %I:%M %p")
-    echo "{\"text\": \"$d\", \"tooltip\": \"$(date)\", \"class\": \"\"}"
+    tooltip=$(date)
+    jq -n --arg t "$d" --arg tt "$tooltip" '{text:$t, tooltip:$tt, class:""}'
     ;;
   vertical)
-    echo "{\"text\": \"$(date '+%A\n%d/%m\n%I:%M\n%p')\", \"tooltip\": \"$(date)\", \"class\": \"\"}"
+    d=$(date '+%A\n%d/%m\n%I:%M\n%p')
+    tooltip=$(date)
+    jq -n --arg t "$d" --arg tt "$tooltip" '{text:$t, tooltip:$tt, class:""}'
     ;;
 esac

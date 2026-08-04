@@ -20,7 +20,7 @@ esac
 
 for i in "${!PROFILES[@]}"; do
   if [[ ${PROFILES[$i]} == "$current" ]]; then
-    echo "{\"text\": \"${ICONS[$i]}\", \"tooltip\": \"Perfil: ${NAMES[$i]}\", \"class\": \"$current\"}"
+    jq -n --arg t "${ICONS[$i]}" --arg tt "Perfil: ${NAMES[$i]}" --arg c "$current" '{text:$t, tooltip:$tt, class:$c}'
     break
   fi
 done

@@ -20,4 +20,5 @@ ram_info=$(free -m 2>/dev/null | awk '/^Mem:/ {printf "%d", ($3/$2)*100}')
 disk_info=$(df / --output=pcent 2>/dev/null | tail -1 | tr -d ' %')
 [ -z "$disk_info" ] && disk_info="0"
 
-echo "{\"cpu\":\"$cpu\",\"cpu_temp\":\"$cpu_temp\",\"gpu\":\"$gpu_usage\",\"gpu_temp\":\"$gpu_temp\",\"ram\":\"$ram_info\",\"disk\":\"$disk_info\"}"
+echo "$cpu $cpu_temp $gpu_usage $gpu_temp $ram_info $disk_info" | jq -R -s '
+  split(" ") | {cpu:.[0], cpu_temp:.[1], gpu:.[2], gpu_temp:.[3], ram:.[4], disk:.[5]}'

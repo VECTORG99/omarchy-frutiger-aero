@@ -13,7 +13,7 @@ tx_bytes=${tx_bytes:-0}
 
 if [[ ! -f $CACHE ]]; then
   echo "$rx_bytes $tx_bytes $(date +%s)" > "$CACHE"
-  echo '{"text": "󰛳 0B/s 󰛲 0B/s", "tooltip": "Midiendo...", "class": ""}'
+  jq -n '{text:"󰛳 0B/s 󰛲 0B/s", tooltip:"Midiendo...", class:""}'
   exit 0
 fi
 
@@ -40,4 +40,4 @@ down=$(format_speed $rx_speed)
 up=$(format_speed $tx_speed)
 
 echo "$rx_bytes $tx_bytes $now" > "$CACHE"
-echo "{\"text\": \"󰛳 $down 󰛲 $up\", \"tooltip\": \"↓ $down  ↑ $up\", \"class\": \"\"}"
+jq -n --arg t "󰛳 $down 󰛲 $up" --arg tt "↓ $down  ↑ $up" '{text:$t, tooltip:$tt, class:""}'
