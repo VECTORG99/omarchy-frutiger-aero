@@ -94,6 +94,10 @@ eww/eww.yuck
 - Do not hardcode personal hardware values (monitor names, RAM totals, GPU vendor).
 - Do not add SDDM theme unless the file is actually included in the repo.
 - Do not expand `AGENTS.md` into a full conventions/contributing guide here.
+- Do not use `top -bn1` for CPU% — read `/proc/stat` directly (see `docs/PERFORMANCE.md`).
+- Do not make multiple `date` calls when one suffices — use multi-field format.
+- Do not use `curl` without `--max-time` — can hang indefinitely.
+- Do not set blur `passes > 3` — marginal visual gain, linear GPU cost.
 
 ## How To Update This Document
 

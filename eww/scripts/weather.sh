@@ -20,7 +20,7 @@ if [ "$FORCE" = false ] && [ -f "$CACHE_FILE" ]; then
   fi
 fi
 
-RESPONSE=$(curl -sf "wttr.in?format=j1" 2>/dev/null) || {
+RESPONSE=$(curl -sf --max-time 10 "wttr.in?format=j1" 2>/dev/null) || {
   if [ -f "$CACHE_FILE" ]; then
     cat "$CACHE_FILE"
     exit 0

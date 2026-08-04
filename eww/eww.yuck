@@ -281,7 +281,7 @@
   :wm-ignore true
   (music-widget))
 
-(defpoll music_data :interval "2s"
+(defpoll music_data :interval "3s"
   :initial "{\"title\":\"---\",\"artist\":\"---\",\"status\":\"stopped\"}"
   `bash ~/.config/eww/scripts/music.sh`)
 
@@ -332,7 +332,7 @@
   :wm-ignore true
   (sysmon-widget))
 
-(defpoll sysmon_data :interval "2s"
+(defpoll sysmon_data :interval "3s"
   :initial "{\"cpu\":\"0\",\"cpu_temp\":\"0\",\"gpu\":\"0\",\"gpu_temp\":\"0\",\"ram\":\"0\",\"disk\":\"0\"}"
   `bash ~/.config/eww/scripts/sysmon-data.sh`)
 

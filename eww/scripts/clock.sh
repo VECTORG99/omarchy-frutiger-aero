@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-hour=$(LC_TIME=en_US.UTF-8 date +'%I')
-minute=$(LC_TIME=en_US.UTF-8 date +'%M')
-second=$(LC_TIME=en_US.UTF-8 date +'%S')
-ampm=$(LC_TIME=en_US.UTF-8 date +'%p')
-weekday=$(LC_TIME=en_US.UTF-8 date +'%a')
-day=$(LC_TIME=en_US.UTF-8 date +'%d')
-month=$(LC_TIME=en_US.UTF-8 date +'%b')
-year=$(LC_TIME=en_US.UTF-8 date +'%Y')
-tz=$(LC_TIME=en_US.UTF-8 date +'%Z')
+# Clock widget — single date call (was 9 forks, now 1)
+set -euo pipefail
+
+# Single date call + read into variables
+read -r hour minute second ampm weekday day month year tz <<EOF
+$(LC_TIME=en_US.UTF-8 date +'%I %M %S %p %a %d %b %Y %Z')
+EOF
+
 jq -n \
   --arg hour "$hour" --arg minute "$minute" --arg second "$second" \
   --arg ampm "$ampm" --arg weekday "$weekday" --arg day "$day" \
