@@ -398,23 +398,23 @@
   :wm-ignore true
   (widget-ctl-widget))
 
-(defpoll weather_status :interval "1s"
+(defpoll weather_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh weather`)
 
-(defpoll clock_status :interval "1s"
+(defpoll clock_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh clock`)
 
-(defpoll calendar_status :interval "1s"
+(defpoll calendar_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh calendar`)
 
-(defpoll music_status :interval "1s"
+(defpoll music_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh music`)
 
-(defpoll sysmon_status :interval "1s"
+(defpoll sysmon_status :interval "5s"
   :initial "off"
   `bash ~/.config/eww/scripts/widget-status.sh sysmon`)
 
