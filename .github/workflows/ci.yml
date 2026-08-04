@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run shellcheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          severity: warning
+          additional_paths: "install.sh"
+          ignore_paths: ".git"
+
+  lua-check:
+    name: Lua syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lua
+        run: sudo apt-get update && sudo apt-get install -y lua5.3
+      - name: Check lua syntax
+        run: |
+          set -e
+          FAIL=0
+          for f in $(find config/hypr config/omarchy/themes -name '*.lua' -type f); do
+            echo ":: Checking $f"
+            if ! luac -p "$f" 2>&1; then
+              echo "::error file=$f::Lua syntax error"
+              FAIL=1
+            fi
+          done
+          exit $FAIL
+
+  json-validate:
+    name: JSON validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+      - name: Validate JSON files
+        run: |
+          set -e
+          FAIL=0
+          # JSONC files (jq handles comments in jsonc)
+          for f in config/waybar/config.jsonc config/fastfetch/config.jsonc; do
+            if [ -f "$f" ]; then
+              echo ":: Checking $f"
+              if ! jq . "$f" > /dev/null 2>&1; then
+                echo "::error file=$f::Invalid JSON"
+                FAIL=1
+              fi
+            fi
+          done
+          # Pure JSON files
+          for f in $(find config/opencode -name '*.json' -type f); do
+            echo ":: Checking $f"
+            if ! jq . "$f" > /dev/null 2>&1; then
+              echo "::error file=$f::Invalid JSON"
+              FAIL=1
+            fi
+          done
+          exit $FAIL
+
+  toml-validate:
+    name: TOML validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate TOML files
+        run: |
+          set -e
+          FAIL=0
+          for f in $(find config -name '*.toml' -type f); do
+            echo ":: Checking $f"
+            if ! python3 -c "import tomllib; tomllib.load(open('$f','rb'))" 2>&1; then
+              echo "::error file=$f::Invalid TOML"
+              FAIL=1
+            fi
+          done
+          exit $FAIL
+
+  install-script-check:
+    name: install.sh syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bash syntax check
+        run: bash -n install.sh
