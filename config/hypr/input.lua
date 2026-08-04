@@ -17,11 +17,10 @@ hl.config({
 		-- Start with numlock on by default.
 		numlock_by_default = true,
 
-		-- Increase sensitivity for mouse/trackpad (default: 0).
-		-- sensitivity = 0.35,
-
-		-- Turn off mouse acceleration (default: adaptive).
-		-- accel_profile = "flat",
+		-- No mouse acceleration: 1:1 pointer-to-motion mapping. The Hyprland
+		-- default (adaptive) ramps cursor speed with mouse velocity, which
+		-- feels like unstable sensitivity. Flat keeps it predictable.
+		accel_profile = "flat",
 
 		touchpad = {
 			-- Use natural (inverse) scrolling.
