@@ -3,7 +3,7 @@ player=$(playerctl -l 2>/dev/null | head -1)
 status=$(playerctl status 2>/dev/null)
 
 if [[ -z $player || $status == "Stopped" ]]; then
-  echo '{"text": "", "class": "stopped", "tooltip": "Sin reproducción"}'
+  jq -c -n '{text:"", class:"stopped", tooltip:"Sin reproducción"}'
   exit 0
 fi
 
@@ -17,7 +17,7 @@ case $player in
 esac
 
 if [[ $status == "Paused" ]]; then
-  echo "{\"text\": \"$icon\", \"class\": \"paused\", \"tooltip\": \"$player (pausado)\"}"
+  jq -c -n --arg t "$icon" --arg tt "$player (pausado)" '{text:$t, class:"paused", tooltip:$tt}'
 else
-  echo "{\"text\": \"$icon\", \"class\": \"playing\", \"tooltip\": \"$player (reproduciendo)\"}"
+  jq -c -n --arg t "$icon" --arg tt "$player (reproduciendo)" '{text:$t, class:"playing", tooltip:$tt}'
 fi

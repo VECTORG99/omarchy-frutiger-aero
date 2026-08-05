@@ -1,3 +1,4 @@
 #!/bin/bash
 uptime=$(uptime -p | sed 's/up //; s/,//g; s/  / /g')
-echo "{\"text\": \"󰥔 $uptime\", \"tooltip\": \"$(uptime -p)\", \"class\": \"\"}"
+tooltip=$(uptime -p)
+jq -c -n --arg t "󰥔 $uptime" --arg tt "$tooltip" '{text:$t, tooltip:$tt, class:""}'
