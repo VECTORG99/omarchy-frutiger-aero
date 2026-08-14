@@ -1,4 +1,25 @@
-# Omarchy Frutiger Aero
+<div align="center">
+
+# 🪟 Omarchy Frutiger Aero
+
+### A fully swappable Frutiger Aero theme set for Omarchy on Hyprland
+
+[![License](https://img.shields.io/github/license/VECTORG99/omarchy-frutiger-aero?style=for-the-badge&color=1299CA)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/VECTORG99/omarchy-frutiger-aero?style=for-the-badge&color=5AACA0)](https://github.com/VECTORG99/omarchy-frutiger-aero/stargazers)
+[![Issues](https://img.shields.io/github/issues/VECTORG99/omarchy-frutiger-aero?style=for-the-badge&color=35BCDE)](https://github.com/VECTORG99/omarchy-frutiger-aero/issues)
+[![Hyprland](https://img.shields.io/badge/Hyprland-ready-1A3344?style=for-the-badge&logo=hyprland)](https://hyprland.org)
+[![Omarchy](https://img.shields.io/badge/Omarchy-theme-1299CA?style=for-the-badge)](https://github.com/anomalyco/omarchy)
+
+**Glassmorphism · Translucent windows · Vista/7-style Waybar · Authentic FA wallpapers · 7 EWW desktop widgets**
+
+Light & dark variants — swappable via `omarchy theme set` — one-command install
+
+![Light theme](preview-light.png)
+![Dark theme](preview-dark.png)
+
+</div>
+
+---
 
 A fully swappable **Frutiger Aero** theme set for [Omarchy](https://github.com/anomalyco/omarchy) on Hyprland.
 
@@ -7,6 +28,19 @@ This theme is built on top of [Omarchy on CachyOS](https://github.com/roboff/oma
 Includes light and dark variants with glassmorphism, blurred translucent windows, Vista/7-style Waybar, Alacritty terminal glass, authentic FA wallpapers (Asadal + Perfect Hue), Vista startup chime (optional, see [Issue #11](https://github.com/VECTORG99/omarchy-frutiger-aero/issues/11)), matching cursor/icon themes, and Opencode TUI themes.
 
 Both themes are fully swappable via `omarchy theme set` — includes preview images for the theme switcher UI. One-command install with `install.sh`.
+
+## ✨ Features at a glance
+
+| Feature | Light | Dark |
+|---------|-------|------|
+| **Glassmorphism** | Teal `#5AACA0` bg, 40% opacity | Navy `#0A1A2E` bg, 85% opacity |
+| **Waybar** | Vista/7 pill bar with FA gradient | Same + glow on hover |
+| **Window borders** | 3-color gradient (teal → cyan → aqua) | Same + 72% inactive opacity |
+| **Lockscreen** | Rounded input, teal glow, live clock | Same |
+| **Terminal** | Alacritty 85% opacity, JetBrains Mono | Same |
+| **Widgets** | 7 EWW widgets (weather, clock, music…) | Same |
+| **Wallpapers** | 14 authentic FA wallpapers (Asadal + Perfect Hue) | 14 more dark variants |
+| **Startup sound** | Optional Vista chime (bring your own `.wav`) | Same |
 
 ## Preview
 
@@ -246,6 +280,40 @@ All widgets support light/dark themes via `omarchy theme set`.
 eww 0.5+  playerctl  python3  curl  nvidia-smi  lm-sensors  pulseaudio/pipewire
 ```
 
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines on PRs, code style, and testing.
+
+### Quick start for contributors
+
+```bash
+git clone https://github.com/VECTORG99/omarchy-frutiger-aero.git
+cd omarchy-frutiger-aero
+git checkout -B feat/your-feature origin/master
+# make changes
+shellcheck config/waybar/scripts/*.sh eww/scripts/*.sh install.sh
+luac -p config/hypr/*.lua
+git push -u origin feat/your-feature
+gh pr create
+```
+
+### Testing commands
+
+| Command | What it checks |
+|---------|---------------|
+| `shellcheck config/waybar/scripts/*.sh eww/scripts/*.sh install.sh` | Bash scripts |
+| `luac -p config/hypr/*.lua config/omarchy/themes/*/*.lua` | Lua syntax |
+| `jq . config/waybar/config.jsonc` | Waybar JSON |
+| `bash -n install.sh` | Install script syntax |
+
+## Acknowledgements
+
+- **[Omarchy](https://github.com/anomalyco/omarchy)** — the Hyprland meta-distribution this theme is built for
+- **[Omarchy on CachyOS](https://github.com/roboff/omarchy-on-cachyos)** by [Mr. Roboff](https://github.com/roboff) — system base
+- **[EWW](https://github.com/elkowar/eww)** — ElKowar's Wacky Widgets for desktop widgets
+- **[Asadal](https://www.asadal.com)** and **Perfect Hue** — original Frutiger Aero wallpapers
+- **Frutiger Aero community** — for keeping the aesthetic alive since 2007
+
 ## License
 
-MIT
+[MIT](LICENSE) — Copyright (c) 2026 Diego Hernandez
