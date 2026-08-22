@@ -31,6 +31,16 @@ jobs:
         run: |
           set -e
           FAIL=0
+          # Root-level theme lua (light variant lives at repo root)
+          for f in *.lua; do
+            [ -f "$f" ] || continue
+            echo ":: Checking $f"
+            if ! luac -p "$f" 2>&1; then
+              echo "::error file=$f::Lua syntax error"
+              FAIL=1
+            fi
+          done
+          # Config lua
           for f in $(find config/hypr config/omarchy/themes -name '*.lua' -type f); do
             echo ":: Checking $f"
             if ! luac -p "$f" 2>&1; then
@@ -84,6 +94,16 @@ jobs:
         run: |
           set -e
           FAIL=0
+          # Root-level theme toml (light variant lives at repo root)
+          for f in *.toml; do
+            [ -f "$f" ] || continue
+            echo ":: Checking $f"
+            if ! python3 -c "import tomllib; tomllib.load(open('$f','rb'))" 2>&1; then
+              echo "::error file=$f::Invalid TOML"
+              FAIL=1
+            fi
+          done
+          # Config toml
           for f in $(find config -name '*.toml' -type f); do
             echo ":: Checking $f"
             if ! python3 -c "import tomllib; tomllib.load(open('$f','rb'))" 2>&1; then

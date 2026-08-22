@@ -97,15 +97,26 @@ fi
 echo ""
 echo ":: Installing Omarchy themes..."
 
-for variant in frutiger-aero frutiger-aero-dark; do
-  SRC="$CONFIG_DIR/omarchy/themes/$variant"
-  DST=~/.config/omarchy/themes/"$variant"
-  if [ -d "$SRC" ]; then
-    mkdir -p "$DST"
-    cp -r "$SRC"/* "$DST/"
-    echo "   → $variant"
-  fi
-done
+# Light variant lives at the repo root so the repo is installable via
+# `omarchy theme install <url>` (omarchy-theme-install clones to
+# ~/.config/omarchy/themes/<name> and omarchy-theme-set copies the root).
+LIGHT_DST=~/.config/omarchy/themes/frutiger-aero
+mkdir -p "$LIGHT_DST"
+cp -r "$REPO_DIR"/colors.toml "$REPO_DIR"/hyprland.lua "$REPO_DIR"/hyprlock.conf \
+      "$REPO_DIR"/icons.theme "$REPO_DIR"/light.mode "$REPO_DIR"/mako.ini \
+      "$REPO_DIR"/preview.png "$REPO_DIR"/preview-unlock.png "$REPO_DIR"/swayosd.css \
+      "$REPO_DIR"/unlock.png "$REPO_DIR"/walker.css "$REPO_DIR"/waybar.css \
+      "$LIGHT_DST/"
+echo "   → frutiger-aero"
+
+# Dark variant stays under config/ (not installable via the URL route).
+DARK_SRC="$CONFIG_DIR/omarchy/themes/frutiger-aero-dark"
+DARK_DST=~/.config/omarchy/themes/frutiger-aero-dark
+if [ -d "$DARK_SRC" ]; then
+  mkdir -p "$DARK_DST"
+  cp -r "$DARK_SRC"/* "$DARK_DST/"
+  echo "   → frutiger-aero-dark"
+fi
 
 # ── Omarchy hooks ───────────────────────────────────────────
 
