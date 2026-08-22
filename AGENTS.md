@@ -48,7 +48,7 @@ Run from repository root.
 | Command                                       | Use                                                        |
 | --------------------------------------------- | ---------------------------------------------------------- |
 | `shellcheck config/waybar/scripts/*.sh eww/scripts/*.sh install.sh` | Validate all bash scripts.                    |
-| `luac -p config/hypr/*.lua config/omarchy/themes/*/*.lua` | Validate lua syntax (does not check Omarchy helpers).     |
+| `luac -p config/hypr/*.lua hyprland.lua config/omarchy/themes/*/*.lua` | Validate lua syntax (does not check Omarchy helpers).     |
 | `jq . config/waybar/config.jsonc`             | Validate waybar JSONC.                                     |
 | `jq . config/opencode/themes/*.json`          | Validate opencode theme JSON.                              |
 | `python3 -c "import json; json.load(open('config/fastfetch/config.jsonc'))"` | Validate fastfetch JSON.          |

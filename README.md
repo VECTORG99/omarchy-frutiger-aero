@@ -172,6 +172,20 @@ Active wallpaper set via `~/.config/omarchy/current/background` symlink.
 ## What's included
 
 ```
+# Light theme files at the repo root (installable via `omarchy theme install`)
+colors.toml                 # Palette (accent, bg, fg, color0-15)
+hyprland.lua                # Window borders, gradients
+hyprlock.conf               # Lockscreen colors
+icons.theme                 # Icon theme name
+light.mode                  # Prefer-light mode marker
+mako.ini                    # Notification styling
+preview.png                 # Theme switcher preview
+preview-unlock.png          # Lockscreen preview
+swayosd.css                 # OSD styling
+unlock.png                  # Unlock screen asset
+walker.css                  # App launcher styling
+waybar.css                  # Bar color variables
+
 config/
 ├── hypr/
 │   ├── hyprland.lua        # WM configuration
@@ -208,16 +222,35 @@ config/
 │   └── config.jsonc         # System info display
 └── omarchy/
     ├── themes/
-    │   ├── frutiger-aero/       # Light theme (colors, backgrounds, styles)
-    │   └── frutiger-aero-dark/  # Dark theme
-    └── current/theme/           # Active generated theme (runtime, gitignored)
+    │   └── frutiger-aero-dark/  # Dark theme (full install only)
+    └── hooks/
+        └── theme-set.d/opencode-theme
 
-install.sh                   # One-command installer
+eww/                        # 7 desktop widgets (weather, clock, music…)
+install.sh                  # Full installer (both variants + global configs)
 ```
 
 ## Installation
 
-### Quick install (recommended)
+### Theme only (light variant)
+
+Install just the light theme via Omarchy's built-in installer — this is the
+route listed on the [extra themes page](https://manuals.omamix.org/2/the-omarchy-manual/90/extra-themes):
+
+```bash
+omarchy theme install https://github.com/VECTORG99/omarchy-frutiger-aero
+```
+
+This clones the repo to `~/.config/omarchy/themes/frutiger-aero` and applies it.
+The light theme files live at the repo root so `omarchy-theme-set` picks them up
+correctly. The dark variant and the global configs (Waybar, Hyprland, EWW
+widgets, etc.) are **not** installed by this route — use the full installer below
+for those.
+
+### Full install (recommended)
+
+Clones the repo and runs `install.sh`, which installs both theme variants plus
+all global configs, EWW widgets, hooks, and wallpapers:
 
 ```bash
 git clone https://github.com/VECTORG99/omarchy-frutiger-aero.git
@@ -245,8 +278,14 @@ cp config/gtk/* ~/.config/gtk-3.0/
 cp config/fontconfig/* ~/.config/fontconfig/
 cp config/fastfetch/* ~/.config/fastfetch/
 
-# Theme files (swappable via omarchy theme set)
-cp -r config/omarchy/themes/frutiger-aero* ~/.config/omarchy/themes/
+# Light theme files live at the repo root (swappable via omarchy theme set)
+mkdir -p ~/.config/omarchy/themes/frutiger-aero
+cp colors.toml hyprland.lua hyprlock.conf icons.theme light.mode mako.ini \
+   preview.png preview-unlock.png swayosd.css unlock.png walker.css waybar.css \
+   ~/.config/omarchy/themes/frutiger-aero/
+
+# Dark theme files stay under config/
+cp -r config/omarchy/themes/frutiger-aero-dark ~/.config/omarchy/themes/
 
 # Hooks (auto-switch opencode theme on theme change)
 mkdir -p ~/.config/omarchy/hooks/theme-set.d
@@ -302,7 +341,7 @@ gh pr create
 | Command | What it checks |
 |---------|---------------|
 | `shellcheck config/waybar/scripts/*.sh eww/scripts/*.sh install.sh` | Bash scripts |
-| `luac -p config/hypr/*.lua config/omarchy/themes/*/*.lua` | Lua syntax |
+| `luac -p config/hypr/*.lua hyprland.lua config/omarchy/themes/*/*.lua` | Lua syntax |
 | `jq . config/waybar/config.jsonc` | Waybar JSON |
 | `bash -n install.sh` | Install script syntax |
 
