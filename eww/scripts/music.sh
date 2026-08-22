@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/eww-music"
 ART_DIR="$CACHE_DIR/art"

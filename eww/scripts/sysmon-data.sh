@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # System Monitor — CPU, GPU, RAM, DISK (rounded integers)
 # Optimized: reads /proc/stat directly instead of top (223ms → <1ms)
 set -euo pipefail

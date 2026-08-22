@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Opacity control — get/set inactive_opacity for Hyprland
 # Persists value to ~/.config/hypr/.opacity_state
 set -euo pipefail

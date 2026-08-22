@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Move a specific EWW widget to a different screen
 EWW="$HOME/.local/bin/eww"
 WIDGET="$1"

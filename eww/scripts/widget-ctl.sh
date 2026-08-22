@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 CMD="$HOME/.local/bin/eww"
 
 toggle_widget() {
