@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"

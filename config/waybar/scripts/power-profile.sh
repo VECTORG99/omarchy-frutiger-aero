@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 PROFILES=(power-saver balanced performance)
 ICONS=(󰾆 󰾅 󰓅)
 NAMES=(Ahorro Equilibrado Rendimiento)

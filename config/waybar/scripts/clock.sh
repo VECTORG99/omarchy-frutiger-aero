@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 export LC_ALL=en_US.utf8
 
 case ${1:-horizontal} in

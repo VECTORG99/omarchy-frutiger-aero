@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Clock widget — single date call (was 9 forks, now 1)
 set -euo pipefail
 

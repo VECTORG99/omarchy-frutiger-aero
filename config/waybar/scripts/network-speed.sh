@@ -1,9 +1,10 @@
 #!/bin/bash
+set -euo pipefail
 CACHE=/tmp/network_speed_cache
 INTERFACE=$(ip route get 8.8.8.8 2>/dev/null | awk '{print $5; exit}')
 
 if [[ -z $INTERFACE ]]; then
-  echo '{"text": "󰤮", "tooltip": "Sin conexión", "class": "disconnected"}'
+  jq -nc '{text:"󰤮", tooltip:"Sin conexión", class:"disconnected"}'
   exit 0
 fi
 

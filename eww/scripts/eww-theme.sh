@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 EWW_DIR="$HOME/.config/eww"
 EWW="$HOME/.local/bin/eww"
 MODE="${1:-auto}"
