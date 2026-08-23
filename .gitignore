@@ -1,4 +1,4 @@
-# Wallpapers — download separately
+# Wallpapers — bundled with theme (Frutiger Aero ships its own)
 *.jpg
 *.jpeg
 *.gif
@@ -12,7 +12,17 @@
 !preview-dark.png
 !preview-glass-light.png
 !preview-glass-dark.png
-backgrounds/
+# Allow bundled wallpapers in backgrounds/ directories
+!backgrounds/
+!backgrounds/*.jpg
+!backgrounds/*.jpeg
+!backgrounds/*.png
+!backgrounds/*.webp
+!config/omarchy/themes/*/backgrounds/
+!config/omarchy/themes/*/backgrounds/*.jpg
+!config/omarchy/themes/*/backgrounds/*.jpeg
+!config/omarchy/themes/*/backgrounds/*.png
+!config/omarchy/themes/*/backgrounds/*.webp
 
 # OS
 .DS_Store
