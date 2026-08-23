@@ -107,6 +107,11 @@ cp -r "$REPO_DIR"/colors.toml "$REPO_DIR"/hyprland.lua "$REPO_DIR"/hyprlock.conf
       "$REPO_DIR"/preview.png "$REPO_DIR"/preview-unlock.png "$REPO_DIR"/swayosd.css \
       "$REPO_DIR"/unlock.png "$REPO_DIR"/walker.css "$REPO_DIR"/waybar.css \
       "$LIGHT_DST/"
+# Bundled wallpapers (3 light Frutiger Aero backgrounds)
+if [ -d "$REPO_DIR"/backgrounds ]; then
+  mkdir -p "$LIGHT_DST/backgrounds"
+  cp "$REPO_DIR"/backgrounds/*.jpg "$LIGHT_DST/backgrounds/"
+fi
 echo "   → frutiger-aero"
 
 # Dark variant stays under config/ (not installable via the URL route).

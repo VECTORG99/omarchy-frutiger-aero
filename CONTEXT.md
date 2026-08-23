@@ -10,7 +10,7 @@ Updated: 2026-08-04
 - Config domains: `config/hypr/` (Hyprland lua), `config/waybar/` (bar + scripts), `config/omarchy/themes/` (theme files), `eww/` (desktop widgets), `config/opencode/`, `config/helix/`, `config/alacritty/`, `config/fastfetch/`, `config/gtk/`, `config/fontconfig/`.
 - Scripts: bash (`config/waybar/scripts/*.sh`, `eww/scripts/*.sh`, `install.sh`) and python3 (`eww/scripts/calendar.sh`).
 - CI: GitHub Actions with shellcheck, lua syntax (`luac -p`), and JSON validation (`jq`).
-- Wallpapers and binary assets are gitignored (`.gitignore` excludes `*.jpg`, `*.png` except previews, `backgrounds/`, `current/`).
+- Wallpapers are bundled in `backgrounds/` (light, 3 files at repo root) and `config/omarchy/themes/frutiger-aero-dark/backgrounds/` (dark, 3 files). `.gitignore` excludes `*.jpg`/`*.png` globally but allows `backgrounds/` directories. Other binary assets are gitignored.
 
 ## What Works
 
@@ -39,7 +39,7 @@ Updated: 2026-08-04
 - Keep docs for agents direct, structured, and file/path-specific.
 - Never construct JSON by string concatenation in bash — use `jq -n --arg`.
 - Never hardcode personal paths, hardware values, or monitor names — detect at runtime.
-- Wallpapers and binary assets are gitignored; do not commit them.
+- Wallpapers are bundled in `backgrounds/` directories and tracked in git. Do not commit other binary assets (`.wav`, non-preview `.png`).
 - `config/omarchy/current/` is runtime-generated; do not commit it.
 - Lua config must use Omarchy helpers (`hl.config`, `hl.env`, `o.bind`, `o.window`) — not raw Hyprland conf syntax.
 
@@ -90,7 +90,7 @@ eww/eww.yuck
 ## Non-Goals
 
 - Do not add a build system or package manager — this is a dotfiles repo copied by `install.sh`.
-- Do not commit wallpapers, `.wav` files, or other binary assets — they are gitignored.
+- Do not commit `.wav` files or non-preview binary assets — they are gitignored. Wallpapers in `backgrounds/` are tracked.
 - Do not commit `config/omarchy/current/` — it is runtime-generated.
 - Do not hardcode personal hardware values (monitor names, RAM totals, GPU vendor).
 - Do not add SDDM theme unless the file is actually included in the repo.
