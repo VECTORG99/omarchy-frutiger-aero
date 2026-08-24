@@ -22,14 +22,14 @@ for f in "$CONFIG_DIR/waybar/scripts/"*.sh; do
   chmod +x ~/.config/waybar/scripts/"$(basename "$f")"
 done
 
-# Remove waybar scripts that no longer ship in the repo (e.g. caffeine.sh,
-# pomodoro.sh, playerctl-cover.sh removed in #12). Keeps the install
-# idempotent: stale files from a previous version don't survive an upgrade.
-for installed in ~/.config/waybar/scripts/*.sh; do
-  [ -f "$installed" ] || continue
-  name="$(basename "$installed")"
-  if [ ! -f "$CONFIG_DIR/waybar/scripts/$name" ]; then
-    rm "$installed"
+# Remove waybar scripts that this repo previously shipped but no longer
+# includes (e.g. caffeine.sh, pomodoro.sh, playerctl-cover.sh removed in #12,
+# audio-eq.sh). Only targets known historical names — user-installed scripts
+# are left alone.
+STALE_SCRIPTS="caffeine.sh pomodoro.sh playerctl-cover.sh audio-eq.sh"
+for name in $STALE_SCRIPTS; do
+  if [ -f ~/.config/waybar/scripts/"$name" ] && [ ! -f "$CONFIG_DIR/waybar/scripts/$name" ]; then
+    rm ~/.config/waybar/scripts/"$name"
     echo "   → removing stale waybar script: $name"
   fi
 done
@@ -101,18 +101,26 @@ echo ":: Installing Omarchy themes..."
 # `omarchy theme install <url>` (omarchy-theme-install clones to
 # ~/.config/omarchy/themes/<name> and omarchy-theme-set copies the root).
 LIGHT_DST=~/.config/omarchy/themes/frutiger-aero
-mkdir -p "$LIGHT_DST"
-cp -r "$REPO_DIR"/colors.toml "$REPO_DIR"/hyprland.lua "$REPO_DIR"/hyprlock.conf \
-      "$REPO_DIR"/icons.theme "$REPO_DIR"/light.mode "$REPO_DIR"/mako.ini \
-      "$REPO_DIR"/preview.png "$REPO_DIR"/preview-unlock.png "$REPO_DIR"/swayosd.css \
-      "$REPO_DIR"/unlock.png "$REPO_DIR"/walker.css "$REPO_DIR"/waybar.css \
-      "$LIGHT_DST/"
-# Bundled wallpapers (3 light Frutiger Aero backgrounds)
-if [ -d "$REPO_DIR"/backgrounds ]; then
-  mkdir -p "$LIGHT_DST/backgrounds"
-  cp "$REPO_DIR"/backgrounds/*.jpg "$LIGHT_DST/backgrounds/"
+
+# If install.sh is run from inside the omarchy-theme-install clone (i.e.
+# REPO_DIR == LIGHT_DST), the theme files are already in place — skip the
+# copy to avoid cp failing on identical source/destination under pipefail.
+if [[ $REPO_DIR -ef $LIGHT_DST ]]; then
+  echo "   → frutiger-aero (already in place — running from clone)"
+else
+  mkdir -p "$LIGHT_DST"
+  cp -r "$REPO_DIR"/colors.toml "$REPO_DIR"/hyprland.lua "$REPO_DIR"/hyprlock.conf \
+        "$REPO_DIR"/icons.theme "$REPO_DIR"/light.mode "$REPO_DIR"/mako.ini \
+        "$REPO_DIR"/preview.png "$REPO_DIR"/preview-unlock.png "$REPO_DIR"/swayosd.css \
+        "$REPO_DIR"/unlock.png "$REPO_DIR"/walker.css "$REPO_DIR"/waybar.css \
+        "$LIGHT_DST/"
+  # Bundled wallpapers (3 light Frutiger Aero backgrounds)
+  if [ -d "$REPO_DIR"/backgrounds ]; then
+    mkdir -p "$LIGHT_DST/backgrounds"
+    cp "$REPO_DIR"/backgrounds/*.jpg "$LIGHT_DST/backgrounds/"
+  fi
+  echo "   → frutiger-aero"
 fi
-echo "   → frutiger-aero"
 
 # Dark variant stays under config/ (not installable via the URL route).
 DARK_SRC="$CONFIG_DIR/omarchy/themes/frutiger-aero-dark"
