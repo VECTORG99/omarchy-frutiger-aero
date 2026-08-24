@@ -160,14 +160,14 @@ Vista startup chime plays 2s after login via `paplay --volume=45000` (autostart.
 
 ### Wallpapers
 
-14 authentic Frutiger Aero wallpapers per theme:
+3 authentic Frutiger Aero wallpapers per variant (6 total), bundled in the repo:
 
-| Source | Count | Resolution |
-|--------|-------|------------|
-| Asadal (blue water, teal aura, green valley, mountain lake, sunset forest) | 9 | 4000×2000+ |
-| Perfect Hue | 5 | 3840×2160 (true 4K) |
+| Variant | Source | Files | Resolution |
+|---------|--------|-------|------------|
+| Light | Asadal, Perfect Hue | `fa-asadal-104.jpg`, `perfect-hue-1.jpg`, `perfect-hue-5.jpg` | 3000×2200 – 3840×2160 |
+| Dark | Asadal, Perfect Hue | `fa-asadal-28.jpg`, `perfect-hue-3.jpg`, `perfect-hue-4.jpg` | 3440×1440 – 4000×2000 |
 
-Active wallpaper set via `~/.config/omarchy/current/background` symlink.
+Wallpapers are in `backgrounds/` (light, repo root) and `config/omarchy/themes/frutiger-aero-dark/backgrounds/` (dark). Active wallpaper set via `~/.config/omarchy/current/background` symlink; cycle with `omarchy theme bg next`.
 
 ## What's included
 
@@ -356,3 +356,7 @@ gh pr create
 ## License
 
 [MIT](LICENSE) — Copyright (c) 2026 Diego Hernandez
+
+### Wallpaper credits
+
+The bundled wallpapers in `backgrounds/` are sourced from publicly available Frutiger Aero wallpaper collections by [Asadal](https://www.asadal.com) and Perfect Hue. They are included for personal desktop use with this theme. If you are the rights holder and believe any image should not be redistributed here, open an issue and it will be removed promptly.
