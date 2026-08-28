@@ -14,8 +14,8 @@
 
 Light & dark variants — swappable via `omarchy theme set` — one-command install
 
-![Light theme](docs/preview-light.png)
-![Dark theme](docs/preview-dark.png)
+![Light theme](.github/assets/preview-light.png)
+![Dark theme](.github/assets/preview-dark.png)
 
 </div>
 
@@ -35,18 +35,18 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 |---------|-------|------|
 | **Glassmorphism** | Teal `#5AACA0` bg, 40% opacity | Navy `#0A1A2E` bg, 85% opacity |
 | **Waybar** | Vista/7 pill bar with FA gradient | Same + glow on hover |
-| **Window borders** | 3-color gradient (teal → cyan → aqua) | Same + 72% inactive opacity |
+| **Window borders** | Frutiger Aero teal accent | Navy accent + 72% inactive opacity |
 | **Lockscreen** | Rounded input, teal glow, live clock | Same |
 | **Terminal** | Alacritty 85% opacity, JetBrains Mono | Same |
 | **Widgets** | 7 EWW widgets (weather, clock, music…) | Same |
-| **Wallpapers** | 14 authentic FA wallpapers (Asadal + Perfect Hue) | 14 more dark variants |
+| **Wallpapers** | 3 authentic FA wallpapers (Asadal + Perfect Hue) | 3 more dark variants (6 total) |
 | **Startup sound** | Optional Vista chime (bring your own `.wav`) | Same |
 
 ## Preview
 
 | Light (`frutiger-aero`) | Dark (`frutiger-aero-dark`) |
 |------------------------|-----------------------------|
-| ![Light theme](docs/preview-light.png) | ![Dark theme](docs/preview-dark.png) |
+| ![Light theme](.github/assets/preview-light.png) | ![Dark theme](.github/assets/preview-dark.png) |
 | Teal `#5AACA0` bg, `#1A3344` fg | Navy `#0A1A2E` bg, `#C8F0F0` fg |
 | Medium saturated teal + dark text | Deep navy + light teal text |
 
@@ -54,7 +54,7 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 
 | Light | Dark |
 |-------|------|
-| ![Glass light](docs/preview-glass-light.png) | ![Glass dark](docs/preview-glass-dark.png) |
+| ![Glass light](.github/assets/preview-glass-light.png) | ![Glass dark](.github/assets/preview-glass-dark.png) |
 
 ### Light palette
 
