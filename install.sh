@@ -21,6 +21,8 @@ for f in "$CONFIG_DIR/waybar/scripts/"*.sh; do
   cp "$f" ~/.config/waybar/scripts/
   chmod +x ~/.config/waybar/scripts/"$(basename "$f")"
 done
+# Copy shared libraries
+[ -d "$REPO_DIR/scripts" ] && cp "$REPO_DIR/scripts/"*.sh ~/.config/waybar/scripts/
 
 # Remove waybar scripts that this repo previously shipped but no longer
 # includes (e.g. caffeine.sh, pomodoro.sh, playerctl-cover.sh removed in #12,
@@ -37,7 +39,25 @@ done
 # Hyprland
 echo "   → hypr/"
 mkdir -p ~/.config/hypr
+# Preserve user's existing input.lua (keyboard layout) and monitors.lua (monitor config)
+if [ -f ~/.config/hypr/input.lua ]; then
+  ts="$(date +%s)"
+  cp ~/.config/hypr/input.lua ~/.config/hypr/input.lua.bak."$ts"
+  echo "   → preserved existing input.lua (keyboard layout)"
+fi
+if [ -f ~/.config/hypr/monitors.lua ]; then
+  ts="$(date +%s)"
+  cp ~/.config/hypr/monitors.lua ~/.config/hypr/monitors.lua.bak."$ts"
+  echo "   → preserved existing monitors.lua (monitor config)"
+fi
 cp "$CONFIG_DIR/hypr/"* ~/.config/hypr/
+# Restore preserved files if they existed
+for f in ~/.config/hypr/input.lua.bak.*; do
+  [ -f "$f" ] && mv "$f" ~/.config/hypr/input.lua && echo "   → restored your keyboard layout" && break
+done
+for f in ~/.config/hypr/monitors.lua.bak.*; do
+  [ -f "$f" ] && mv "$f" ~/.config/hypr/monitors.lua && echo "   → restored your monitor config" && break
+done
 
 # Alacritty
 echo "   → alacritty/"
@@ -84,7 +104,11 @@ if [ -d "$EWW_DIR" ]; then
   cp "$EWW_DIR/eww-dark.scss" ~/.config/eww/eww-dark.scss
   cp "$EWW_DIR/eww-light.scss" ~/.config/eww/eww-light.scss
   ln -sf ~/.config/eww/eww-dark.scss ~/.config/eww/eww.scss
-  cp "$EWW_DIR/scripts/"* ~/.config/eww/scripts/
+  for f in "$EWW_DIR/scripts/"*; do
+    [ -f "$f" ] && cp "$f" ~/.config/eww/scripts/
+  done
+  # Copy shared libraries
+  [ -d "$REPO_DIR/scripts" ] && cp "$REPO_DIR/scripts/"*.sh ~/.config/eww/scripts/
   chmod +x ~/.config/eww/scripts/*.sh
   [ -d "$EWW_DIR/assets" ] && cp -r "$EWW_DIR/assets/"* ~/.config/eww/assets/
   echo "   → eww/ (weather, clock, calendar, music, sysmon, control panel)"
@@ -113,6 +137,7 @@ else
         "$REPO_DIR"/icons.theme "$REPO_DIR"/light.mode "$REPO_DIR"/mako.ini \
         "$REPO_DIR"/preview.png "$REPO_DIR"/preview-unlock.png "$REPO_DIR"/swayosd.css \
         "$REPO_DIR"/unlock.png "$REPO_DIR"/walker.css "$REPO_DIR"/waybar.css \
+        "$REPO_DIR"/waybar.style \
         "$LIGHT_DST/"
   # Bundled wallpapers (3 light Frutiger Aero backgrounds)
   if [ -d "$REPO_DIR"/backgrounds ]; then

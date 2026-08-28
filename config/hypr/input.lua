@@ -1,11 +1,10 @@
 -- Control your input devices.
 -- See https://wiki.hypr.land/Configuring/Basics/Variables/#input
+-- NOTE: kb_layout and kb_variant are intentionally commented out to preserve user's existing keyboard layout.
+-- Uncomment and set your preferred layout (e.g., "us", "latam", "de", "fr", "gb").
 hl.config({
 	input = {
-		-- Use multiple keyboard layouts and switch between them with Left Alt + Right Alt.
-		kb_layout = "latam",
-
-		-- Use a specific keyboard variant if needed (e.g. intl for international keyboards).
+		-- kb_layout = "us",
 		-- kb_variant = "intl",
 
 		kb_options = "compose:caps", -- ,grp:alts_toggle
