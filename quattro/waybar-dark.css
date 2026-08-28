@@ -1,0 +1,6 @@
+/* Frutiger Aero (Dark) — Waybar colors for Quattro users who install Waybar separately */
+/* This file is NOT used by Quickshell bar — only for manual Waybar installs */
+
+@define-color foreground #C8F0F0;
+@define-color background rgba(10, 26, 46, 0.40);
+@define-color accent #35BCDE;

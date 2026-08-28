@@ -1,0 +1,51 @@
+{
+  "$schema": "https://omarchy.org/shell.json",
+  "bar": {
+    "position": "top",
+    "transparent": true,
+    "layout": {
+      "left": [
+        "omarchy.workspaces"
+      ],
+      "center": [
+        "omarchy.clock",
+        "omarchy.weather",
+        "omarchy.mpris",
+        "omarchy.updates",
+        "omarchy.screenrecording",
+        "omarchy.voxtype",
+        "omarchy.idle"
+      ],
+      "right": [
+        "omarchy.tray",
+        "omarchy.bluetooth",
+        "omarchy.network",
+        "omarchy.audio",
+        "omarchy.cpu",
+        "omarchy.battery"
+      ]
+    }
+  },
+  "plugins": {
+    "enabled": [
+      "omarchy.workspaces",
+      "omarchy.clock",
+      "omarchy.weather",
+      "omarchy.mpris",
+      "omarchy.updates",
+      "omarchy.screenrecording",
+      "omarchy.voxtype",
+      "omarchy.idle",
+      "omarchy.tray",
+      "omarchy.bluetooth",
+      "omarchy.network",
+      "omarchy.audio",
+      "omarchy.cpu",
+      "omarchy.battery"
+    ]
+  },
+  "idle": {
+    "screensaver": 300,
+    "lock": 600
+  }
+}
