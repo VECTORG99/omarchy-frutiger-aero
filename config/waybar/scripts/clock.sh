@@ -1,16 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Waybar clock module — uses shared date-time library
 set -euo pipefail
-export LC_ALL=en_US.utf8
 
-case ${1:-horizontal} in
-  horizontal)
-    d=$(date "+%A %d/%m %I:%M %p")
-    tooltip=$(date)
-    jq -nc --arg t "$d" --arg tt "$tooltip" '{text:$t, tooltip:$tt, class:""}'
-    ;;
-  vertical)
-    d=$(date '+%A\n%d/%m\n%I:%M\n%p')
-    tooltip=$(date)
-    jq -nc --arg t "$d" --arg tt "$tooltip" '{text:$t, tooltip:$tt, class:""}'
-    ;;
-esac
+# Source shared library (installed alongside this script)
+LIB_DIR="$(dirname "$0")"
+source "$LIB_DIR/date-time.sh"
+
+format="${1:-horizontal}"
+
+text=$(format_date_time "$format")
+tooltip=$(get_tooltip)
+
+jq -nc --arg t "$text" --arg tt "$tooltip" '{text:$t, tooltip:$tt, class:""}'

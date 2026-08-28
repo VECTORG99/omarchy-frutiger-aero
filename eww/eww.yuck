@@ -13,7 +13,7 @@
 
 (defpoll weather_data :interval "1800s"
   :initial "{\"temp\":\"--\",\"condition\":\"Loading...\",\"city\":\"...\"}"
-  `bash ~/.config/eww/scripts/weather.sh`)
+  `bash scripts/weather.sh`)
 
 (defwidget weather-widget []
   (box :class "weather-container"
@@ -30,7 +30,7 @@
                  :orientation "h"
                  :space-evenly false
                  :halign "end"
-(button :onclick "eww update weather_data=\"$(bash ~/.config/eww/scripts/weather.sh --force)\""
+(button :onclick "eww update weather_data=\"$(bash scripts/weather.sh --force)\""
                           (label :text "↻" :class "act-icon"))
                  (button :onclick "eww close weather"
                          (label :text "✕" :class "act-icon")))
@@ -119,7 +119,7 @@
 
 (defpoll clock_data :interval "1s"
   :initial "{}"
-  `bash ~/.config/eww/scripts/clock.sh`)
+  `bash scripts/clock.sh`)
 
 (defwidget clock-widget []
   (box :class "clock-container"
@@ -180,7 +180,7 @@
 
 (defpoll cal_data :interval "6h"
   :initial "{}"
-  `python3 ~/.config/eww/scripts/calendar.sh 0`)
+  `python3 scripts/calendar.sh 0`)
 
 (defwidget calendar-widget []
   (box :class "cal-container"
@@ -192,10 +192,10 @@
             :orientation "h"
             :space-evenly false
             :halign "center"
-            (button :onclick "eww update cal_data=\"$(python3 ~/.config/eww/scripts/calendar.sh -1)\""
+            (button :onclick "eww update cal_data=\"$(python3 scripts/calendar.sh -1)\""
                     (label :text "<" :class "cal-nav"))
             (label :text "${cal_data.month} ${cal_data.year}" :class "cal-month")
-            (button :onclick "eww update cal_data=\"$(python3 ~/.config/eww/scripts/calendar.sh 1)\""
+            (button :onclick "eww update cal_data=\"$(python3 scripts/calendar.sh 1)\""
                     (label :text ">" :class "cal-nav")))
 
        ;; Glossy separator
@@ -283,7 +283,7 @@
 
 (defpoll music_data :interval "3s"
   :initial "{\"title\":\"---\",\"artist\":\"---\",\"status\":\"stopped\"}"
-  `bash ~/.config/eww/scripts/music.sh`)
+  `bash scripts/music.sh`)
 
 (defwidget music-widget []
   (box :class "music-container"
@@ -334,7 +334,7 @@
 
 (defpoll sysmon_data :interval "3s"
   :initial "{\"cpu\":\"0\",\"cpu_temp\":\"0\",\"gpu\":\"0\",\"gpu_temp\":\"0\",\"ram\":\"0\",\"disk\":\"0\"}"
-  `bash ~/.config/eww/scripts/sysmon-data.sh`)
+  `bash scripts/sysmon-data.sh`)
 
 (defwidget sysmon-widget []
   (box :class "sysmon-container"
@@ -400,27 +400,27 @@
 
 (defpoll weather_status :interval "5s"
   :initial "off"
-  `bash ~/.config/eww/scripts/widget-status.sh weather`)
+  `bash scripts/widget-status.sh weather`)
 
 (defpoll clock_status :interval "5s"
   :initial "off"
-  `bash ~/.config/eww/scripts/widget-status.sh clock`)
+  `bash scripts/widget-status.sh clock`)
 
 (defpoll calendar_status :interval "5s"
   :initial "off"
-  `bash ~/.config/eww/scripts/widget-status.sh calendar`)
+  `bash scripts/widget-status.sh calendar`)
 
 (defpoll music_status :interval "5s"
   :initial "off"
-  `bash ~/.config/eww/scripts/widget-status.sh music`)
+  `bash scripts/widget-status.sh music`)
 
 (defpoll sysmon_status :interval "5s"
   :initial "off"
-  `bash ~/.config/eww/scripts/widget-status.sh sysmon`)
+  `bash scripts/widget-status.sh sysmon`)
 
 (defpoll opacity_status :interval "5s"
   :initial "off"
-  `bash ~/.config/eww/scripts/widget-status.sh opacity`)
+  `bash scripts/widget-status.sh opacity`)
 
 
 (defwidget widget-ctl-widget []
@@ -442,12 +442,12 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${weather_status}" :class "ctl-status"))
-             (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle weather"
-                     (label :text "TOGGLE" :class "ctl-btn"))
-             (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh weather 0"
-                     (label :text "1" :class "ctl-scr"))
-             (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh weather 1"
-                     (label :text "2" :class "ctl-scr")))
+(button :onclick "bash scripts/widget-ctl.sh toggle weather"
+                      (label :text "TOGGLE" :class "ctl-btn"))
+(button :onclick "bash scripts/widget-screen.sh weather 0"
+                      (label :text "1" :class "ctl-scr"))
+              (button :onclick "bash scripts/widget-screen.sh weather 1"
+                      (label :text "2" :class "ctl-scr")))
 
        ;; Clock
        (box :class "ctl-row"
@@ -459,11 +459,11 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${clock_status}" :class "ctl-status"))
-              (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle clock"
+              (button :onclick "bash scripts/widget-ctl.sh toggle clock"
                       (label :text "TOGGLE" :class "ctl-btn"))
-              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh clock 0"
+              (button :onclick "bash scripts/widget-screen.sh clock 0"
                       (label :text "1" :class "ctl-scr"))
-              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh clock 1"
+              (button :onclick "bash scripts/widget-screen.sh clock 1"
                       (label :text "2" :class "ctl-scr")))
 
        ;; Calendar
@@ -476,11 +476,11 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${calendar_status}" :class "ctl-status"))
-              (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle calendar"
+              (button :onclick "bash scripts/widget-ctl.sh toggle calendar"
                       (label :text "TOGGLE" :class "ctl-btn"))
-              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh calendar 0"
+              (button :onclick "bash scripts/widget-screen.sh calendar 0"
                       (label :text "1" :class "ctl-scr"))
-              (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh calendar 1"
+              (button :onclick "bash scripts/widget-screen.sh calendar 1"
                       (label :text "2" :class "ctl-scr")))
 
        ;; Music
@@ -493,11 +493,11 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${music_status}" :class "ctl-status"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle music"
+            (button :onclick "bash scripts/widget-ctl.sh toggle music"
                     (label :text "TOGGLE" :class "ctl-btn"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh music 0"
+            (button :onclick "bash scripts/widget-screen.sh music 0"
                     (label :text "1" :class "ctl-scr"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh music 1"
+            (button :onclick "bash scripts/widget-screen.sh music 1"
                     (label :text "2" :class "ctl-scr")))
 
        (box :class "ctl-row"
@@ -509,11 +509,11 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${sysmon_status}" :class "ctl-status"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle sysmon"
+            (button :onclick "bash scripts/widget-ctl.sh toggle sysmon"
                     (label :text "TOGGLE" :class "ctl-btn"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh sysmon 0"
+            (button :onclick "bash scripts/widget-screen.sh sysmon 0"
                     (label :text "1" :class "ctl-scr"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh sysmon 1"
+            (button :onclick "bash scripts/widget-screen.sh sysmon 1"
                     (label :text "2" :class "ctl-scr")))
 
        ;; Opacity
@@ -526,11 +526,11 @@
             (box :hexpand true)
             (box :class "ctl-status-box" :orientation "h"
                  (label :text "${opacity_status}" :class "ctl-status"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-ctl.sh toggle opacity"
+            (button :onclick "bash scripts/widget-ctl.sh toggle opacity"
                     (label :text "TOGGLE" :class "ctl-btn"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh opacity 0"
+            (button :onclick "bash scripts/widget-screen.sh opacity 0"
                     (label :text "1" :class "ctl-scr"))
-            (button :onclick "bash ~/.config/eww/scripts/widget-screen.sh opacity 1"
+            (button :onclick "bash scripts/widget-screen.sh opacity 1"
                     (label :text "2" :class "ctl-scr")))
 
        ;; Glass shine
@@ -550,7 +550,7 @@
 
 (defpoll opacity_data :interval "1s"
   :initial "{\"opacity\":\"0.72\",\"percent\":\"72\"}"
-  `bash ~/.config/eww/scripts/opacity.sh get`)
+  `bash scripts/opacity.sh get`)
 
 (defwidget opacity-widget []
   (box :class "opacity-container"
