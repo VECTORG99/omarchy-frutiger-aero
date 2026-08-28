@@ -14,8 +14,8 @@
 
 Light & dark variants — swappable via `omarchy theme set` — one-command install
 
-![Light theme](preview-light.png)
-![Dark theme](preview-dark.png)
+![Light theme](docs/preview-light.png)
+![Dark theme](docs/preview-dark.png)
 
 </div>
 
@@ -46,7 +46,7 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 
 | Light (`frutiger-aero`) | Dark (`frutiger-aero-dark`) |
 |------------------------|-----------------------------|
-| ![Light theme](preview-light.png) | ![Dark theme](preview-dark.png) |
+| ![Light theme](docs/preview-light.png) | ![Dark theme](docs/preview-dark.png) |
 | Teal `#5AACA0` bg, `#1A3344` fg | Navy `#0A1A2E` bg, `#C8F0F0` fg |
 | Medium saturated teal + dark text | Deep navy + light teal text |
 
@@ -54,7 +54,7 @@ Both themes are fully swappable via `omarchy theme set` — includes preview ima
 
 | Light | Dark |
 |-------|------|
-| ![Glass light](preview-glass-light.png) | ![Glass dark](preview-glass-dark.png) |
+| ![Glass light](docs/preview-glass-light.png) | ![Glass dark](docs/preview-glass-dark.png) |
 
 ### Light palette
 
@@ -174,7 +174,6 @@ Wallpapers are in `backgrounds/` (light, repo root) and `config/omarchy/themes/f
 ```
 # Light theme files at the repo root (installable via `omarchy theme install`)
 colors.toml                 # Palette (accent, bg, fg, color0-15)
-hyprland.lua                # Window borders, gradients
 hyprlock.conf               # Lockscreen colors
 icons.theme                 # Icon theme name
 light.mode                  # Prefer-light mode marker
@@ -280,7 +279,7 @@ cp config/fastfetch/* ~/.config/fastfetch/
 
 # Light theme files live at the repo root (swappable via omarchy theme set)
 mkdir -p ~/.config/omarchy/themes/frutiger-aero
-cp colors.toml hyprland.lua hyprlock.conf icons.theme light.mode mako.ini \
+cp colors.toml hyprlock.conf icons.theme light.mode mako.ini \
    preview.png preview-unlock.png swayosd.css unlock.png walker.css waybar.css \
    ~/.config/omarchy/themes/frutiger-aero/
 
@@ -341,7 +340,7 @@ gh pr create
 | Command | What it checks |
 |---------|---------------|
 | `shellcheck config/waybar/scripts/*.sh eww/scripts/*.sh install.sh` | Bash scripts |
-| `luac -p config/hypr/*.lua hyprland.lua config/omarchy/themes/*/*.lua` | Lua syntax |
+| `luac -p config/hypr/*.lua config/omarchy/themes/*/*.lua` | Lua syntax |
 | `jq . config/waybar/config.jsonc` | Waybar JSON |
 | `bash -n install.sh` | Install script syntax |
 

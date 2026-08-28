@@ -109,7 +109,7 @@ if [[ $REPO_DIR -ef $LIGHT_DST ]]; then
   echo "   → frutiger-aero (already in place — running from clone)"
 else
   mkdir -p "$LIGHT_DST"
-  cp -r "$REPO_DIR"/colors.toml "$REPO_DIR"/hyprland.lua "$REPO_DIR"/hyprlock.conf \
+  cp -r "$REPO_DIR"/colors.toml "$REPO_DIR"/hyprlock.conf \
         "$REPO_DIR"/icons.theme "$REPO_DIR"/light.mode "$REPO_DIR"/mako.ini \
         "$REPO_DIR"/preview.png "$REPO_DIR"/preview-unlock.png "$REPO_DIR"/swayosd.css \
         "$REPO_DIR"/unlock.png "$REPO_DIR"/walker.css "$REPO_DIR"/waybar.css \
