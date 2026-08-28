@@ -14,7 +14,7 @@ Updated: 2026-08-04
 
 ## What Works
 
-- Theme system: light variant files live at the **repo root** (`colors.toml`, `hyprland.lua`, `waybar.css`, `walker.css`, `swayosd.css`, `mako.ini`, `hyprlock.conf`, `icons.theme`, `light.mode`, `preview.png`, `unlock.png`) so the repo is installable via `omarchy theme install <url>`. Dark variant stays at `config/omarchy/themes/frutiger-aero-dark/` (full install only). Omarchy generates `~/.config/omarchy/current/theme/` from these.
+- Theme system: light variant files live at the **repo root** (`colors.toml`, `waybar.css`, `walker.css`, `swayosd.css`, `mako.ini`, `hyprlock.conf`, `icons.theme`, `light.mode`, `preview.png`, `unlock.png`) so the repo is installable via `omarchy theme install <url>`. Dark variant stays at `config/omarchy/themes/frutiger-aero-dark/` (full install only). Omarchy generates `~/.config/omarchy/current/theme/` from these.
 - Hyprland config: `config/hypr/hyprland.lua` sources Omarchy defaults then loads `monitors.lua`, `input.lua`, `bindings.lua`, `looknfeel.lua`, `autostart.lua`. Uses Omarchy's `hl.config()`, `hl.env()`, `o.bind()`, `o.window()` helpers.
 - Waybar: Vista/7-style pill bar at 36px height with glassmorphism. `config/waybar/config.jsonc` defines modules; `style.css` imports theme from `~/.config/omarchy/current/theme/waybar.css`. Custom scripts: `clock.sh`, `uptime.sh`, `power-profile.sh`, `network-speed.sh`.
 - EWW widgets: 6 widgets (weather, clock, calendar, music, sysmon, widget-ctl) defined in `eww/eww.yuck`. Scripts in `eww/scripts/`. Light/dark themes via `eww-light.scss`/`eww-dark.scss` symlinked to `eww.scss`.
@@ -56,7 +56,7 @@ install.sh
   -> config/fastfetch/config.jsonc
   -> config/opencode/{tui.json, themes/*.json}
   -> config/omarchy/themes/frutiger-aero-dark/* (dark variant)
-  -> repo root theme files (light variant: colors.toml, hyprland.lua, etc.)
+  -> repo root theme files (light variant: colors.toml, waybar.css, etc.)
   -> config/omarchy/hooks/theme-set.d/opencode-theme
   -> eww/{eww.yuck, eww-light.scss, eww-dark.scss, scripts/*.sh, assets/}
 

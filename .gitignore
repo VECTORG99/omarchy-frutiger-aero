@@ -8,10 +8,10 @@
 !preview.png
 !preview-unlock.png
 !unlock.png
-!preview-light.png
-!preview-dark.png
-!preview-glass-light.png
-!preview-glass-dark.png
+!docs/preview-light.png
+!docs/preview-dark.png
+!docs/preview-glass-light.png
+!docs/preview-glass-dark.png
 # Allow bundled wallpapers in backgrounds/ directories
 !backgrounds/
 !backgrounds/*.jpg
