@@ -12,19 +12,14 @@
 
 ## Testing
 
-<!-- What was tested and how: shellcheck, luac -p, jq, manual testing -->
+<!-- What was tested and how: `omarchy theme set`, screenshots -->
 
 ## Screenshots
 
-<!-- If visual change, add screenshots (light + dark if applicable) -->
+<!-- If visual change, add screenshots (before and after) -->
 
 ## Checklist
 
-- [ ] `shellcheck` passes on modified scripts
-- [ ] `luac -p` passes on modified lua
-- [ ] `jq` passes on modified JSON
 - [ ] No hardcoded personal paths (`/home/...`)
-- [ ] No hardcoded hardware values (monitor names, RAM totals, GPU vendor)
-- [ ] No API keys, tokens, or credentials added
-- [ ] Light and dark themes both look correct
-- [ ] Widgets work on both 1920x1080 and 2560x1440 (if applicable)
+- [ ] No scripts or other executable code added (those go in omarchy-frutiger-aero-extras)
+- [ ] Theme looks correct after `omarchy theme set`
