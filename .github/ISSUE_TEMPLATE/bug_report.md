@@ -1,6 +1,6 @@
 ---
 name: Bug Report
-about: Reportar un bug en scripts, configs o widgets
+about: Reportar un bug en los colores o archivos del tema
 labels: bug
 ---
 
@@ -27,5 +27,5 @@ labels: bug
 ## Logs relevantes
 
 ```
-<!-- pegar output de hyprctl configerrors, shellcheck, o eww logs -->
+<!-- captura de pantalla y salida de `omarchy theme set "Frutiger Aero"` -->
 ```
