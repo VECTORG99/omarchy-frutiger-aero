@@ -139,11 +139,6 @@ else
         "$REPO_DIR"/unlock.png "$REPO_DIR"/walker.css "$REPO_DIR"/waybar.css \
         "$REPO_DIR"/waybar.style \
         "$LIGHT_DST/"
-  # Bundled wallpapers (3 light Frutiger Aero backgrounds)
-  if [ -d "$REPO_DIR"/backgrounds ]; then
-    mkdir -p "$LIGHT_DST/backgrounds"
-    cp "$REPO_DIR"/backgrounds/*.jpg "$LIGHT_DST/backgrounds/"
-  fi
   echo "   → frutiger-aero"
 fi
 
