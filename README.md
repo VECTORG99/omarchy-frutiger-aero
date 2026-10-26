@@ -1,7 +1,7 @@
 # Omarchy Frutiger Aero
 
 A light Frutiger Aero theme for [Omarchy](https://github.com/omacom/omarchy): a teal and sky-blue
-palette, glossy Waybar pills, a matching lockscreen and three Frutiger Aero wallpapers.
+palette, glossy Waybar pills and a matching lockscreen.
 
 ![Frutiger Aero](preview.png)
 
@@ -26,7 +26,6 @@ Switch back and forth with `omarchy theme set`.
 | `hyprlock.conf`, `unlock.png` | Lockscreen |
 | `icons.theme` | Icon theme name |
 | `light.mode` | Marks this as a light theme |
-| `backgrounds/` | Three wallpapers |
 | `preview.png`, `preview-unlock.png` | Previews for the theme switcher |
 
 ### Palette
@@ -36,6 +35,12 @@ Switch back and forth with `omarchy theme set`.
 | Background | `#5AACA0` |
 | Foreground | `#1A3344` |
 | Accent | `#1299CA` |
+
+## Wallpapers
+
+No wallpapers are bundled. The Frutiger Aero wallpapers this theme was made with
+are not freely licensed, so they were removed. Add your own to
+`~/.config/omarchy/backgrounds/frutiger-aero/`.
 
 ## Extras
 
@@ -48,13 +53,7 @@ Read it before you run it; it replaces files in `~/.config`.
 
 - [Omarchy](https://github.com/omacom/omarchy)
 - [Omarchy on CachyOS](https://github.com/roboff/omarchy-on-cachyos) by [Mr. Roboff](https://github.com/roboff), the base this was built on
-- [Asadal](https://www.asadal.com) and Perfect Hue, the original Frutiger Aero wallpapers
 
 ## License
 
 The theme files are [MIT](LICENSE), Copyright (c) 2026 Diego Hernandez.
-
-The MIT license does not cover the wallpapers in `backgrounds/`. They come from
-Frutiger Aero collections by Asadal and Perfect Hue and remain their authors'
-property. If you hold the rights to one of them and want it removed, open an
-issue and it will be taken down.
